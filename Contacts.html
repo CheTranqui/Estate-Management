@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" media="all" href="Style.css" />
+
+<head>
+    <title>Estate Management Home Edition (v0.1)</title>
+</head>
+
+<body>
+
+<nav>
+    <ul class="ulNav"> 
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="homeTab" type="Submit" formaction="EstateManagement.html">
+                    Home
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn activeBtn" id="contactsTab" type="Submit" formaction="Contacts.html">
+                    Contacts
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="PropertiesTab" type="Submit" formaction="Properties.html">
+                    Properties
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="goodsTab" type="Submit" formaction="Goods.html">
+                    Goods
+                </button>
+            </form>
+        </li>
+        <!-- <li>
+            <form class="navForm">
+                <button class="navBtn" id="auctionTab" type="Submit" formaction="Auction.html">
+                    Auction
+                </button>
+            </form>
+        </li> -->
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="soldTab" type="Submit" formaction="Sold.html">
+                    Sold
+                </button>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<h1 >
+    Contacts:
+</h1>
+
+<section class="contactForm">
+        <!-- I want this button to collapse/uncollapse the Contact Form below.  Should always start Collapsed.-->
+    <button class="btn" type="Submit" id="btnContactCollapse" action:"">
+        Add Contact
+    </button>
+    <br>
+        <!-- if they click Add New Contact I want it to display the following buttons -->
+    <form class="formNewContact collapsible" action="contactManager.js" method="POST">
+        <label class="text" for="contactName">Name:</label>
+        <input type="text" class="inputBox nameInput" id="contactName" name="contactName" required>
+        <br>
+        
+        <label class="text" for="contactPhone">Phone #:</label>
+        <input type="tel" class="inputBox phoneInput" id="contactPhone" name="contactPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000">
+        <label class="text" for="contactEmail">Email:</label>
+        <input type="email" class="inputBox emailInput" id="contactEmail" name="contactEmail" placeholder="xyz@gmail.com">
+        <br>
+        
+        <label class="text" for="contactAddress">Address:</label>
+        <input type="text" class="inputBox addressInput" id="contactAddress" name="contactAddress" size="50rem">
+        <br>
+        
+        <label class="text contactNotesLabel" for="contactNotes">Notes:</label>
+        <textarea id="contactNotes" class="notesBox" name="contactNotes"></textarea>
+        <br>
+        <button class="btn" type="Submit" id="btnAddContact">Save Contact</button><br>
+        <!-- When Submit is hit, I want it to send the data to the JS script, clear the form, and minimize the form.-->
+    </form>
+</section>
+<br>
+
+<section class="contactDisplay">
+    <ul class="text">
+        <li>
+            <a href="line1 of sorted contact list">
+                nameOfSortedContactLine1
+            </a>
+            (Edit Button)
+        </li>
+        <ul>
+            <li>Phone: contactPhone.  Email: contactEmail</li>
+            <li>
+                address
+            </li>
+            <li>
+                notes
+            </li>
+    </ul>
+</section>
+<br>
+</body>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" media="all" href="Style.css" />
+
+<head>
+    <title>Estate Management Home Edition (v0.1)</title>
+</head>
+
+<body>
+
+<nav>
+    <ul class="ulNav"> 
+        <li>
+            <form class="navForm">
+                <button class="navBtn activeBtn" id="homeTab" type="Submit" formaction="EstateManagement.html">
+                    Home
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="contactsTab" type="Submit" formaction="Contacts.html">
+                    Contacts
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="PropertiesTab" type="Submit" formaction="Properties.html">
+                    Properties
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="goodsTab" type="Submit" formaction="Goods.html">
+                    Goods
+                </button>
+            </form>
+        </li>
+        <!-- <li>
+            <form class="navForm">
+                <button class="navBtn" id="auctionTab" type="Submit" formaction="Auction.html">
+                    Auction
+                </button>
+            </form>
+        </li> -->
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="soldTab" type="Submit" formaction="Sold.html">
+                    Sold
+                </button>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<h1>
+    To Do List:
+</h1>
+
+<section class="taskList">
+    <ol>
+        <!-- Need to create a new LI for each item on the Task List. Also make it iterate with both the newTask and the newTaskDate -->
+        <li>document.getElementById("newTask"+taskListNumber).innerHTML = localStorage.getItem("#newTask");</li>
+    </ol>
+    <form class="taskForm" action="localStorage.setItem("task"+taskListNumber, #newTask)">
+        <input class="taskBox input-box" id="newTask" type="text" placeholder="New task" required>
+        <input class="taskBox input-box" id="newTaskDate" type="date" margin="0.1em">
+        <button class="btn" type="Submit">
+            Add Task
+        </button>
+    </form>
+</section>
+<br>
+<section class="propertySummary">
+    <h1>
+        Property Summary
+    </h1>
+    <ul>
+        <li>
+            <a href="linkProperty1">
+                Property 1 (Sold! or blank if not...)
+            </a>
+        </li>
+        <li>
+            <a href="linkProperty2">
+                Property 2 (Sold! or blank if not...)
+            </a>
+        </li>
+        <li>
+            <a href="linkProperty3">
+                etc...
+            </a>
+        </li>
+    </ul>
+</section>
+<br>
+</body>

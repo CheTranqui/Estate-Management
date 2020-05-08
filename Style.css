@@ -1,0 +1,212 @@
+.ulNav{
+    display: flex;
+    list-style: none;
+}
+
+.navBtn{
+    font-family: Verdana;
+    font-size: 1.25rem;
+    background-color: rgb(55, 59, 65);
+    color: rgb(55, 175, 245);
+    outline: grey, solid;
+    padding: 0.2rem;
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+    margin: 0.2rem;
+}
+
+.navBtn:active{
+    color: rgb(32, 34, 37);
+    background-color: rgb(53, 151, 207);
+    font-weight: bold;
+}
+
+.navBtn:hover{
+    transform: translate(0, 0.3rem);
+}
+
+.activeBtn{
+    font-family: Verdana;
+    font-size: 1.25rem;
+    color: rgb(32, 34, 37);
+    background-color: rgb(53, 151, 207);
+    font-weight: bold;
+}
+
+body{
+    font-family: Verdana;
+    color: rgb(203, 224, 255);
+    background-color: rgb(32, 34, 37);
+    padding: 0.5rem 2rem;
+
+}
+
+h1{
+    font-size: 1.5rem;
+}
+
+h2{
+    font-size: 1.3rem;
+}
+
+a{
+    color: rgb(142, 240, 243);
+    font-size: 1.2rem;
+}
+
+.taskList{
+    font-size: 1.2rem;
+}
+
+.bulletText{
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+.taskBox{
+    font-family: Verdana;
+    color: rgb(203, 224, 255);
+    background-color: rgb(55, 59, 65);
+    font-size: 1.1rem;  
+}
+
+#newTaskDate{
+    height: 1.5rem;
+    width: 12rem;
+}
+
+::placeholder{
+    font-family: Verdana;
+    font-size: 1.1rem;
+    color: rgb(203, 224, 255);
+    background-color: rgb(55, 59, 65);
+    opacity: 70%;
+}
+
+.btn{
+    font-family: Verdana;
+    font-size: 1.0rem;
+    background-color: rgb(57, 64, 75);
+    color: rgb(55, 175, 245);
+    outline: grey, solid;
+    margin: 0.3rem;
+    padding: 0.15rem;
+}
+
+.btn:active{
+    color: rgb(32, 34, 37);
+    background-color: rgb(53, 151, 207);
+}
+
+.btn:hover{
+    transform: translate(0, 0.1rem);
+}
+
+/* Contact Form */
+.formNewContact{
+    margin-top: 0.5rem;
+    transform: translateX(2rem);
+}
+
+.inputBox{
+    font-family: Verdana;
+    font-size: 1rem;
+    color: rgb(203, 224, 255);
+    background-color: rgb(55, 59, 65);
+    margin: 0.5rem;
+    padding: 0.2rem;
+}
+
+.nameInput{
+    transform: translateX(1.3rem);
+    width: 14rem;
+}
+
+.phoneInput{
+    transform: translateX(-0.2rem);
+    width: 9rem;
+    text-align: center;
+}
+
+.emailInput{
+    width: 14rem;
+}
+
+.addressInput{
+    width: 28.5rem;
+}
+
+/* notesBox used for all notes boxes */
+
+.notesBox{
+    transform: translateX(1.5rem);
+    width: 28.5rem;
+    height: 2.3rem;
+    text-align: left;
+    size: 1.2rem;
+    color: rgb(203, 224, 255);
+    font-size: 1.4rem;
+    background-color: rgb(55, 59, 65);
+    margin: 0.3rem;
+    padding: 0.2rem;
+    vertical-align: top;
+}
+
+#btnAddContact{
+    margin-top: 0.5rem;
+    transform: translateX(5.2rem);
+}
+
+.contactDisplay{
+    font-size: 1.2rem;
+}
+
+/* Property Inputs */
+
+.propertyNameInput{
+    transform: translateX(1.2rem)
+}
+
+.propertyValueInput{
+    width: 8rem;
+}
+
+.propertyAddressInput{
+    width: 28.5rem;
+}
+
+.propertyNotesInput{
+    transform: translateX(6rem);
+}
+
+
+/* Using these for both Property and Goods */
+#btnAddProperty{
+    margin-top: 0.5rem;
+    transform: translateX(9.7rem);
+}
+
+.propertyList{
+    font-size: 1.2rem;
+}
+
+/* Goods Inputs */
+
+.goodsNameInput{
+    transform: translateX(3rem);
+}
+
+.goodsAddressInput{
+    transform: translateX(1.8rem);
+    width: 28.5rem;
+}
+
+.goodsNotesInput{
+    transform: translateX(6.1rem);
+}
+
+#btnAddgoods{
+    margin-top: 0.5rem;
+    transform: translateX(9.7rem);
+
+}
