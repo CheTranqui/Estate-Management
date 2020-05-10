@@ -58,14 +58,26 @@
     Contacts:
 </h1>
 
-<section class="contactForm">
+<table id="contactTable">
+    <tr id="contactHead">
+        <th>#</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>More</th>
+        <th>Actions</th>
+    </tr>
+</table>
+
+<section>
+    <br><br>
         <!-- I want this button to collapse/uncollapse the Contact Form below.  Should always start Collapsed.-->
     <button class="btn" type="Submit" id="btnContactCollapse" action:"">
         Add Contact
     </button>
     <br>
         <!-- if they click Add New Contact I want it to display the following buttons -->
-    <form class="formNewContact collapsible" action="contactManager.js" method="POST">
+    <form id="contactForm" class="formNewContact collapsible" action="contactManager.js" method="POST">
         <label class="text" for="contactName">Name:</label>
         <input type="text" class="inputBox nameInput" id="contactName" name="contactName" required>
         <br>
@@ -88,6 +100,23 @@
     </form>
 </section>
 <br>
+
+<script>
+    var Contacts = {
+        index: 1,
+
+        init: function() {},
+
+        storeAdd: function(entry) {},
+        storeEdit: function(entry) {},
+        storeRemove: function(entry) {},
+
+        tableAdd: function(entry) {},
+        tableEdit: function(entry) {},
+        tableRemove: function(entry) {}
+};
+Contacts.init();
+</script>
 
 <section class="contactDisplay">
     <ul class="text">
