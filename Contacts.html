@@ -54,32 +54,16 @@
     </ul>
 </nav>
 
-<h1 >
-    Contacts:
-</h1>
-
-<table id="contactTable">
-    <tr id="contactHead">
-        <th>#</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>More</th>
-        <th>Actions</th>
-    </tr>
-</table>
-
 <section>
     <br><br>
         <!-- I want this button to collapse/uncollapse the Contact Form below.  Should always start Collapsed.-->
-    <button class="btn" type="Submit" id="btnContactCollapse" action:"">
-        Add Contact
+    <button class="btn collapsible" type="Submit" id="btnAddContactCollapser">
+        Add New Contact? 
     </button>
-    <br>
         <!-- if they click Add New Contact I want it to display the following buttons -->
-    <form id="contactForm" class="formNewContact collapsible" action="contactManager.js" method="POST">
+    <form id="contactForm" class="formNewContact" action="formManager.js">
         <label class="text" for="contactName">Name:</label>
-        <input type="text" class="inputBox nameInput" id="contactName" name="contactName" required>
+        <input type="text" class="inputBox nameInput" id="contactName" name="contactName">
         <br>
         
         <label class="text" for="contactPhone">Phone #:</label>
@@ -95,46 +79,48 @@
         <label class="text contactNotesLabel" for="contactNotes">Notes:</label>
         <textarea id="contactNotes" class="notesBox" name="contactNotes"></textarea>
         <br>
-        <button class="btn" type="Submit" id="btnAddContact">Save Contact</button><br>
+        <button class="btn" type="Submit" id="btnAddContact" value="Submit">Save Contact</button><br>
         <!-- When Submit is hit, I want it to send the data to the JS script, clear the form, and minimize the form.-->
     </form>
 </section>
 <br>
 
-<script>
-    var Contacts = {
-        index: 1,
-
-        init: function() {},
-
-        storeAdd: function(entry) {},
-        storeEdit: function(entry) {},
-        storeRemove: function(entry) {},
-
-        tableAdd: function(entry) {},
-        tableEdit: function(entry) {},
-        tableRemove: function(entry) {}
-};
-Contacts.init();
-</script>
-
-<section class="contactDisplay">
-    <ul class="text">
-        <li>
-            <a href="line1 of sorted contact list">
-                nameOfSortedContactLine1
-            </a>
-            (Edit Button)
+<section class="contactDisplay" id="contactDisplay">
+    <!-- using Javascript to build these forms of contacts -->
+    <!-- it duplicates this first form and loads the information -->
+    <h1>
+        Current Contacts:
+    </h1>
+    <ul class="contactDisplayList" id="contactDisplayList">
+        <li class="contactDisplayItem" id="contactDisplayItem">
+            <form id="contactDisplayForm" class="formCurrentContact" action="formManager.js">
+                <label class="text" for="contactName">Name:</label>
+                <input type="text" class="inputBox nameInput" id="contactName" name="contactName">
+                <br>
+        
+                <label class="text" for="contactPhone">Phone #:</label>
+                <input type="tel" class="inputBox phoneInput" id="contactPhone" name="contactPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="N/A">
+                <label class="text" for="contactEmail">Email:</label>
+                <input type="email" class="inputBox emailInput" id="contactEmail" name="contactEmail" placeholder="N/A" style="text-align: center;">
+                <br>
+        
+                <label class="text" for="contactAddress">Address:</label>
+                <input type="text" class="inputBox addressInput" id="contactAddress" name="contactAddress" size="50rem">
+                <br>
+        
+                <label class="text contactNotesLabel" for="contactNotes">Notes:</label>
+                <textarea id="contactNotes" class="notesBox" name="contactNotes"></textarea>
+                <br>
+                <button class="btn" type="Submit" id="btnSaveContact" value="Submit">Save Contact</button>
+                <button class="btn" type="button" id="btnDeleteContact">Delete Contact</button>
+                <br>
+            </form>
         </li>
-        <ul>
-            <li>Phone: contactPhone.  Email: contactEmail</li>
-            <li>
-                address
-            </li>
-            <li>
-                notes
-            </li>
     </ul>
+
 </section>
 <br>
+
+<script type="text/javascript" src="formManager.js"></script>
+
 </body>

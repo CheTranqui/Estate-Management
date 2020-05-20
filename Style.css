@@ -3,7 +3,7 @@
     list-style: none;
 }
 
-.navBtn{
+.navForm button {
     font-family: Verdana;
     font-size: 1.25rem;
     background-color: rgb(55, 59, 65);
@@ -25,7 +25,7 @@
     transform: translate(0, 0.3rem);
 }
 
-.activeBtn{
+.navForm button.activeBtn{
     font-family: Verdana;
     font-size: 1.25rem;
     color: rgb(32, 34, 37);
@@ -58,7 +58,7 @@ a{
     font-size: 1.2rem;
 }
 
-.bulletText{
+.propertiesListText{
     font-weight: normal;
     font-size: 1.2rem;
 }
@@ -103,9 +103,16 @@ a{
 }
 
 /* Contact Form */
+/* btn used to uncollapse Add Contact Form */
+#btnAddContactCollapser{
+    font-weight: bold;
+}
+
 .formNewContact{
     margin-top: 0.5rem;
     transform: translateX(2rem);
+    display: none;
+    overflow: hidden;
 }
 
 .inputBox{
@@ -129,11 +136,39 @@ a{
 }
 
 .emailInput{
-    width: 14rem;
+    width: 13.7rem;
 }
 
 .addressInput{
     width: 28.5rem;
+}
+
+/* for contact display forms */
+.contactDisplayList{
+    list-style: none;
+}
+
+.formCurrentContact{
+    margin-top: 0.5rem;
+    transform: translateX(2rem);
+    margin-bottom: 4rem;
+}
+
+.formCurrentContact #contactName{
+    transform: translateX(1.3rem);
+}
+
+.formCurrentContact #contactEmail{
+    width: 12.9rem;
+}
+
+#btnSaveContact{
+    transform: translateX(6rem);
+}
+
+#btnDeleteContact{
+    transform: translateX(18.9rem);
+    background-color: maroon;
 }
 
 /* notesBox used for all notes boxes */
