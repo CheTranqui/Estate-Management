@@ -54,74 +54,134 @@
     </ul>
 </nav>
 
-<h1 >
-    Properties:
-</h1>
-
-<section class="propertyForm">
+<section>
     <!-- I want this button to collapse/uncollapse the Property Form below.  Should always start Collapsed.-->
-<button class="btn" type="Submit" id="btnPropertyCollapse" action:"">
-    Add Property
-</button>
-<br>
+    <button class="btn collapsible" type="Submit" id="btnAddPropertyCollapser" action="propertyManager.js">
+        Add New Property? 
+    </button>
+    <br>
     <!-- if they click Add Property I want it to display the following buttons -->
-<form class="formNewProperty collapsible" action="propertyManager.js" method="POST">
-    <label class="propertyNameLabel" for="propertyName">Property Name:</label>
-    <input type="text" class="inputBox propertyNameInput" id="propertyName" name="propertyName" required>
-    <br>
+    <form class="formNewProperty" id="propertyForm" action="propertyManager.js" method="POST">
+        <label class="propertyNameLabel" for="propertyName">
+            Property Name:
+        </label>
+        <input type="text" class="inputBox propertyNameInput" id="propertyName" name="propertyName" required>
+        <br>
     
-    <label class="propertyValueLabel" for="propertyValue">Anticipated Value:</label>
-    <input type="number" class="inputBox propertyValueInput" id="propertyValue" name="propertyValue">
-    <label id="propertyOfferLabel" for="propertyOffer">Current Offer:</label>
-    <input type="number" class="inputBox propertyValueInput" id="propertyOffer" name="propertyOffer">
-    <br>
+        <label class="propertyValueLabel" for="propertyValue">
+            Anticipated Value:
+        </label>
+        <input type="number" class="inputBox propertyValueInput" id="propertyValue" name="propertyValue">
+
+        <label id="propertyOfferLabel" for="propertyOffer">
+            Current Offer:
+        </label>
+        <input type="number" class="inputBox propertyValueInput" id="propertyOffer" name="propertyOffer">
+        <br>
+        <label id="propertyStatusLabel" for="propertyStatus">
+            Current Status:
+        </label>
+        <select class="propertyStatusInput" name="propertyStatus" id="PropertyStatus">
+            <option value="unknown">Unknown</option>
+            <option value="needsWork">Needs Work</option>
+            <option value="workInProgress">Work In Progress</option>
+            <option value="readyForSale">Ready For Sale</option>
+            <option value="Closing">Closing</option>
+            <option value="Sold">Sold</option>
+        </select>
+        <label class="propertyDateLabel" id="propertyDateLabel" for="propertyDate">
+            Date:
+        </label>
+        <input type="date" class="inputBox propertyDateInput" id="propertyDate" name="propertyDate">
+        <br>
     
-    <label class="propertyAddressLabel" for="propertyAddress">Property Address:</label>
-    <input type="text" class="inputBox propertyAddressInput" id="propertyAddress" name="propertyAddress" size="50rem">
-    <br>
+        <label class="propertyAddressLabel" for="propertyAddress">
+            Property Address:
+        </label>
+        <input type="text" class="inputBox propertyAddressInput" id="propertyAddress" name="propertyAddress" size="50rem">
+        <br>
     
-    <label class="propertyNotesLabel" for="propertyNotes">Notes:</label>
-    <textarea id="propertyNotes" class="notesBox propertyNotesInput" name="propertyNotes"></textarea>
-    <br>
-    <button class="btn" type="Submit" id="btnAddProperty">Save Property</button><br>
+        <label class="propertyNotesLabel" for="propertyNotes">
+            Notes:
+        </label>
+        <textarea id="propertyNotes" class="notesBox propertyNotesInput" name="propertyNotes"></textarea>
+        <br>
+        <button class="btn" type="Submit" id="btnAddProperty">
+            Save Property
+        </button>
+        <br>
     <!-- When Submit is hit, I want it to send the data to the JS script, clear the form, and minimize the form.-->
-</form>
+    </form>
 </section>
 <br>
 
-<section class="propertyDisplay">
-    <ul>
-        <li class="propertyList">
-            Property 1 Name    (Value: ifNotSold=propertyValue or ifSold=propertyOffer, 
-            <label id="soldPropertyCheckboxLabel" for="soldPropertyCheckbox">Sold: </label>
-            <input type="checkbox" class="soldCheckbox" id="soldPropertyCheckbox" name="soldPropertyCheckbox">
-             )
-            <br>
-            associated goods:
-            <ul>
-                <li>
-                     (collapsible, collapsed)
-                </li>
-            </ul>
+<section class="propertyDisplay" id="propertyDisplay">
+    <!-- using Javascript to build these forms of contacts -->
+    <!-- it duplicates this first form and loads the information -->
+    <h1>
+        Current Properties:
+    </h1>
+    <ul class="propertyDisplayList" id="propertyDisplayList">
+        <li class="propertyDisplayItem" id="propertyDisplayItem">
+            <form class="propertyDisplayForm" id="propertyDisplayForm" action="propertyManager.js" method="POST">
+                <label class="propertyNameLabel" for="propertyName">
+                    Property Name:
+                </label>
+                <input type="text" class="inputBox propertyNameInput" id="propertyName" name="propertyName" required>
+                <br>
+            
+                <label class="propertyValueLabel" for="propertyValue">
+                    Anticipated Value:
+                </label>
+                <input type="number" class="inputBox propertyValueInput" id="propertyValue" name="propertyValue">
+        
+                <label id="propertyOfferLabel" for="propertyOffer">
+                    Current Offer:
+                </label>
+                <input type="number" class="inputBox propertyValueInput" id="propertyOffer" name="propertyOffer">
+                <br>
+                <label id="propertyStatusLabel" for="propertyStatus">
+                    Current Status:
+                </label>
+                <select class="propertyStatusInput" name="propertyStatus" id="propertyStatus">
+                    <option value="unknown">Unknown</option>
+                    <option value="needsWork">Needs Work</option>
+                    <option value="workInProgress">Work In Progress</option>
+                    <option value="readyForSale">Ready For Sale</option>
+                    <option value="Closing">Closing</option>
+                    <option value="Sold">Sold</option>
+                </select>
+                <label class="propertyDateLabel" id="propertyDateLabel" for="propertyDate">
+                    Date:
+                </label>
+                <input type="date" class="inputBox propertyDateInput" id="propertyDate" name="propertyDate">
+                <br>
+            
+                <label class="propertyAddressLabel" for="propertyAddress">
+                    Property Address:
+                </label>
+                <input type="text" class="inputBox propertyAddressInput" id="propertyAddress" name="propertyAddress" size="50rem">
+                <br>
+            
+                <label class="propertyNotesLabel" for="propertyNotes">
+                    Notes:
+                </label>
+                <textarea id="propertyNotes" class="notesBox propertyNotesInput" name="propertyNotes"></textarea>
+                <br>
+                <button class="btn" type="Submit" id="btnSaveProperty">
+                    Save Property
+                </button>
+                <button class="btn" type="button" id="btnDeleteProperty">
+                    Delete Property
+                </button>
+                <br>
+            <!-- When Submit is hit, I want it to send the data to the JS script, clear the form, and minimize the form.-->
+            </form>
         </li>
-        <br>
-        <li class="propertyList">
-            Property 2 Name    (Value: ifNotSold=propertyValue or ifSold=propertyOffer, 
-            <label id="soldPropertyCheckboxLabel" for="soldPropertyCheckbox">( Sold: </label>
-            <input type="checkbox" class="soldCheckbox" id="soldPropertyCheckbox" name="soldPropertyCheckbox">
-            )
-            <br>
-            associated goods:
-            <ul>
-                <li>
-                     (collapsible, collapsed)
-                </li>
-            </ul>
-        </li>
-        <br>
-        <li class="propertyList">
-            etc...
-        </li>
-        <br>
     </ul>
+
 </section>
+
+<script type="text/javascript" src="propertyManager.js"></script>
+
+</body>

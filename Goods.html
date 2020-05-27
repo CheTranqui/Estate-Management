@@ -54,20 +54,21 @@
     </ul>
 </nav>
 
-<h1>
-    Goods:
-</h1>
-
 <section class="goodsForm">
     <!-- I want this button to collapse/uncollapse the Property Form below.  Should always start Collapsed.-->
-<button class="btn" type="Submit" id="btnGoodsCollapse" action:"">
-    Add Item
+<button class="btn" type="Submit" id="btnAddGoodsCollapser" >
+    Add New Item?
 </button>
 <br>
     <!-- if they click Add Property I want it to display the following buttons -->
-<form class="formNewGoods collapsible" action="goodsManager.js" method="POST">
+<form class="formNewGoods collapsible" id="formNewGoods" action="goodsManager.js" method="POST">
     <label class="goodsNameLabel" for="goodsName">Item Name:</label>
     <input type="text" class="inputBox goodsNameInput" id="goodsName" name="goodsName" required>
+    <label class="goodsPropertyLabel" for="goodsProperty">Property:</label>
+    <select class="goodsPropertyInput" name="goodsProperty" id="goodsProperty">
+        <option>None</option>
+        <!-- options set in JavaScript createPropertyOptions() -->
+    </select>
     <br>
     
     <label class="goodsValueLabel" for="goodsValue">Anticipated Value:</label>
@@ -76,7 +77,7 @@
     <input type="number" class="inputBox propertyValueInput" id="goodsOffer" name="goodsOffer">
     <br>
     
-    <label class="goodsAddressLabel" for="goodsAddress">Item Location:</label>
+    <label class="goodsAddressLabel" for="goodsAddress">Specific Location:</label>
     <input type="text" class="inputBox goodsAddressInput" id="goodsAddress" name="goodsAddress" size="50rem">
     <br>
     
@@ -84,39 +85,53 @@
     <textarea id="goodsNotes" class="notesBox goodsNotesInput" name="goodsNotes"></textarea>
     <br>
     
-    <button class="btn" type="Submit" id="btnAddProperty">Save Item</button><br>
+    <button class="btn" type="Submit" id="btnAddGoods">Save Item</button><br>
     <!-- When Submit is hit, I want it to send the data to the JS script, clear the form, and minimize the form.-->
 </form>
 </section>
 <br>
 
-<section class="goodsDisplay">
-    <ul>
-        <li class="propertyList">
-            goods 1 name    (Value: ifNotSold=goodsValue or ifSold=goodsOffer, 
-            <label id="soldPropertyCheckboxLabel" for="soldPropertyCheckbox">
-                 Sold:
-            </label>
-            <input type="checkbox" class="soldCheckbox" id="soldPropertyCheckbox" name="soldPropertyCheckbox">
-            )
-            <br>
-            Property:
+<section class="goodsDisplay" id="goodsDisplay">
+    <!-- using Javascript to build these forms of contacts -->
+    <!-- it duplicates this first form and loads the information -->
+    <h1>
+        Current Goods:
+    </h1>
+    <ul class="goodsDisplayList" id="goodsDisplayList">
+        <li class="goodsDisplayItem" id="goodsDisplayItem">
+            <form class="goodsDisplayForm" id="goodsDisplayForm" action="goodsManager.js" method="POST">
+                <label class="goodsNameLabel" for="goodsName">Item Name:</label>
+                <input type="text" class="inputBox goodsNameInput" id="goodsName" name="goodsName" required>
+                <label class="goodsPropertyLabel" for="goodsProperty">Property:</label>
+                <select class="goodsPropertyInput" name="goodsProperty" id="goodsProperty">
+                    <option>None</option>
+                    <!-- options set in JavaScript createPropertyOptions() -->
+                </select>
+                <br>
+                
+                <label class="goodsValueLabel" for="goodsValue">Anticipated Value:</label>
+                <input type="number" class="inputBox propertyValueInput" id="goodsValue" name="goodsValue">
+                <label id="goodsOfferLabel" for="goodsOffer">Current Offer:</label>
+                <input type="number" class="inputBox propertyValueInput" id="goodsOffer" name="goodsOffer">
+                <br>
+                
+                <label class="goodsAddressLabel" for="goodsAddress">Specific Location:</label>
+                <input type="text" class="inputBox goodsAddressInput" id="goodsAddress" name="goodsAddress" size="50rem">
+                <br>
+                
+                <label class="goodsNotesLabel" for="goodsNotes">Notes:</label>
+                <textarea id="goodsNotes" class="notesBox goodsNotesInput" name="goodsNotes"></textarea>
+                <br>
+                
+                <button class="btn" type="Submit" id="btnSaveGoods">Save Item</button>
+                <button class="btn" type="button" id="btnDeleteGoods">
+                    Delete Item
+                </button>
+                <br>
+            </form>
         </li>
-        <br>
-        <li class="propertyList">
-            goods 2 name    (Value: ifNotSold=goodsValue or ifSold=goodsOffer, 
-            <label id="soldPropertyCheckboxLabel" for="soldPropertyCheckbox">
-                 Sold:
-            </label>
-            <input type="checkbox" class="soldCheckbox" id="soldPropertyCheckbox" name="soldPropertyCheckbox">
-             )
-            <br>
-            Property:
-        </li>
-        <br>
-        <li class="propertyList">
-            etc...
-        </li>
-        <br>
     </ul>
+
 </section>
+<script type="text/javascript" src="goodsManager.js"></script>
+</body>

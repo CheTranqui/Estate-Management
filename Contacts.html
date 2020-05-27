@@ -61,25 +61,42 @@
         Add New Contact? 
     </button>
         <!-- if they click Add New Contact I want it to display the following buttons -->
-    <form id="contactForm" class="formNewContact" action="formManager.js">
-        <label class="text" for="contactName">Name:</label>
+    <form id="contactForm" class="formNewContact">
+        <label class="text" for="contactName">
+            Name:
+        </label>
         <input type="text" class="inputBox nameInput" id="contactName" name="contactName">
+        <label class="text" for="contactRole" id="roleInputLabel">
+            Role:
+        </label>
+        <input type="text" class="inputBox roleInput" id="contactRole" name="contactRole">
         <br>
         
-        <label class="text" for="contactPhone">Phone #:</label>
+        <label class="text" for="contactPhone">
+            Phone #:
+        </label>
         <input type="tel" class="inputBox phoneInput" id="contactPhone" name="contactPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000">
-        <label class="text" for="contactEmail">Email:</label>
+        <label class="text" for="contactEmail">
+            Email:
+        </label>
         <input type="email" class="inputBox emailInput" id="contactEmail" name="contactEmail" placeholder="xyz@gmail.com">
         <br>
         
-        <label class="text" for="contactAddress">Address:</label>
+        <label class="text" for="contactAddress">
+            Address:
+        </label>
         <input type="text" class="inputBox addressInput" id="contactAddress" name="contactAddress" size="50rem">
         <br>
         
-        <label class="text contactNotesLabel" for="contactNotes">Notes:</label>
+        <label class="text contactNotesLabel" for="contactNotes">
+            Notes:
+        </label>
         <textarea id="contactNotes" class="notesBox" name="contactNotes"></textarea>
         <br>
-        <button class="btn" type="Submit" id="btnAddContact" value="Submit">Save Contact</button><br>
+        <button class="btn" type="Submit" id="btnAddContact" value="Submit">
+            Save Contact
+        </button>
+        <br>
         <!-- When Submit is hit, I want it to send the data to the JS script, clear the form, and minimize the form.-->
     </form>
 </section>
@@ -94,25 +111,43 @@
     <ul class="contactDisplayList" id="contactDisplayList">
         <li class="contactDisplayItem" id="contactDisplayItem">
             <form id="contactDisplayForm" class="formCurrentContact" action="formManager.js">
-                <label class="text" for="contactName">Name:</label>
+                <label class="text" for="contactName">
+                    Name:
+                </label>
                 <input type="text" class="inputBox nameInput" id="contactName" name="contactName">
+                <label class="text" for="contactRole" id="roleInputLabel">
+                    Role:
+                </label>
+                <input type="text" class="inputBox roleInput" id="contactRole" name="contactRole">
                 <br>
         
-                <label class="text" for="contactPhone">Phone #:</label>
+                <label class="text" for="contactPhone">
+                    Phone #:
+                </label>
                 <input type="tel" class="inputBox phoneInput" id="contactPhone" name="contactPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="N/A">
-                <label class="text" for="contactEmail">Email:</label>
+                <label class="text" for="contactEmail">
+                    Email:
+                </label>
                 <input type="email" class="inputBox emailInput" id="contactEmail" name="contactEmail" placeholder="N/A" style="text-align: center;">
                 <br>
         
-                <label class="text" for="contactAddress">Address:</label>
+                <label class="text" for="contactAddress">
+                    Address:
+                </label>
                 <input type="text" class="inputBox addressInput" id="contactAddress" name="contactAddress" size="50rem">
                 <br>
         
-                <label class="text contactNotesLabel" for="contactNotes">Notes:</label>
+                <label class="text contactNotesLabel" for="contactNotes">
+                    Notes:
+                </label>
                 <textarea id="contactNotes" class="notesBox" name="contactNotes"></textarea>
                 <br>
-                <button class="btn" type="Submit" id="btnSaveContact" value="Submit">Save Contact</button>
-                <button class="btn" type="button" id="btnDeleteContact">Delete Contact</button>
+                <button class="btn" type="Submit" id="btnSaveContact" value="Submit">
+                    Save Contact
+                </button>
+                <button class="btn" type="button" id="btnDeleteContact">
+                    Delete Contact
+                </button>
                 <br>
             </form>
         </li>
@@ -121,6 +156,6 @@
 </section>
 <br>
 
-<script type="text/javascript" src="formManager.js"></script>
+<script type="text/javascript" src="contactManager.js"></script>
 
 </body>

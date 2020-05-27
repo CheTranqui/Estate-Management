@@ -8,7 +8,8 @@
     font-size: 1.25rem;
     background-color: rgb(55, 59, 65);
     color: rgb(55, 175, 245);
-    outline: grey, solid;
+    outline: grey solid 1px;
+    border: 0.1rem solid silver;
     padding: 0.2rem;
     padding-left: 0.35rem;
     padding-right: 0.35rem;
@@ -88,7 +89,8 @@ a{
     font-size: 1.0rem;
     background-color: rgb(57, 64, 75);
     color: rgb(55, 175, 245);
-    outline: grey, solid;
+    outline: grey solid 1px;
+    border: 0.1rem solid silver;
     margin: 0.3rem;
     padding: 0.15rem;
 }
@@ -104,11 +106,11 @@ a{
 
 /* Contact Form */
 /* btn used to uncollapse Add Contact Form */
-#btnAddContactCollapser{
+#btnAddContactCollapser, #btnAddGoodsCollapser{
     font-weight: bold;
 }
 
-.formNewContact{
+.formNewContact, .formNewProperty, .formNewGoods{
     margin-top: 0.5rem;
     transform: translateX(2rem);
     display: none;
@@ -126,7 +128,15 @@ a{
 
 .nameInput{
     transform: translateX(1rem);
-    width: 14rem;
+    width: 13rem;
+}
+
+
+#roleInputLabel{
+    margin-left: 2rem;
+}
+.roleInput{
+    width: 9.2rem;
 }
 
 .phoneInput{
@@ -151,7 +161,7 @@ a{
 .formCurrentContact{
     margin-top: 0.5rem;
     transform: translateX(2rem);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .formCurrentContact #contactName{
@@ -198,12 +208,35 @@ a{
 
 /* Property Inputs */
 
+#btnAddPropertyCollapser, #btnAddGoodsCollapser{
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
 .propertyNameInput{
     transform: translateX(1.2rem)
 }
 
 .propertyValueInput{
     width: 8rem;
+}
+
+option, select {
+    size: 1rem;
+    background-color: #373b41;
+    color: rgb(203, 224, 255);
+    font-size: 1rem;
+    transform: translateX(1.7rem);
+}
+
+.propertyDateLabel{
+    transform: translateX(2rem);
+    text-align: right;
+    margin-left: 3rem;
+}
+
+.propertyDateInput{
+    transform: translateX(1rem);
 }
 
 .propertyAddressInput{
@@ -214,25 +247,51 @@ a{
     transform: translateX(6rem);
 }
 
+.propertyDisplayList, .goodsDisplayList {
+    list-style-type: none;
+}
 
-/* Using these for both Property and Goods */
+.propertyDisplayItem, .goodsDisplayItem{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
 #btnAddProperty{
     margin-top: 0.5rem;
     transform: translateX(9.7rem);
 }
 
+#btnSaveProperty, #btnSaveGoods{
+    transform: translateX(9.7rem);
+}
+
+#btnDeleteProperty, #btnDeleteGoods{
+    transform: translateX(21.8rem);
+    background-color: maroon;
+}
+
 .propertyList{
     font-size: 1.2rem;
+    margin-top: 1.5rem;
 }
 
 /* Goods Inputs */
 
 .goodsNameInput{
     transform: translateX(3rem);
+    width: 11.5rem;
+}
+
+.goodsPropertyLabel{
+    margin-left: 3rem;
+}
+
+.goodsProperty{
+    width: 8rem;
 }
 
 .goodsAddressInput{
-    transform: translateX(1.8rem);
+    transform: translateX(0.25rem);
     width: 28.5rem;
 }
 
@@ -240,8 +299,16 @@ a{
     transform: translateX(6.1rem);
 }
 
-#btnAddgoods{
+#btnAddGoods{
     margin-top: 0.5rem;
     transform: translateX(9.7rem);
 
+}
+
+#btnDeleteGoods{
+    transform: translateX(25.7rem);
+}
+
+.contactDisplayItem, .goodsDisplayItem{
+    display: none;
 }
