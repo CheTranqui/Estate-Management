@@ -140,7 +140,7 @@ a{
 }
 
 .newTaskForm{
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     transform: translateX(2.5rem);
     display: none;
 }
@@ -148,6 +148,7 @@ a{
 /* btn used to uncollapse Add Contact Form */
 #btnAddContactCollapser, #btnAddGoodsCollapser{
     font-weight: bold;
+    margin-top: 1rem;
 }
 
 .formNewContact, .formNewProperty, .formNewGoods{
@@ -233,7 +234,7 @@ a{
 }
 
 #btnAddContact{
-    margin-top: 0.5rem;f
+    margin-top: 1rem;
     transform: translateX(5.2rem);
 }
 
@@ -245,7 +246,7 @@ a{
 
 #btnAddPropertyCollapser, #btnAddGoodsCollapser{
     font-weight: bold;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .propertyNameInput{
@@ -295,7 +296,7 @@ option, select {
 }
 
 #btnAddProperty{
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     transform: translateX(9.7rem);
 }
 
@@ -338,9 +339,7 @@ option, select {
 }
 
 #btnAddGoods{
-    margin-top: 0.5rem;
     transform: translateX(9.7rem);
-
 }
 
 #btnDeleteGoods{
