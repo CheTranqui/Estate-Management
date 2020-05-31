@@ -121,19 +121,26 @@ a{
 }
 
 .btn:hover{
-    transform: translate(0, 0.1rem);
+    transform: translate(0, 0.2em);
 }
 
-#btnDeleteTask{
+#btnAddTask:hover{
+    transform: translate(0, -0.15em);
+}
+
+#btnSaveTask, #btnDeleteTask{
     transform: translateY(-0.35rem);
-    background-color: maroon;
     margin-left: 0.1rem;
 }
 
-#btnSaveTask{
-    transform: translateY(-0.35rem);
-    margin-right: 0.1rem;
+#btnDeleteTask{
+    background-color: maroon;
 }
+
+#btnSaveTask:hover, #btnDeleteTask:hover{
+    transform: translate(0, -0.15em);
+}
+
 
 #taskListHidden{
     display: none;
@@ -218,9 +225,17 @@ a{
     transform: translateX(6rem);
 }
 
+#btnSaveContact:hover{
+    transform: translate(6rem, 0.15rem);
+}
+
 #btnDeleteContact{
-    transform: translateX(27.2rem);
+    transform: translateX(27.4rem);
     background-color: maroon;
+}
+
+#btnDeleteContact:hover{
+    transform: translate(27.4rem, 0.15rem);
 }
 
 /* notesBox used for all notes boxes */
@@ -239,8 +254,12 @@ a{
 }
 
 #btnAddContact{
-    margin-top: 1rem;
-    transform: translateX(5.2rem);
+    margin-top: 0.4rem;
+    transform: translateX(6.05rem);
+}
+
+#btnAddContact:hover{
+    transform: translate(6.05rem, 0.15rem);
 }
 
 .contactDisplay{
@@ -256,6 +275,10 @@ a{
 
 .propertyNameInput{
     transform: translateX(1.2rem)
+}
+
+.propertyValueInput{
+    transform: translateX(-0.7rem);
 }
 
 .propertyValueInput{
@@ -305,13 +328,25 @@ option, select {
     transform: translateX(9.7rem);
 }
 
+#btnAddProperty:hover{
+    transform: translate(9.7rem, 0.15rem);
+}
+
 #btnSaveProperty, #btnSaveGoods{
     transform: translateX(9.7rem);
 }
 
-#btnDeleteProperty, #btnDeleteGoods{
+#btnSaveProperty:hover, #btnSaveGoods:hover{
+    transform: translate(9.7rem, 0.15rem);
+}
+
+#btnDeleteProperty{
     transform: translateX(31rem);
     background-color: maroon;
+}
+
+#btnDeleteProperty:hover{
+    transform: translate(31rem, 0.15rem);
 }
 
 .propertyList{
@@ -347,8 +382,17 @@ option, select {
     transform: translateX(9.7rem);
 }
 
+#btnAddGoods:hover{
+    transform: translate(9.7rem, 0.15rem);
+}
+
 #btnDeleteGoods{
-    transform: translateX(31rem);
+    background-color: maroon;
+    transform: translateX(31.15rem);
+}
+
+#btnDeleteGoods:hover{
+    transform: translate(31.15rem, 0.15rem);
 }
 
 .contactDisplayItem, .goodsDisplayItem{
