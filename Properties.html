@@ -118,66 +118,67 @@
 <section class="propertyDisplay" id="propertyDisplay">
     <!-- using Javascript to build these forms of contacts -->
     <!-- it duplicates this first form and loads the information -->
+    <li class="propertyDisplayItem" id="propertyDisplayItem">
+        <form class="propertyDisplayForm" id="propertyDisplayForm" action="propertyManager.js" method="POST">
+            <label class="propertyNameLabel" for="propertyName">
+                Property Name:
+            </label>
+            <input type="text" class="inputBox propertyNameInput" id="propertyName" name="propertyName" required>
+            <br>
+        
+            <label class="propertyValueLabel" for="propertyValue">
+                Anticipated Value:
+            </label>
+            <input type="number" class="inputBox propertyValueInput" id="propertyValue" name="propertyValue">
+    
+            <label id="propertyOfferLabel" for="propertyOffer">
+                Current Offer:
+            </label>
+            <input type="number" class="inputBox propertyValueInput" id="propertyOffer" name="propertyOffer">
+            <br>
+            <label id="propertyStatusLabel" for="propertyStatus">
+                Current Status:
+            </label>
+            <select class="propertyStatusInput" name="propertyStatus" id="propertyStatus">
+                <option value="unknown">Unknown</option>
+                <option value="needsWork">Needs Work</option>
+                <option value="workInProgress">Work In Progress</option>
+                <option value="readyForSale">Ready For Sale</option>
+                <option value="Closing">Closing</option>
+                <option value="Sold">Sold</option>
+            </select>
+            <label class="propertyDateLabel" id="propertyDateLabel" for="propertyDate">
+                Date:
+            </label>
+            <input type="date" class="inputBox propertyDateInput" id="propertyDate" name="propertyDate">
+            <br>
+        
+            <label class="propertyAddressLabel" for="propertyAddress">
+                Property Address:
+            </label>
+            <input type="text" class="inputBox propertyAddressInput" id="propertyAddress" name="propertyAddress" size="50rem">
+            <br>
+        
+            <label class="propertyNotesLabel" for="propertyNotes">
+                Notes:
+            </label>
+            <textarea id="propertyNotes" class="notesBox propertyNotesInput" name="propertyNotes"></textarea>
+            <br>
+            <button class="btn" type="Submit" id="btnSaveProperty">
+                Save
+            </button>
+            <button class="btn" type="button" id="btnDeleteProperty">
+                Delete
+            </button>
+            <br>
+        <!-- When Submit is hit, I want it to send the data to the JS script, clear the form, and minimize the form.-->
+        </form>
+    </li>
     <h1>
         Current Properties:
     </h1>
     <ul class="propertyDisplayList" id="propertyDisplayList">
-        <li class="propertyDisplayItem" id="propertyDisplayItem">
-            <form class="propertyDisplayForm" id="propertyDisplayForm" action="propertyManager.js" method="POST">
-                <label class="propertyNameLabel" for="propertyName">
-                    Property Name:
-                </label>
-                <input type="text" class="inputBox propertyNameInput" id="propertyName" name="propertyName" required>
-                <br>
-            
-                <label class="propertyValueLabel" for="propertyValue">
-                    Anticipated Value:
-                </label>
-                <input type="number" class="inputBox propertyValueInput" id="propertyValue" name="propertyValue">
-        
-                <label id="propertyOfferLabel" for="propertyOffer">
-                    Current Offer:
-                </label>
-                <input type="number" class="inputBox propertyValueInput" id="propertyOffer" name="propertyOffer">
-                <br>
-                <label id="propertyStatusLabel" for="propertyStatus">
-                    Current Status:
-                </label>
-                <select class="propertyStatusInput" name="propertyStatus" id="propertyStatus">
-                    <option value="unknown">Unknown</option>
-                    <option value="needsWork">Needs Work</option>
-                    <option value="workInProgress">Work In Progress</option>
-                    <option value="readyForSale">Ready For Sale</option>
-                    <option value="Closing">Closing</option>
-                    <option value="Sold">Sold</option>
-                </select>
-                <label class="propertyDateLabel" id="propertyDateLabel" for="propertyDate">
-                    Date:
-                </label>
-                <input type="date" class="inputBox propertyDateInput" id="propertyDate" name="propertyDate">
-                <br>
-            
-                <label class="propertyAddressLabel" for="propertyAddress">
-                    Property Address:
-                </label>
-                <input type="text" class="inputBox propertyAddressInput" id="propertyAddress" name="propertyAddress" size="50rem">
-                <br>
-            
-                <label class="propertyNotesLabel" for="propertyNotes">
-                    Notes:
-                </label>
-                <textarea id="propertyNotes" class="notesBox propertyNotesInput" name="propertyNotes"></textarea>
-                <br>
-                <button class="btn" type="Submit" id="btnSaveProperty">
-                    Save
-                </button>
-                <button class="btn" type="button" id="btnDeleteProperty">
-                    Delete
-                </button>
-                <br>
-            <!-- When Submit is hit, I want it to send the data to the JS script, clear the form, and minimize the form.-->
-            </form>
-        </li>
+        <!-- populated via Javascript form clones -->
     </ul>
 
 </section>

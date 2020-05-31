@@ -111,20 +111,22 @@ function createGoodsList(array) {
     }
 }
 
+function getGoodsId(element){
+    let goodsFormId = element.parentNode.parentNode.id;
+    let myGoodsId = parseInt(goodsFormId.substring(12));
+    return myGoodsId;
+}
+
 function saveGoods(){
     event.preventDefault();
+    let myGoodsId = getGoodsId(this);
     // search myGoods and overwrite entry with same name with entry's stuff.
-    for (i = 0; i < myGoods.length; i++){
-        if (myGoods[i].name == this.parentNode.goodsName.value){
-            // store the old name into a variable
-            //create a new variable with the updated value?
-            myGoods[i].role = this.parentNode.goodsProperty.value;
-            myGoods[i].phone = this.parentNode.goodsValue.value;
-            myGoods[i].email = this.parentNode.goodsOffer.value;
-            myGoods[i].address = this.parentNode.goodsAddress.value;
-            myGoods[i].notes = this.parentNode.goodsNotes.value;
-        }
-    }
+    myGoods[myGoodsId].name = this.parentNode.goodsName.value;
+    myGoods[myGoodsId].role = this.parentNode.goodsProperty.value;
+    myGoods[myGoodsId].phone = this.parentNode.goodsValue.value;
+    myGoods[myGoodsId].email = this.parentNode.goodsOffer.value;
+    myGoods[myGoodsId].address = this.parentNode.goodsAddress.value;
+    myGoods[myGoodsId].notes = this.parentNode.goodsNotes.value;
 
     // update localStorage version
     updateGoods();
@@ -132,19 +134,23 @@ function saveGoods(){
 
 function deleteGoods(){
     event.preventDefault();
-    
+    let myGoodsId = getGoodsId(this);
     // search myGoods for this node's name and remove that key/value pair
-    for (i = 0; i < myGoods.length; i++){
-        if (myGoods[i].name == this.parentNode.goodsName.value){
-        myGoods.splice(i, 1);
-        }
-    }
-    
-    // remove this entry from the ul
-    this.parentNode.parentNode.remove();
-    
+    myGoods.splice(myGoodsId, 1);
+
     // update localStorage
     updateGoods();
+
+    // recreate goods list
+    deleteDisplayList();
+    createGoodsList(myGoods);
+}
+
+function deleteDisplayList(){
+    let objLength = myGoods.length + 1;
+    for (i = 0; i < objLength; i++){
+        document.getElementById('goodsDisplay' + i.toString()).remove();
+    }
 }
 
 function createPropertyOptions(){

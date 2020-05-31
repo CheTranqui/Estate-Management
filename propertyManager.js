@@ -58,6 +58,7 @@ function addProperty() {
         formClone.childNodes[1].propertyNotes.value = myProperties[currentPropertyId].notes;
         formClone.childNodes[1].childNodes[7].addEventListener('click', saveProperty);
         formClone.childNodes[1].childNodes[8].addEventListener('click', deleteProperty);
+        formClone.style.display = "block";
         document.getElementById('propertyDisplayList').appendChild(formClone);
     // alerting user of addition and clearing the form
     alert("Property added: " + currentProperty.name + ".");
@@ -80,8 +81,7 @@ function updateProperties(){
 function createPropertiesList(array) {
     // create one form per array entry
     // populate it from each entry as well
-    if (array.length > 1) {
-        for (i = 1; i < array.length; i++) {
+    for (i = 0; i < array.length; i++) {
         // clone form and give it an Id
             let formClone = document.getElementById('propertyDisplayItem').cloneNode(true)
             let propertyFormId = 'propertyDisplay' + i.toString();
@@ -94,37 +94,31 @@ function createPropertiesList(array) {
             formClone.childNodes[1].propertyDate.value = myProperties[i].date;
             formClone.childNodes[1].propertyAddress.value = myProperties[i].address;
             formClone.childNodes[1].propertyNotes.value = myProperties[i].notes;
-            formClone.childNodes[1].childNodes[7].addEventListener('click', saveProperty);
-            formClone.childNodes[1].childNodes[8].addEventListener('click', deleteProperty);
+            formClone.childNodes[1][7].addEventListener('click', saveProperty);
+            formClone.childNodes[1][8].addEventListener('click', deleteProperty);
         // append it to the ul
+            formClone.style.display = "block";
             document.getElementById('propertyDisplayList').appendChild(formClone);
-        };
-    }
-    // once all other forms are set, modify id0
-    if (array.length != 0) {
-        document.getElementById('propertyDisplayForm').propertyName.value = myProperties[0].name;
-        document.getElementById('propertyDisplayForm').propertyValue.value = myProperties[0].value;
-        document.getElementById('propertyDisplayForm').propertyOffer.value = myProperties[0].offer;
-        document.getElementById('propertyDisplayForm').propertyStatus.value = myProperties[0].status;
-        document.getElementById('propertyDisplayForm').propertyDate.value = myProperties[0].date;
-        document.getElementById('propertyDisplayForm').propertyAddress.value = myProperties[0].address;
-        document.getElementById('propertyDisplayForm').propertyNotes.value = myProperties[0].notes;
-    }
+    };
+}
+
+function getPropertyId(element){
+    let propertyFormId = element.parentNode.parentNode.id;
+    let myPropertyId = parseInt(propertyFormId.substring(15));
+    return myPropertyId;
 }
 
 function saveProperty(){
     event.preventDefault();
+    let myPropertyId = getPropertyId(this);
     // search myProperties and overwrite entry with same name with entry's stuff.
-    for (i = 0; i < myProperties.length; i++){
-        if (myProperties[i].name == this.parentNode.propertyName.value){
-            myProperties[i].value = this.parentNode.propertyValue.value;
-            myProperties[i].offer = this.parentNode.propertyOffer.value;
-            myProperties[i].status = this.parentNode.propertyStatus.value;
-            myProperties[i].date = this.parentNode.propertyDate.value;
-            myProperties[i].address = this.parentNode.propertyAddress.value;
-            myProperties[i].notes = this.parentNode.propertyNotes.value;
-        }
-    }
+        myProperties[myPropertyId].name = this.parentNode.propertyName.value;
+        myProperties[myPropertyId].value = this.parentNode.propertyValue.value;
+        myProperties[myPropertyId].offer = this.parentNode.propertyOffer.value;
+        myProperties[myPropertyId].status = this.parentNode.propertyStatus.value;
+        myProperties[myPropertyId].date = this.parentNode.propertyDate.value;
+        myProperties[myPropertyId].address = this.parentNode.propertyAddress.value;
+        myProperties[myPropertyId].notes = this.parentNode.propertyNotes.value;
 
     // update localStorage version
     updateProperties();
@@ -132,17 +126,22 @@ function saveProperty(){
 
 function deleteProperty(){
     event.preventDefault();
+    let myPropertyId = getPropertyId(this);
     
     // search myProperties for this node's name and remove that key/value pair
-    for (i = 0; i < myProperties.length; i++){
-        if (myProperties[i].name == this.parentNode.propertyName.value) {
-        myProperties.splice(i, 1);
-        }
-    }
-    
-    // remove this entry from the ul
-    this.parentNode.remove();
+    myProperties.splice(myPropertyId, 1);
     
     // update localStorage
     updateProperties();
+
+    // recreate property list
+    deleteDisplayList();
+    createPropertiesList(myProperties);
+}
+
+function deleteDisplayList(){
+    let objLength = myProperties.length + 1;
+    for (i = 0; i < objLength; i++){
+        document.getElementById('propertyDisplay' + i.toString()).remove();
+    }
 }

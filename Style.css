@@ -82,7 +82,7 @@ a{
 
 .taskDate{
     height: 1.5rem;
-    width: 9.25rem;
+    width: 10.1rem;
     transform: translateY(-0.32rem);
 }
 
@@ -158,6 +158,10 @@ a{
     overflow: hidden;
 }
 
+.formNewContact{
+    font-size: 1.2rem;
+}
+
 .inputBox{
     font-family: Verdana;
     font-size: 1rem;
@@ -167,8 +171,9 @@ a{
     padding: 0.2rem;
 }
 
+
 .nameInput{
-    transform: translateX(1rem);
+    transform: translateX(1.3rem);
     width: 13rem;
 }
 
@@ -205,7 +210,7 @@ a{
     transform: translateX(1.3rem);
 }
 
-.formCurrentContact #contactEmail{
+#contactEmail{
     width: 13.55rem;
 }
 
@@ -293,10 +298,10 @@ option, select {
 .propertyDisplayItem, .goodsDisplayItem{
     margin-top: 2rem;
     margin-bottom: 1rem;
+    display: none;
 }
 
 #btnAddProperty{
-    margin-top: 1rem;
     transform: translateX(9.7rem);
 }
 

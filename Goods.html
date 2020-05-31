@@ -97,41 +97,42 @@
     <h1>
         Current Goods:
     </h1>
+    <li class="goodsDisplayItem" id="goodsDisplayItem">
+        <form class="goodsDisplayForm" id="goodsDisplayForm" action="goodsManager.js" method="POST">
+            <label class="goodsNameLabel" for="goodsName">Item Name:</label>
+            <input type="text" class="inputBox goodsNameInput" id="goodsName" name="goodsName" required>
+            <label class="goodsPropertyLabel" for="goodsProperty">Property:</label>
+            <select class="goodsPropertyInput" name="goodsProperty" id="goodsProperty">
+                <option>None</option>
+                <!-- options set in JavaScript createPropertyOptions() -->
+            </select>
+            <br>
+            
+            <label class="goodsValueLabel" for="goodsValue">Anticipated Value:</label>
+            <input type="number" class="inputBox propertyValueInput" id="goodsValue" name="goodsValue">
+            <label id="goodsOfferLabel" for="goodsOffer">Current Offer:</label>
+            <input type="number" class="inputBox propertyValueInput" id="goodsOffer" name="goodsOffer">
+            <br>
+            
+            <label class="goodsAddressLabel" for="goodsAddress">Specific Location:</label>
+            <input type="text" class="inputBox goodsAddressInput" id="goodsAddress" name="goodsAddress" size="50rem">
+            <br>
+            
+            <label class="goodsNotesLabel" for="goodsNotes">Notes:</label>
+            <textarea id="goodsNotes" class="notesBox goodsNotesInput" name="goodsNotes"></textarea>
+            <br>
+            
+            <button class="btn" type="Submit" id="btnSaveGoods">
+                Save
+            </button>
+            <button class="btn" type="button" id="btnDeleteGoods">
+                Delete
+            </button>
+            <br>
+        </form>
+    </li>
     <ul class="goodsDisplayList" id="goodsDisplayList">
-        <li class="goodsDisplayItem" id="goodsDisplayItem">
-            <form class="goodsDisplayForm" id="goodsDisplayForm" action="goodsManager.js" method="POST">
-                <label class="goodsNameLabel" for="goodsName">Item Name:</label>
-                <input type="text" class="inputBox goodsNameInput" id="goodsName" name="goodsName" required>
-                <label class="goodsPropertyLabel" for="goodsProperty">Property:</label>
-                <select class="goodsPropertyInput" name="goodsProperty" id="goodsProperty">
-                    <option>None</option>
-                    <!-- options set in JavaScript createPropertyOptions() -->
-                </select>
-                <br>
-                
-                <label class="goodsValueLabel" for="goodsValue">Anticipated Value:</label>
-                <input type="number" class="inputBox propertyValueInput" id="goodsValue" name="goodsValue">
-                <label id="goodsOfferLabel" for="goodsOffer">Current Offer:</label>
-                <input type="number" class="inputBox propertyValueInput" id="goodsOffer" name="goodsOffer">
-                <br>
-                
-                <label class="goodsAddressLabel" for="goodsAddress">Specific Location:</label>
-                <input type="text" class="inputBox goodsAddressInput" id="goodsAddress" name="goodsAddress" size="50rem">
-                <br>
-                
-                <label class="goodsNotesLabel" for="goodsNotes">Notes:</label>
-                <textarea id="goodsNotes" class="notesBox goodsNotesInput" name="goodsNotes"></textarea>
-                <br>
-                
-                <button class="btn" type="Submit" id="btnSaveGoods">
-                    Save
-                </button>
-                <button class="btn" type="button" id="btnDeleteGoods">
-                    Delete
-                </button>
-                <br>
-            </form>
-        </li>
+        <!-- populated via Javascript form clones -->
     </ul>
 
 </section>

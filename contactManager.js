@@ -106,38 +106,46 @@ function createContactsList(array) {
     }
 }
 
+function getContactId(element){
+    let contactFormId = element.parentNode.parentNode.id
+    let myContactId = parseInt(contactFormId.substring(14));
+    return myContactId;
+}
+
 function saveContact(){
     event.preventDefault();
+    let myContactId = getContactId(this);
     // search myContacts and overwrite entry with same name with entry's stuff.
-    for (i = 0; i < myContacts.length; i++){
-        if (myContacts[i].name == this.parentNode.contactName.value){
-            // store the old name into a variable
-            //create a new variable with the updated value?
-            myContacts[i].role = this.parentNode.contactRole.value;
-            myContacts[i].phone = this.parentNode.contactPhone.value;
-            myContacts[i].email = this.parentNode.contactEmail.value;
-            myContacts[i].address = this.parentNode.contactAddress.value;
-            myContacts[i].notes = this.parentNode.contactNotes.value;
-        }
-    }
-
+    myContacts[myContactId].name = this.parentNode.contactName.value;
+    myContacts[myContactId].role = this.parentNode.contactRole.value;
+    myContacts[myContactId].phone = this.parentNode.contactPhone.value;
+    myContacts[myContactId].email = this.parentNode.contactEmail.value;
+    myContacts[myContactId].address = this.parentNode.contactAddress.value;
+    myContacts[myContactId].notes = this.parentNode.contactNotes.value;
+        
     // update localStorage version
     updateContacts();
 }
 
 function deleteContact(){
     event.preventDefault();
-    
+    let myContactId = getContactId(this);
+
     // search myContacts for this node's name and remove that key/value pair
-    for (i = 0; i < myContacts.length; i++){
-        if (myContacts[i].name == this.parentNode.contactName.value){
-        myContacts.splice(i, 1);
-        }
-    }
-    
-    // remove this entry from the ul
-    this.parentNode.parentNode.remove();
+    myContacts.splice(myContactId, 1);
     
     // update localStorage
-    updateContacts();
+    updateContacts();    
+
+    //recreate contacts list
+    deleteContactsList();
+    createContactsList(myContacts);
+}
+
+function deleteContactsList(){
+    let objLength = myContacts.length + 1;
+    // remove this entry from the ul
+    for (i=0; i < objLength; i++){
+        document.getElementById('contactDisplay' + i.toString()).remove();
+    }    
 }
