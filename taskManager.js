@@ -60,21 +60,15 @@ function addTask() {
     updateTasks();
    
     // collapse the Property form
-    document.getElementById('btnaddTaskCollapser').nextElementSibling.nextElementSibling.style.display = "none";
+    document.getElementById('btnAddTaskCollapser').nextElementSibling.style.display = "none";
 }
-
-function updateTasks(){
-    tasksJSONString = JSON.stringify(myTasks);
-    localStorage.setItem("tasks", tasksJSONString);
-}
-
 
 // generates the ul of properties from the myTasks array.
 function createTaskList(array) {
     // create one form per array entry
     // populate it from each entry as well
-    if (array.length > 1) {
-        for (i = 1; i < array.length; i++) {
+    if (array.length > 0) {
+        for (i = 0; i < array.length; i++) {
         // clone form and give it an Id
             let formClone = document.getElementById('taskListHidden').cloneNode(true)
             let taskFormId = 'taskDisplay' + i.toString();
@@ -86,22 +80,26 @@ function createTaskList(array) {
             formClone.childNodes[1][3].addEventListener('click', saveTask);
             formClone.childNodes[1][4].addEventListener('click', deleteTask);
         // append it to the ul
-            formClone.style.display = "block";
+            formClone.style.display = "";
             document.getElementById('taskListDisplay').appendChild(formClone);
         };
     }
     // once all other forms are set, modify id0
 }
 
+function getTaskId(element){
+    let taskFormId = element.parentNode.parentNode.id;
+    let myTaskId = parseInt(taskFormId.substring(11));
+    return myTaskId;
+}
+
 function saveTask(){
     event.preventDefault();
+    let myTaskId = getTaskId(this)
     // search myTasks and overwrite entry with same name with entry's stuff.
-    for (i = 0; i < myTasks.length; i++){
-        if (myTasks[i].name == this.parentNode.taskName.value){
-            myTasks[i].status = this.parentNode.taskStatus.value;
-            myTasks[i].date = this.parentNode.taskDate.value;
-        }
-    }
+    myTasks[myTaskId].name = this.parentNode.taskName.value;
+    myTasks[myTaskId].status = this.parentNode.taskStatus.value;
+    myTasks[myTaskId].date = this.parentNode.taskDate.value;
 
     // update localStorage version
     updateTasks();
@@ -109,17 +107,28 @@ function saveTask(){
 
 function deleteTask(){
     event.preventDefault();
-    
+    let myTaskId = getTaskId(this);
     // search myTasks for this node's name and remove that key/value pair
-    for (i = 0; i < myTasks.length; i++){
-        if (myTasks[i].name == this.parentNode.taskName.value) {
-        myTasks.splice(i, 1);
-        }
-    }
+    myTasks.splice(myTaskId, 1);
     
     // remove this entry from the ul
-    this.parentNode.remove();
-    
-    // update localStorage
+
+    // update localStorage version
     updateTasks();
+
+    // recreate task list
+    deleteDisplayList();
+    createTaskList(myTasks);
+}
+
+function updateTasks(){
+    tasksJSONString = JSON.stringify(myTasks);
+    localStorage.setItem("tasks", tasksJSONString);
+}
+
+function deleteDisplayList(){
+    let objLength = myTasks.length + 1;
+    for (i = 0; i < objLength; i++){
+        document.getElementById('taskDisplay' + i.toString()).remove();
+    }
 }

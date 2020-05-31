@@ -89,6 +89,7 @@ a{
 #taskListDisplay li{
     margin-top: 0.05rem;
     margin-bottom: 0.05rem;
+    list-style: decimal;
 }
 
 ::placeholder{
@@ -100,7 +101,7 @@ a{
 }
 
 .newTaskButton{
-    
+    transform: translateY(-0.35rem);
 }
 
 .btn{
