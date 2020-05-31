@@ -64,17 +64,24 @@ a{
     font-size: 1.2rem;
 }
 
-.taskBox{
+.taskBox, .taskStatus{
     font-family: Verdana;
     color: rgb(203, 224, 255);
     background-color: rgb(55, 59, 65);
-    font-size: 1.1rem;  
+    font-size: 1.1rem;
+    height: 1.5rem;
+    /* transform: translateY(0.5rem); */
+}
+.taskStatus{
+    transform: translateY(-0.55rem);
 }
 
-#newTaskDate{
+.taskDate{
     height: 1.5rem;
-    width: 12rem;
+    width: 9.25rem;
+    transform: translateY(-0.65rem);
 }
+
 
 ::placeholder{
     font-family: Verdana;
@@ -82,6 +89,10 @@ a{
     color: rgb(203, 224, 255);
     background-color: rgb(55, 59, 65);
     opacity: 70%;
+}
+
+.newTaskButton{
+    
 }
 
 .btn{
@@ -104,6 +115,25 @@ a{
     transform: translate(0, 0.1rem);
 }
 
+#btnDeleteTask{
+    /* transform: translateX(21.8rem); */
+    background-color: maroon;
+    margin-left: 0.1rem;
+}
+
+#btnSaveTask{
+    margin-right: 0.1rem;
+}
+
+#taskListHidden{
+    display: none;
+}
+
+.newTaskForm{
+    margin-top: 1.5rem;
+    transform: translateX(2.5rem);
+    display: none;
+}
 /* Contact Form */
 /* btn used to uncollapse Add Contact Form */
 #btnAddContactCollapser, #btnAddGoodsCollapser{
@@ -198,7 +228,7 @@ a{
 }
 
 #btnAddContact{
-    margin-top: 0.5rem;
+    margin-top: 0.5rem;f
     transform: translateX(5.2rem);
 }
 

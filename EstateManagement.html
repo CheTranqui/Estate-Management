@@ -59,18 +59,49 @@
     To Do List:
 </h1>
 
-<section class="taskList">
-    <ol>
-        <!-- Need to create a new LI for each item on the Task List. Also make it iterate with both the newTask and the newTaskDate -->
-        <li>document.getElementById("newTask"+taskListNumber).innerHTML = localStorage.getItem("#newTask");</li>
-    </ol>
-    <form class="taskForm" action="localStorage.setItem("task"+taskListNumber, #newTask)">
-        <input class="taskBox input-box" id="newTask" type="text" placeholder="New task" required>
-        <input class="taskBox input-box" id="newTaskDate" type="date" margin="0.1em">
-        <button class="btn" type="Submit">
+<section class="taskForm">
+    <button class="btn" type="Submit" id="btnAddTaskCollapser" >
+        Add New Task?
+    </button>
+    <form class="newTaskForm collapsible" id="newTaskForm">
+        <textarea class="taskBox taskName" id="taskName" placeholder="New task"></textarea>
+        <select class="taskStatus" name="taskStatus" id="taskStatus">
+            <option>Pending</option>
+            <option>Due</option>
+            <option>Completed</option>
+        </select>
+        <input class="taskBox taskDate" id="taskDate" type="date" margin="0.1em">
+        <br>
+        <button class="btn newTaskButton" id="btnAddTask" type="Submit">
             Add Task
         </button>
+        <br>
     </form>
+</section>
+<section class="taskListSection">
+    <li id="taskListHidden">
+        <form class="taskFormHidden">
+            <textarea class="taskBox taskName" id="taskName" placeholder="New task"></textarea>
+            <select class="taskStatus" name="taskStatus" id="taskStatus">
+                <option>Pending</option>
+                <option>Due</option>
+                <option>Completed</option>
+            </select>
+            <input class="taskBox taskDate" id="taskDate" type="date" margin="0.1em">
+            <br>
+            <button class="btn newTaskButton" id="btnSaveTask" type="Submit">
+                Save Task
+            </button>
+            <button class="btn newTaskButton" id="btnDeleteTask" type="button">
+                Delete Task
+            </button>
+        </form> 
+    </li>
+    <ol id="taskListDisplay">
+        <!-- Need to create a new LI for each item on the Task List. Also make it iterate with both the newTask and the newTaskDate -->
+        
+    </ol>
+    
 </section>
 <br>
 <section class="propertySummary">
@@ -96,4 +127,5 @@
     </ul>
 </section>
 <br>
+<script type="text/javascript" src="taskManager.js"></script>
 </body>
