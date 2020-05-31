@@ -15,6 +15,13 @@ let currentTask = {};
     document.getElementById('btnAddTaskCollapser').addEventListener('click', collapseForm);
 });
 
+let myContacts = [];
+if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != undefined) {
+    startingContactsJSONString = localStorage.getItem("contacts");
+    myContacts = JSON.parse(startingContactsJSONString);
+    createContactsSummary();
+}
+
     // allows for a button marked with class 'collapsible'
 // to collapse/uncollapse immediate siblings if content is initially hidden in CSS.
 function collapseForm() {
@@ -181,4 +188,20 @@ function sortDisplay(){
     let adjustment = 0;
     deleteDisplayList(adjustment);
     createTaskList(myTasks);
+}
+
+function createContactsSummary(){
+    for (i = 0; i < myContacts.length; i++){
+        let formClone = document.getElementById('contactSummaryItem').cloneNode(true);
+        let myFormId = "contactSummary" + i.toString();
+        let myContactId = "contactDisplay" + i.toString();
+        formClone.id = myFormId;
+
+        formClone.childNodes[1].childNodes[1].href = "Contacts.html#" + myContactId;
+        formClone.childNodes[1].childNodes[1].innerHTML = myContacts[i].name;
+        formClone.childNodes[1].childNodes[3].innerHTML = "Phone: " + myContacts[i].phone;
+        formClone.style.display = "block";
+
+        document.getElementById('contactSummaryList').appendChild(formClone);
+    }
 }

@@ -354,3 +354,19 @@ option, select {
 .contactDisplayItem, .goodsDisplayItem{
     display: none;
 }
+
+#contactSummaryItem{
+    display: none;
+}
+
+.contactSummaryList{
+    list-style: none;
+}
+
+.contactSummaryForm{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.contactSummaryForm Label{
+    margin-left: 1.25rem;
+}
