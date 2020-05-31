@@ -67,6 +67,8 @@ function addProperty() {
     // updating/replacing the localStorage version.
     updateProperties();
    
+    sortDisplay();
+
     // collapse the Property form
     document.getElementById('btnAddPropertyCollapser').nextElementSibling.nextElementSibling.style.display = "none";
 }
@@ -79,6 +81,7 @@ function updateProperties(){
 
 // generates the ul of properties from the myProperties array.
 function createPropertiesList(array) {
+    sortArray(array);
     // create one form per array entry
     // populate it from each entry as well
     for (i = 0; i < array.length; i++) {
@@ -122,6 +125,8 @@ function saveProperty(){
 
     // update localStorage version
     updateProperties();
+
+    sortDisplay();
 }
 
 function deleteProperty(){
@@ -135,13 +140,31 @@ function deleteProperty(){
     updateProperties();
 
     // recreate property list
-    deleteDisplayList();
+    let adjustment = 1;
+    deleteDisplayList(adjustment);
     createPropertiesList(myProperties);
 }
 
-function deleteDisplayList(){
-    let objLength = myProperties.length + 1;
+function deleteDisplayList(adjustment){
+    let objLength = myProperties.length + adjustment;
     for (i = 0; i < objLength; i++){
         document.getElementById('propertyDisplay' + i.toString()).remove();
     }
+}
+
+function sortArray(array){
+    array.sort((a,b) => {
+        if (a.name > b.name){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    })
+}
+
+function sortDisplay(){
+    let adjustment = 0;
+    deleteDisplayList(adjustment);
+    createPropertiesList(myProperties);
 }

@@ -58,6 +58,8 @@ function addTask() {
     
     // updating/replacing the localStorage version.
     updateTasks();
+
+    sortDisplay();
    
     // collapse the Property form
     document.getElementById('btnAddTaskCollapser').nextElementSibling.style.display = "none";
@@ -65,6 +67,7 @@ function addTask() {
 
 // generates the ul of properties from the myTasks array.
 function createTaskList(array) {
+    sortArray(array);
     // create one form per array entry
     // populate it from each entry as well
     if (array.length > 0) {
@@ -103,6 +106,8 @@ function saveTask(){
 
     // update localStorage version
     updateTasks();
+
+    sortDisplay();
 }
 
 function deleteTask(){
@@ -117,7 +122,8 @@ function deleteTask(){
     updateTasks();
 
     // recreate task list
-    deleteDisplayList();
+    let adjustment = 1;
+    deleteDisplayList(adjustment);
     createTaskList(myTasks);
 }
 
@@ -126,9 +132,53 @@ function updateTasks(){
     localStorage.setItem("tasks", tasksJSONString);
 }
 
-function deleteDisplayList(){
-    let objLength = myTasks.length + 1;
+function deleteDisplayList(adjustment){
+    let objLength = myTasks.length + adjustment;
     for (i = 0; i < objLength; i++){
         document.getElementById('taskDisplay' + i.toString()).remove();
     }
+}
+
+function sortArray(array){
+    array.sort((a,b) => {
+
+        if (a.status == b.status){
+
+
+            if (a.date > b.date){
+                return 1;
+            }
+            else if (a.date == b.date){
+                if (a.name > b.name){
+                    return 1;
+                }
+                else{
+                    return -1;
+                }
+            }
+            else {
+                return -1;
+            }
+        }
+        else {
+            if (a.status == "Pending" && b.status != "Pending"){
+                return -1;
+            }
+            else if (b.status == "Pending" && a.status != "Pending"){
+                return 1;
+            }
+            else if (a.status == "Due" && b.status != "Due"){
+                return -1;
+            }
+            else if (a.status == "Completed" && b.status != "Completed"){
+                return 1;
+            }
+        }
+    })
+}
+
+function sortDisplay(){
+    let adjustment = 0;
+    deleteDisplayList(adjustment);
+    createTaskList(myTasks);
 }

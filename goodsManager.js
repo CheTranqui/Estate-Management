@@ -64,6 +64,8 @@ function addGoods() {
     // updating/replacing the localStorage version.
     updateGoods();
    
+    sortDisplay();
+
     // collapse the goods form
     document.getElementById('btnAddGoodsCollapser').nextElementSibling.nextElementSibling.style.display = "none";
 }
@@ -88,6 +90,7 @@ function collapseForm() {
 
 // generates the ul of goods from the myGoods array.
 function createGoodsList(array) {
+    sortArray(array);
     // create one form per array entry
     // populate it from each entry as well
     for (i = 0; i < array.length; i++) {
@@ -111,6 +114,17 @@ function createGoodsList(array) {
     }
 }
 
+function sortArray(array){
+    array.sort((a,b) => {
+        if (a.name > b.name){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    })
+}
+
 function getGoodsId(element){
     let goodsFormId = element.parentNode.parentNode.id;
     let myGoodsId = parseInt(goodsFormId.substring(12));
@@ -130,6 +144,14 @@ function saveGoods(){
 
     // update localStorage version
     updateGoods();
+    
+    sortDisplay();
+}
+
+function sortDisplay(){
+    let adjustment = 0;
+    deleteDisplayList(adjustment);
+    createGoodsList(myGoods);
 }
 
 function deleteGoods(){
@@ -142,12 +164,13 @@ function deleteGoods(){
     updateGoods();
 
     // recreate goods list
-    deleteDisplayList();
+    let adjustment = 1;
+    deleteDisplayList(adjustment);
     createGoodsList(myGoods);
 }
 
-function deleteDisplayList(){
-    let objLength = myGoods.length + 1;
+function deleteDisplayList(adjustment){
+    let objLength = myGoods.length + adjustment;
     for (i = 0; i < objLength; i++){
         document.getElementById('goodsDisplay' + i.toString()).remove();
     }

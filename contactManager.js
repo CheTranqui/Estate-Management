@@ -55,6 +55,8 @@ function addContact() {
     
     // updating/replacing the localStorage version.
     updateContacts();
+
+    sortDisplay();
    
     // collapse the Contact form
     document.getElementById('btnAddContactCollapser').nextElementSibling.style.display = "none";
@@ -83,6 +85,7 @@ for (i = 0; i < myCollapsible.length; i++) {
 
 // generates the ul of contacts from the myContacts array.
 function createContactsList(array) {
+    sortArray(array);
     // create one form per array entry
     // populate it from each entry as well
     for (i = 0; i < array.length; i++) {
@@ -125,6 +128,8 @@ function saveContact(){
         
     // update localStorage version
     updateContacts();
+
+    sortDisplay();
 }
 
 function deleteContact(){
@@ -138,14 +143,32 @@ function deleteContact(){
     updateContacts();    
 
     //recreate contacts list
-    deleteContactsList();
+    let adjustment = 1;
+    deleteDisplayList(adjustment);
     createContactsList(myContacts);
 }
 
-function deleteContactsList(){
-    let objLength = myContacts.length + 1;
+function deleteDisplayList(adjustment){
+    let objLength = myContacts.length + adjustment;
     // remove this entry from the ul
     for (i=0; i < objLength; i++){
         document.getElementById('contactDisplay' + i.toString()).remove();
     }    
+}
+
+function sortArray(array){
+    array.sort((a,b) => {
+        if (a.name > b.name){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    })
+}
+
+function sortDisplay(){
+    let adjustment = 0;
+    deleteDisplayList(adjustment);
+    createContactsList(myContacts);
 }
