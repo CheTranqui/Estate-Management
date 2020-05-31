@@ -70,18 +70,26 @@ a{
     background-color: rgb(55, 59, 65);
     font-size: 1.1rem;
     height: 1.5rem;
-    /* transform: translateY(0.5rem); */
 }
+
+.taskName{
+    transform: translateY(0.25rem);
+}
+
 .taskStatus{
-    transform: translateY(-0.55rem);
+    transform: translateY(-0.2rem);
 }
 
 .taskDate{
     height: 1.5rem;
     width: 9.25rem;
-    transform: translateY(-0.65rem);
+    transform: translateY(-0.32rem);
 }
 
+#taskListDisplay li{
+    margin-top: 0.05rem;
+    margin-bottom: 0.05rem;
+}
 
 ::placeholder{
     font-family: Verdana;
@@ -116,12 +124,13 @@ a{
 }
 
 #btnDeleteTask{
-    /* transform: translateX(21.8rem); */
+    transform: translateY(-0.35rem);
     background-color: maroon;
     margin-left: 0.1rem;
 }
 
 #btnSaveTask{
+    transform: translateY(-0.35rem);
     margin-right: 0.1rem;
 }
 
@@ -152,7 +161,7 @@ a{
     font-size: 1rem;
     color: rgb(203, 224, 255);
     background-color: rgb(55, 59, 65);
-    margin: 0.5rem;
+    margin: 0.1rem 0.5rem 0.1rem 0.5rem;
     padding: 0.2rem;
 }
 
@@ -170,13 +179,9 @@ a{
 }
 
 .phoneInput{
-    transform: translateX(-0.2rem);
-    width: 9rem;
+    transform: translateX(-0.3rem);
+    width: 8.35rem;
     text-align: center;
-}
-
-.emailInput{
-    width: 13.7rem;
 }
 
 .addressInput{
@@ -191,7 +196,7 @@ a{
 .formCurrentContact{
     margin-top: 0.5rem;
     transform: translateX(2rem);
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 .formCurrentContact #contactName{
@@ -199,7 +204,7 @@ a{
 }
 
 .formCurrentContact #contactEmail{
-    width: 12.9rem;
+    width: 13.55rem;
 }
 
 #btnSaveContact{
@@ -207,22 +212,21 @@ a{
 }
 
 #btnDeleteContact{
-    transform: translateX(18.9rem);
+    transform: translateX(27.2rem);
     background-color: maroon;
 }
 
 /* notesBox used for all notes boxes */
 
 .notesBox{
-    transform: translateX(1.5rem);
-    width: 28.5rem;
+    transform: translateX(1.43rem);
+    width: 28.6rem;
     height: 2.3rem;
     text-align: left;
-    size: 1.2rem;
     color: rgb(203, 224, 255);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     background-color: rgb(55, 59, 65);
-    margin: 0.3rem;
+    margin: 0.25rem 0.5rem 0.1rem 0.5rem;
     padding: 0.2rem;
     vertical-align: top;
 }
@@ -251,11 +255,14 @@ a{
     width: 8rem;
 }
 
+.propertyStatusInput{
+    transform: translateX(1.9rem);
+}
+
 option, select {
-    size: 1rem;
+    font-size: 1.15rem;
     background-color: #373b41;
     color: rgb(203, 224, 255);
-    font-size: 1rem;
     transform: translateX(1.7rem);
 }
 
@@ -274,7 +281,7 @@ option, select {
 }
 
 .propertyNotesInput{
-    transform: translateX(6rem);
+    transform: translateX(5.8rem);
 }
 
 .propertyDisplayList, .goodsDisplayList {
@@ -326,7 +333,7 @@ option, select {
 }
 
 .goodsNotesInput{
-    transform: translateX(6.1rem);
+    transform: translateX(5.8rem);
 }
 
 #btnAddGoods{
