@@ -148,37 +148,45 @@ function deleteDisplayList(adjustment){
 
 function sortArray(array){
     array.sort((a,b) => {
-
-        if (a.status == b.status){
-
-
+        if (a.status != "Completed" && b.status != "Completed"){
             if (a.date > b.date){
-                return 1;
-            }
-            else if (a.date == b.date){
-                if (a.name > b.name){
-                    return 1;
-                }
-                else{
-                    return -1;
-                }
-            }
+                return 1;}
+            else if (a.date < b.date){
+                return -1;}
             else {
-                return -1;
+                if (a.status == b.status && a.status != "Completed"){
+                    if (a.name > b.name){
+                        return 1;}
+                    else{
+                        return -1;}
+                }
+                else if (a.status == "Pending" && b.status != "Pending"){
+                    return -1;}
+                else if (b.status == "Pending" && a.status != "Pending"){
+                    return 1;}
+                else if (a.status == "Due" && b.status == "Completed"){
+                    return -1;}
+                else if (a.status == "Completed" && b.status != "Completed"){
+                    return 1;}
             }
         }
-        else {
-            if (a.status == "Pending" && b.status != "Pending"){
-                return -1;
-            }
-            else if (b.status == "Pending" && a.status != "Pending"){
-                return 1;
-            }
-            else if (a.status == "Due" && b.status != "Due"){
-                return -1;
-            }
-            else if (a.status == "Completed" && b.status != "Completed"){
-                return 1;
+        else{
+            if (a.status == "Completed" && b.status != "Completed"){
+                return 1;}
+            else if (a.status != "Completed" && b.status == "Completed"){
+                return -1;}
+            else if (a.status == "Completed" && b.status == "Completed"){
+                if (a.date > b.date){
+                    return 1;}
+                else if (a.date < b.date){
+                    return -1;}
+                else if (a.date == b.date){
+                    if (a.name > b.name){
+                        return 1;}
+                    else{
+                        return -1;
+                    }
+                }
             }
         }
     })
