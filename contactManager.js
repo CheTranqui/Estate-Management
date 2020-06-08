@@ -32,23 +32,6 @@ function addContact() {
     console.log(currentContact);
     myContacts.push(currentContact);
     
-    // addint to list of contacts on page
-    let formClone = document.getElementById('contactDisplayItem').cloneNode(true)
-        let currentContactId = (myContacts.length - 1).toString();
-        let contactFormId = 'contactDisplay' + currentContactId;
-        formClone.id = contactFormId;
-        console.log(formClone.id);
-    // update its fields according to its Id
-        formClone.firstChild.nextElementSibling.contactName.value = myContacts[currentContactId].name;
-        formClone.firstChild.nextElementSibling.contactRole.value = myContacts[currentContactId].role;
-        formClone.firstChild.nextElementSibling.contactPhone.value = myContacts[currentContactId].phone;
-        formClone.firstChild.nextElementSibling.contactEmail.value = myContacts[currentContactId].email;
-        formClone.firstChild.nextElementSibling.contactAddress.value = myContacts[currentContactId].address;
-        formClone.firstChild.nextElementSibling.contactNotes.value = myContacts[currentContactId].notes;
-        formClone.firstElementChild[6].addEventListener('click', saveContact);
-        formClone.firstElementChild[7].addEventListener('click', deleteContact);
-        formClone.style.display = "block";
-        document.getElementById('contactDisplayList').appendChild(formClone);
     // alerting user of addition and clearing the form
     alert("Contact added: " + currentContact.name + ".");
     document.getElementById('contactForm').reset();
@@ -56,8 +39,10 @@ function addContact() {
     // updating/replacing the localStorage version.
     updateContacts();
 
-    sortDisplay();
-   
+    // delete displayed list, sort it and recreate it:
+    deleteDisplayList(-1);
+    createContactsList(myContacts);
+
     // collapse the Contact form
     document.getElementById('btnAddContactCollapser').nextElementSibling.style.display = "none";
 }
@@ -105,7 +90,6 @@ function createContactsList(array) {
         formClone.style.display = "block";
     // append it to the ul
         document.getElementById('contactDisplayList').appendChild(formClone);
-
     }
 }
 
@@ -143,8 +127,7 @@ function deleteContact(){
     updateContacts();    
 
     //recreate contacts list
-    let adjustment = 1;
-    deleteDisplayList(adjustment);
+    deleteDisplayList(1);
     createContactsList(myContacts);
 }
 
@@ -168,7 +151,6 @@ function sortArray(array){
 }
 
 function sortDisplay(){
-    let adjustment = 0;
-    deleteDisplayList(adjustment);
+    deleteDisplayList(0);
     createContactsList(myContacts);
 }
