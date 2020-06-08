@@ -48,18 +48,7 @@ function addProperty() {
         let propertyFormId = 'propertyDisplay' + currentPropertyId;
         formClone.id = propertyFormId;
         console.log(formClone.id);
-    // update its fields according to its Id
-        formClone.childNodes[1].propertyName.value = myProperties[currentPropertyId].name;
-        formClone.childNodes[1].propertyValue.value = myProperties[currentPropertyId].value;
-        formClone.childNodes[1].propertyOffer.value = myProperties[currentPropertyId].offer;
-        formClone.childNodes[1].propertyStatus.value = myProperties[currentPropertyId].status;
-        formClone.childNodes[1].propertyDate.value = myProperties[currentPropertyId].date;
-        formClone.childNodes[1].propertyAddress.value = myProperties[currentPropertyId].address;
-        formClone.childNodes[1].propertyNotes.value = myProperties[currentPropertyId].notes;
-        formClone.childNodes[1].childNodes[7].addEventListener('click', saveProperty);
-        formClone.childNodes[1].childNodes[8].addEventListener('click', deleteProperty);
-        formClone.style.display = "block";
-        document.getElementById('propertyDisplayList').appendChild(formClone);
+
     // alerting user of addition and clearing the form
     alert("Property added: " + currentProperty.name + ".");
     document.getElementById('propertyForm').reset();
