@@ -46,27 +46,14 @@ function addTask() {
     console.log(currentTask);
     myTasks.push(currentTask);
     
-    // adding to list of properties on page
-        let formClone = document.getElementById('taskListHidden').cloneNode(true)
-        let currentTaskId = (myTasks.length - 1).toString();
-        let taskFormId = 'taskDisplay' + currentTaskId;
-        formClone.id = taskFormId;
-        console.log(formClone.id);
-    // update its fields according to its Id
-        formClone.childNodes[1].taskName.value = myTasks[currentTaskId].name;
-        formClone.childNodes[1].taskStatus.value = myTasks[currentTaskId].status;
-        formClone.childNodes[1].taskDate.value = myTasks[currentTaskId].date;
-        formClone.childNodes[1][3].addEventListener('click', saveTask);
-        formClone.childNodes[1][4].addEventListener('click', deleteTask);
-        document.getElementById('taskListDisplay').appendChild(formClone);
-    // alerting user of addition and clearing the form
     alert("Task added: " + currentTask.name + ".");
     document.getElementById('newTaskForm').reset();
     
     // updating/replacing the localStorage version.
     updateTasks();
 
-    sortDisplay();
+    deleteDisplayList(-1);
+    createTaskList(myTasks);
    
     // collapse the Property form
     document.getElementById('btnAddTaskCollapser').nextElementSibling.style.display = "none";
@@ -129,8 +116,7 @@ function deleteTask(){
     updateTasks();
 
     // recreate task list
-    let adjustment = 1;
-    deleteDisplayList(adjustment);
+    deleteDisplayList(1);
     createTaskList(myTasks);
 }
 
@@ -139,6 +125,7 @@ function updateTasks(){
     localStorage.setItem("tasks", tasksJSONString);
 }
 
+// 'adjustment' is to allow you to delete more or fewer items than currently exists within the object.
 function deleteDisplayList(adjustment){
     let objLength = myTasks.length + adjustment;
     for (i = 0; i < objLength; i++){
@@ -193,8 +180,7 @@ function sortArray(array){
 }
 
 function sortDisplay(){
-    let adjustment = 0;
-    deleteDisplayList(adjustment);
+    deleteDisplayList(0);
     createTaskList(myTasks);
 }
 

@@ -131,6 +131,7 @@ function deleteContact(){
     createContactsList(myContacts);
 }
 
+// 'adjustment' is to allow you to delete more or fewer items than currently exists within the object.
 function deleteDisplayList(adjustment){
     let objLength = myContacts.length + adjustment;
     // remove this entry from the ul

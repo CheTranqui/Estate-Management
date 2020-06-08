@@ -40,23 +40,6 @@ function addGoods() {
     console.log(currentGoods);
     myGoods.push(currentGoods);
     
-    // addint to list of goods on page
-    let formClone = document.getElementById('goodsDisplayItem').cloneNode(true)
-        let currentGoodsId = (myGoods.length - 1).toString();
-        let goodsFormId = 'goodsDisplay' + currentGoodsId;
-        formClone.id = goodsFormId;
-        console.log(formClone.id);
-    // update its fields according to its Id
-        formClone.firstChild.nextElementSibling.goodsName.value = myGoods[currentGoodsId].name;
-        formClone.firstChild.nextElementSibling.goodsProperty.value = myGoods[currentGoodsId].property;
-        formClone.firstChild.nextElementSibling.goodsValue.value = myGoods[currentGoodsId].value;
-        formClone.firstChild.nextElementSibling.goodsOffer.value = myGoods[currentGoodsId].offer;
-        formClone.firstChild.nextElementSibling.goodsAddress.value = myGoods[currentGoodsId].address;
-        formClone.firstChild.nextElementSibling.goodsNotes.value = myGoods[currentGoodsId].notes;
-        formClone.firstElementChild[6].addEventListener('click', saveGoods);
-        formClone.firstElementChild[7].addEventListener('click', deleteGoods);
-        formClone.style.display = "block";
-        document.getElementById('goodsDisplayList').appendChild(formClone);
     // alerting user of addition and clearing the form
     alert("Goods added: " + currentGoods.name + ".");
     document.getElementById('formNewGoods').reset();
@@ -64,7 +47,8 @@ function addGoods() {
     // updating/replacing the localStorage version.
     updateGoods();
    
-    sortDisplay();
+    deleteDisplayList(-1);
+    createGoodsList(myGoods);
 
     // collapse the goods form
     document.getElementById('btnAddGoodsCollapser').nextElementSibling.nextElementSibling.style.display = "none";
@@ -149,8 +133,7 @@ function saveGoods(){
 }
 
 function sortDisplay(){
-    let adjustment = 0;
-    deleteDisplayList(adjustment);
+    deleteDisplayList(0);
     createGoodsList(myGoods);
 }
 
@@ -164,11 +147,11 @@ function deleteGoods(){
     updateGoods();
 
     // recreate goods list
-    let adjustment = 1;
-    deleteDisplayList(adjustment);
+    deleteDisplayList(1);
     createGoodsList(myGoods);
 }
 
+// 'adjustment' is to allow you to delete more or fewer items than currently exists within the object.
 function deleteDisplayList(adjustment){
     let objLength = myGoods.length + adjustment;
     for (i = 0; i < objLength; i++){

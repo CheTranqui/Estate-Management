@@ -67,7 +67,8 @@ function addProperty() {
     // updating/replacing the localStorage version.
     updateProperties();
    
-    sortDisplay();
+    deleteDisplayList(-1);
+    createPropertiesList(myProperties);
 
     // collapse the Property form
     document.getElementById('btnAddPropertyCollapser').nextElementSibling.nextElementSibling.style.display = "none";
@@ -140,11 +141,11 @@ function deleteProperty(){
     updateProperties();
 
     // recreate property list
-    let adjustment = 1;
-    deleteDisplayList(adjustment);
+    deleteDisplayList(1);
     createPropertiesList(myProperties);
 }
 
+// 'adjustment' is to allow you to delete more or fewer items than currently exists within the object.
 function deleteDisplayList(adjustment){
     let objLength = myProperties.length + adjustment;
     for (i = 0; i < objLength; i++){
@@ -164,7 +165,6 @@ function sortArray(array){
 }
 
 function sortDisplay(){
-    let adjustment = 0;
-    deleteDisplayList(adjustment);
+    deleteDisplayList(0);
     createPropertiesList(myProperties);
 }
