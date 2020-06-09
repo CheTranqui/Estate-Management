@@ -274,7 +274,7 @@ a{
 }
 
 .propertyNameInput{
-    transform: translateX(1.2rem)
+    transform: translateX(1.55rem)
 }
 
 .propertyValueInput{
@@ -286,7 +286,7 @@ a{
 }
 
 .propertyStatusInput{
-    transform: translateX(1.9rem);
+    transform: translateX(2.2rem);
 }
 
 option, select {
@@ -299,19 +299,20 @@ option, select {
 .propertyDateLabel{
     transform: translateX(2rem);
     text-align: right;
-    margin-left: 3rem;
+    margin-left: 4rem;
 }
 
-.propertyDateInput{
-    transform: translateX(1rem);
-}
+/* .propertyDateInput{
+    
+} */
 
 .propertyAddressInput{
+    transform: translateX(0.3rem);
     width: 28.5rem;
 }
 
 .propertyNotesInput{
-    transform: translateX(5.8rem);
+    transform: translateX(6.1rem);
 }
 
 .propertyDisplayList, .goodsDisplayList {
@@ -325,28 +326,28 @@ option, select {
 }
 
 #btnAddProperty{
-    transform: translateX(9.7rem);
+    transform: translateX(10rem);
 }
 
 #btnAddProperty:hover{
-    transform: translate(9.7rem, 0.15rem);
+    transform: translate(10rem, 0.15rem);
 }
 
 #btnSaveProperty, #btnSaveGoods{
-    transform: translateX(9.7rem);
+    transform: translateX(10rem);
 }
 
 #btnSaveProperty:hover, #btnSaveGoods:hover{
-    transform: translate(9.7rem, 0.15rem);
+    transform: translate(10rem, 0.15rem);
 }
 
 #btnDeleteProperty{
-    transform: translateX(31rem);
+    transform: translateX(31.5rem);
     background-color: maroon;
 }
 
 #btnDeleteProperty:hover{
-    transform: translate(31rem, 0.15rem);
+    transform: translate(31.5rem, 0.15rem);
 }
 
 .propertyList{
@@ -357,12 +358,12 @@ option, select {
 /* Goods Inputs */
 
 .goodsNameInput{
-    transform: translateX(3rem);
+    transform: translateX(3.3rem);
     width: 11.5rem;
 }
 
 .goodsPropertyLabel{
-    margin-left: 3rem;
+    margin-left: 3.5rem;
 }
 
 .goodsProperty{
@@ -370,29 +371,37 @@ option, select {
 }
 
 .goodsAddressInput{
-    transform: translateX(0.25rem);
-    width: 28.5rem;
+    transform: translateX(0.6rem);
+    width: 28rem;
 }
 
 .goodsNotesInput{
-    transform: translateX(5.8rem);
+    transform: translateX(6.25rem);
+}
+
+.goodsSoldLabel{
+    margin-left: 12.8rem;
+}
+
+.goodsSoldCheckbox{
+
 }
 
 #btnAddGoods{
-    transform: translateX(9.7rem);
+    transform: translateX(10.2rem);
 }
 
 #btnAddGoods:hover{
-    transform: translate(9.7rem, 0.15rem);
+    transform: translate(10.2rem, 0.15rem);
 }
 
 #btnDeleteGoods{
     background-color: maroon;
-    transform: translateX(31.15rem);
+    transform: translateX(31.6rem);
 }
 
 #btnDeleteGoods:hover{
-    transform: translate(31.15rem, 0.15rem);
+    transform: translate(31.6rem, 0.15rem);
 }
 
 .contactDisplayItem, .goodsDisplayItem{

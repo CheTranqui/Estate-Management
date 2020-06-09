@@ -35,6 +35,7 @@ function addGoods() {
         offer: document.getElementById('formNewGoods').elements.goodsOffer.value,
         address: document.getElementById('formNewGoods').elements.goodsAddress.value,
         notes: document.getElementById('formNewGoods').elements.goodsNotes.value,
+        sold: false,
     };
     // adding this object to the overall array
     console.log(currentGoods);
@@ -89,6 +90,7 @@ function createGoodsList(array) {
         formClone.firstChild.nextElementSibling.goodsOffer.value = myGoods[i].Offer;
         formClone.firstChild.nextElementSibling.goodsAddress.value = myGoods[i].address;
         formClone.firstChild.nextElementSibling.goodsNotes.value = myGoods[i].notes;
+        formClone.firstChild.nextElementSibling.goodsSold.checked = myGoods[i].sold;
         formClone.firstElementChild[6].addEventListener('click', saveGoods);
         formClone.firstElementChild[7].addEventListener('click', deleteGoods);
         formClone.style.display = "block";
@@ -100,7 +102,23 @@ function createGoodsList(array) {
 
 function sortArray(array){
     array.sort((a,b) => {
-        if (a.name > b.name){
+        if (a.sold){
+            if (a.sold && b.sold){
+                if (a.name > b.name){
+                    return 1;
+                }
+                else{
+                    return -1;
+                }
+            }
+            else{
+                return 1;
+            }
+        }
+        else if (!a.sold && b.sold){
+                return -1;
+        }
+        else if (a.name >= b.name){
             return 1;
         }
         else{
@@ -125,6 +143,7 @@ function saveGoods(){
     myGoods[myGoodsId].email = this.parentNode.goodsOffer.value;
     myGoods[myGoodsId].address = this.parentNode.goodsAddress.value;
     myGoods[myGoodsId].notes = this.parentNode.goodsNotes.value;
+    myGoods[myGoodsId].sold = this.parentNode.goodsSold.checked;
 
     // update localStorage version
     updateGoods();
