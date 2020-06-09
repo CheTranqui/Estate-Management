@@ -18,6 +18,11 @@ if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != und
     myContacts = JSON.parse(startingContactsJSONString);
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    getPropertyValue();
+    getGoodsValue();
+});
+
 function createSoldList(Type){
     if (Type == "Props"){
         for (i = 0; i < myProperties.length; i++){
@@ -60,3 +65,34 @@ function createSoldList(Type){
 
 //     }
 // }
+
+function getPropertyValue(){
+    let myTotal = 0;
+    for (i = 0; i < myProperties.length; i++){
+        if (myProperties[i].status == "Sold"){
+        myTotal += parseInt(myProperties[i].offer);
+        }
+    }
+    updateValue("properties", myTotal);
+}
+
+function getGoodsValue(){
+    let myTotal = 0;
+    for (i = 0; i < myGoods.length; i++){
+        if (myGoods[i].offer > 0){
+        myTotal += parseInt(myGoods[i].offer);
+        }
+    }
+    updateValue("goods", myTotal);
+}
+
+function updateValue(type, mytotal){
+    if (type == "goods"){
+        myElement = document.getElementById('soldGoodsValue');
+     
+    }
+    else if (type == "properties"){
+        myElement = document.getElementById('soldPropertyValue');
+    }
+    myElement.innerHTML = "$" + mytotal.toString();
+}

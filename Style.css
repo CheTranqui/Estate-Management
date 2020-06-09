@@ -500,10 +500,28 @@ ol li p{
     margin-top: 3rem;
 }
 
-.expenseSummary{
+.expenseSummaryP, .soldValueLabel, .soldPropertyValue, .soldGoodsValue{
     float: right;
     position: absolute;
     transform: translate(20rem, -3rem);
-    text-emphasis: none;
+    font-weight: normal;
     color: skyblue;
+}
+
+
+
+#soldPropertyValueLabel{
+    transform: translate(6.5rem, -2rem);
+}
+
+#soldPropertyValue{
+    transform: translate(18rem, -2rem);
+}
+
+#soldGoodsValueLabel{
+    transform: translate(27.5rem, -2rem);
+}
+
+#soldGoodsValue{
+    transform: translate(37rem, -2rem);
 }
