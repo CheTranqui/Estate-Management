@@ -3,7 +3,7 @@
 // initially, we're creating these objects and prepopulating myContacts.
 let myContacts = [];
 if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != undefined) {
-    startingContactsJSONString = localStorage.getItem("contacts");
+    let startingContactsJSONString = localStorage.getItem("contacts");
     myContacts = JSON.parse(startingContactsJSONString);
     createContactsList(myContacts)
 }

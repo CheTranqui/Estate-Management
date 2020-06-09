@@ -383,10 +383,6 @@ option, select {
     margin-left: 12.8rem;
 }
 
-.goodsSoldCheckbox{
-
-}
-
 #btnAddGoods{
     transform: translateX(10.2rem);
 }
@@ -422,4 +418,92 @@ option, select {
 }
 .contactSummaryForm Label{
     margin-left: 1.25rem;
+}
+
+/* Sold */
+
+#soldPropertyTo, .soldPropertyOfferLabel{
+    margin-left: 2.5rem;
+}
+
+#soldPropertiesListItem{
+    display: none;
+}
+
+/* ol{
+
+} */
+
+ol li p{
+    margin-top: 0.1rem;
+}
+
+/* Expenses / Expense Tab */
+
+.newExpenseForm{
+    list-style: none;
+}
+
+.expensesDisplayItem{
+    list-style: none;
+    display: none;
+}
+
+.expensesDisplayList li{
+    margin: 1.5rem 0rem 1.5rem 0rem;
+}
+
+.expensePayableTo{
+    margin-left: 0;
+    transform: translateX(0rem);
+}
+
+.expenseAmount{
+    transform: translateX(-0.7rem);
+}
+
+.expenseNotes{
+    width: 32.3rem;
+}
+
+#btnAddExpense{
+    transform: translateX(5.3rem);
+}
+
+#btnAddExpense:hover{
+    transform: translate(5.3rem, 0.15rem);
+}
+
+.expensesH1{
+    margin-top: 2rem;
+}
+
+#btnSaveExpense{
+    transform: translateX(5.3rem);
+}
+
+#btnSaveExpense:hover{
+    transform: translate(5.3rem, 0.15rem);
+}
+
+#btnDeleteExpense{
+    transform: translateX(30.5rem);
+    background-color: maroon;
+}
+
+#btnDeleteExpense:hover{
+    transform: translate(30.5rem, 0.15rem);
+}
+
+.contentContainer{
+    position: relative;
+    margin-top: 3rem;
+}
+
+.expenseSummary{
+    float: right;
+    position: absolute;
+    transform: translate(20rem, -3rem);
+    text-emphasis: none;
+    color: skyblue;
 }

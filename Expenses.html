@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" media="all" href="Style.css" />
+<html lang="en">
+<head>
+    <title>Estate Management Home Edition (v0.1)</title>
+</head>
+
+<body>
+
+<nav>
+    <ul class="ulNav"> 
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="homeTab" type="Submit" formaction="EstateManagement.html">
+                    Home
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="contactsTab" type="Submit" formaction="Contacts.html">
+                    Contacts
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="PropertiesTab" type="Submit" formaction="Properties.html">
+                    Properties
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="goodsTab" type="Submit" formaction="Goods.html">
+                    Goods
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="soldTab" type="Submit" formaction="Sold.html">
+                    Sold
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn activeBtn" id="expensesTab" type="Submit" formaction="Expenses.html">
+                    Expenses
+                </button>
+            </form>
+        </li>
+    </ul>
+</nav>
+<main class="contentContainer">
+<body>
+    <aside class="expenseSummary">
+        <h1 class="expenseSummaryP" id="expenseSummaryP">
+            Total Expenses:
+            <span class="totalExpenses" id="totalExpenses">
+                
+            </span>
+        </h1>
+    </aside>
+    <section class="expenseMainSection">
+        <h2>
+            New Expense:
+        </h2>
+        <li class="newExpenseForm" id="newExpenseForm">
+            <form class="expenseForm" id="expenseForm">
+                <label class="expenseNameLabel" id="expenseNameLabel" for="expenseName">
+                    Expense:
+                </label>
+                <input type="text" class="inputBox expenseName" id="expenseName">
+                <label class="expensePayableToLabel" id="expensePayableToLabel" for="expensePayableTo">
+                    Payable To:
+                </label>
+                <select class="inputBox expensePayableTo" id="expensePayableTo2">
+                    <option id="selectContact">(Select Contact)</option>
+                </select>
+                <br>
+                <label class="expenseAmountLabel" id="expenseAmountLabel" for="expenseAmount">
+                    Amount: $
+                </label>
+                <input type="number" class="inputBox expenseAmount" id="expenseAmount">
+                <label class="expenseDateLabel" id="expenseDateLabel" for="expenseDate">
+                    Paid On:
+                </label>
+                <input type="date" class="inputBox expenseDate" id="expenseDate">
+                <br>
+                <label class="expenseNotesLabel" for="expenseNotes">
+                    Notes:
+                </label>
+                <textarea id="expenseNotes" class="notesBox expenseNotes" name="expenseNotes"></textarea>
+                <br>
+                <button class="btn" type="Submit" id="btnAddExpense">
+                    Save New Expense
+                </button>
+            </form>
+        </li>
+    </section>
+    <h1 class="expensesH1">
+        Expenses:
+    </h1>
+    <li class="expensesDisplayItem" id="expensesDisplayItem">
+        <form class="expenseForm" id="expenseForm">
+            <label class="expenseNameLabel" id="expenseNameLabel" for="expenseName">
+                Expense:
+            </label>
+            <input type="text" class="inputBox expenseName" id="expenseName">
+            <label class="expensePayableToLabel" id="expensePayableToLabel" for="expensePayableTo">
+                Payable To:
+            </label>
+            <select class="inputBox expensePayableTo" id="expensePayableTo">
+                <option id="selectContact">(Select Contact)</option>
+            </select>
+            <br>
+            <label class="expenseAmountLabel" id="expenseAmountLabel" for="expenseAmount">
+                Amount: $
+            </label>
+            <input type="number" class="inputBox expenseAmount" id="expenseAmount">
+            <label class="expenseDateLabel" id="expenseDateLabel" for="expenseDate">
+                Paid On:
+            </label>
+            <input type="date" class="inputBox expenseDate" id="expenseDate">
+            <br>
+            <label class="expenseNotesLabel" for="expenseNotes">
+                Notes:
+            </label>
+            <textarea id="expenseNotes" class="notesBox expenseNotes" name="expenseNotes"></textarea>
+            <br>
+            <button class="btn" type="Submit" id="btnSaveExpense">
+                Save
+            </button>
+            <button class="btn" type="button" id="btnDeleteExpense">
+                Delete
+            </button>
+        </form>
+    </li>
+    <ul class="expensesDisplayList" id="expensesDisplayList">
+
+    </ul>
+</body>
+</main>
+</body>
+<script type="text/javascript" src="expensesManager.js"></script>
+</html>

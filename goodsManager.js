@@ -3,7 +3,7 @@
 // initially, we're creating these objects and prepopulating myGoods.
 let myGoods = [];
 if (localStorage["goods"] != undefined  && localStorage["goods"][0] != undefined) {
-    startingGoodsJSONString = localStorage.getItem("goods");
+    let startingGoodsJSONString = localStorage.getItem("goods");
     myGoods = JSON.parse(startingGoodsJSONString);
     createGoodsList(myGoods)
 }
@@ -11,7 +11,7 @@ let currentGoods = {};
 
 let myProperties = [];
 if (localStorage["properties"] != undefined  && localStorage["properties"][0] != undefined) {
-    startingPropertiesJSONString = localStorage.getItem("properties");
+    let startingPropertiesJSONString = localStorage.getItem("properties");
     myProperties = JSON.parse(startingPropertiesJSONString);
     createPropertyOptions()
 }

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" media="all" href="Style.css" />
-
+<html lang="en">
 <head>
     <title>Estate Management Home Edition (v0.2)</title>
 </head>
 
 <body>
-
 <nav>
     <ul class="ulNav"> 
         <li>
@@ -37,13 +36,6 @@
                 </button>
             </form>
         </li>
-        <!-- <li>
-            <form class="navForm">
-                <button class="navBtn" id="auctionTab" type="Submit" formaction="Auction.html">
-                    Auction
-                </button>
-            </form>
-        </li> -->
         <li>
             <form class="navForm">
                 <button class="navBtn activeBtn" id="soldTab" type="Submit" formaction="Sold.html">
@@ -51,33 +43,53 @@
                 </button>
             </form>
         </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="expensesTab" type="Submit" formaction="Expenses.html">
+                    Expenses
+                </button>
+            </form>
+        </li>
     </ul>
 </nav>
 
-<h1 >
+<main class="mainContainer">
+<h1>
     Sold:
 </h1>
 
 <h2>
     Properties:
-    <ul>
-        <li class="propertiesListText">
-            SoldProperty1
-        </li>
-        <li class="propertiesListText">
-            SoldProperty2
-        </li>
-    </ul>
 </h2>
+<li class="soldPropertiesListItem" id="soldPropertiesListItem">
+    <a id="propertyId" href="propertyId#">
+        myProperties[#].name
+    </a>
+    <!-- <span id="soldPropertyTo">Sold to: </span>
+    <a id="contactId#" href="contactId#"><span>contact#.name</span></a> -->
+    <p>Date Sold: 
+        <span class="soldPropertyDate" id="soldPropertyDate">
+            property.date
+        </span>
+        <span class="soldPropertyOfferLabel" id=soldPropertyOfferLabel>
+            For: $
+        </span>
+        <span class="soldPropertyOfferValue" id="soldPropertyOfferValue">
+            propertyOffer.value
+        </span>
+    </p>
+</li>
+    <ol class="soldPropertiesList" id="soldPropertiesList">
+    </ol>
 
 <h2>
     Goods:
-    <ul>
-        <li class="propertiesListText">
-            SoldGood1 (date sold, to whom)
-        </li>
-        <li class="propertiesListText">
-            SoldGood2 (date sold, to whom)
-        </li>
-    </ul>
 </h2>
+<ol class="soldGoodsList" id="soldGoodsList">
+</ol>
+     
+
+</main>
+</body>
+<script type="text/javascript" src="soldManager.js"></script>
+</html>

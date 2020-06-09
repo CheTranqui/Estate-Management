@@ -3,7 +3,7 @@
 // initially, we're creating these objects and prepopulating myProperties.
 let myProperties = [];
 if (localStorage["properties"] != undefined  && localStorage["properties"][0] != undefined) {
-    startingPropertiesJSONString = localStorage.getItem("properties");
+    let startingPropertiesJSONString = localStorage.getItem("properties");
     myProperties = JSON.parse(startingPropertiesJSONString);
     createPropertiesList(myProperties)
 }
@@ -43,11 +43,9 @@ function addProperty() {
     myProperties.push(currentProperty);
     
     // adding to list of properties on page
-        let formClone = document.getElementById('propertyDisplayItem').cloneNode(true)
         let currentPropertyId = (myProperties.length - 1).toString();
         let propertyFormId = 'propertyDisplay' + currentPropertyId;
-        formClone.id = propertyFormId;
-        console.log(formClone.id);
+        console.log(propertyFormId);
 
     // alerting user of addition and clearing the form
     alert("Property added: " + currentProperty.name + ".");

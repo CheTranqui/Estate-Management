@@ -3,7 +3,7 @@
 // initially, we're creating these objects and prepopulating myTasks.
 let myTasks = [];
 if (localStorage["tasks"] != undefined  && localStorage["tasks"][0] != undefined) {
-    startingTasksJSONString = localStorage.getItem("tasks");
+    let startingTasksJSONString = localStorage.getItem("tasks");
     myTasks = JSON.parse(startingTasksJSONString);
     createTaskList(myTasks)
 }
