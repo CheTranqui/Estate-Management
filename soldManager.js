@@ -2,14 +2,13 @@ let myGoods = [];
 if (localStorage["goods"] != undefined && localStorage["goods"][0] != undefined){
     let startingGoodsJSONString = localStorage.getItem("goods");
     myGoods = JSON.parse(startingGoodsJSONString);
-    createSoldList("Goods");
+    
 }
 
 let myProperties = [];
 if (localStorage["properties"] != undefined && localStorage["goods"][0] != undefined){
     let startingPropertiesJSONString = localStorage.getItem("properties");
     myProperties = JSON.parse(startingPropertiesJSONString);
-    createSoldList("Props");
 }
 
 let myContacts = [];
@@ -21,21 +20,30 @@ if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != und
 document.addEventListener('DOMContentLoaded', () => {
     getPropertyValue();
     getGoodsValue();
+    createSoldList("Props");
+    createSoldList("Goods");
 });
 
 function createSoldList(Type){
     if (Type == "Props"){
         for (i = 0; i < myProperties.length; i++){
-            if (myProperties[i].sold){
+            if (myProperties[i].status == "Sold"){
                 let formClone = document.getElementById('soldPropertiesListItem').cloneNode(true);
                 let currentId = "soldPropertiesId" + i.toString();
                 formClone.id = currentId;
-                formClone.children[0].href = "properties.html#propertyId" + i.toString();
-                formClone.children[0].innerHTML = myProperties[i].name;
-                // getContactId(myProperties)
-                // formClone.children[1].href = "contacts.html#contactId" + 
-                formClone.children[1].children[0].innerHTML = myProperties[i].date;
-                formClone.children[1].children[2].innerHTML = myProperties[i].offer;
+                formClone.children[1].href = "properties.html#propertyId" + i.toString();
+                formClone.children[1].innerHTML = myProperties[i].name;
+                let myContactId = getContactId(myProperties[i])
+                if (myContactId == "none declared"){
+                    formClone.children[3].href="properties.html";
+                    formClone.children[3].innerHTML = myContactId;
+                }
+                else{
+                    formClone.children[3].href = "contacts.html#displayContact" + myContactId.toString();
+                    formClone.children[3].innerHTML = myContacts[myContactId].name;    
+                }
+                formClone.children[4].children[0].innerHTML = getDate(myProperties[i].date);
+                formClone.children[4].children[2].innerHTML = "$" + myProperties[i].offer;
                 formClone.style.display = "list-item";
                 document.getElementById('soldPropertiesList').appendChild(formClone);
             }
@@ -47,12 +55,19 @@ function createSoldList(Type){
                 let formClone = document.getElementById('soldPropertiesListItem').cloneNode(true);
                 let currentId = "soldGoodsId" + i.toString();
                 formClone.id = currentId;
-                formClone.children[0].href = "goods.html#goodsId" + i.toString();
-                formClone.children[0].innerHTML = myGoods[i].name;
-                // getContactId(myProperties)
-                // formClone.children[1].href = "contacts.html#contactId" + 
-                formClone.children[1].children[0].innerHTML = myGoods[i].date;
-                formClone.children[1].children[2].innerHTML = myGoods[i].offer;
+                formClone.children[1].href = "goods.html#goodsId" + i.toString();
+                formClone.children[1].innerHTML = myGoods[i].name;
+                let myContactId = getContactId(myGoods[i]);
+                if (myContactId == "none declared"){
+                    formClone.children[3].href="goods.html";
+                    formClone.children[3].innerHTML = myContactId;    
+                }
+                else{
+                    formClone.children[3].href = "contacts.html#displayContact" + myContactId.toString();
+                    formClone.children[3].innerHTML = myContacts[myContactId].name;    
+                }
+                formClone.children[4].children[0].innerHTML = getDate(myGoods[i].date);
+                formClone.children[4].children[2].innerHTML = myGoods[i].offer;
                 formClone.style.display = "list-item";
                 document.getElementById('soldGoodsList').appendChild(formClone);
             }
@@ -60,11 +75,18 @@ function createSoldList(Type){
     }
 }
 
-// function getContactId(array){
-//     for (i = 0; i < myContacts.length; i++){
-
-//     }
-// }
+function getContactId(object){
+    if (object.buyer != undefined && object.buyer != "selectContact"){
+        for (i = 0; i < myContacts.length; i++){
+            if (myContacts[i].name == object.buyer){
+                return i;
+            }
+        }
+    }
+    else{
+        return "none declared";
+    }
+}
 
 function getPropertyValue(){
     let myTotal = 0;
@@ -95,4 +117,56 @@ function updateValue(type, mytotal){
         myElement = document.getElementById('soldPropertyValue');
     }
     myElement.innerHTML = "$" + mytotal.toString();
+}
+
+function getDate(date){
+    if (date == undefined){
+        return date;
+    }
+    else{
+        let myMonthText = "";
+        let myYear = date.substring(0,4);
+        let myMonth = parseInt(date.substring(5,7));
+        switch(myMonth){
+            case 1:
+                myMonthText = "January";
+                break;
+            case 2:
+                myMonthText = "February";
+                break;
+            case 3:
+                myMonthText = "March";
+                break;
+            case 4:
+                myMonthText = "April";
+                break;
+            case 5:
+                myMonthText = "May";
+                break;
+            case 6:
+                myMonthText = "June";
+                break;
+            case 7:
+                myMonthText = "July";
+                break;
+            case 8:
+                myMonthText = "August";
+                break;
+            case 9:
+                myMonthText = "September";
+                break;
+            case 10:
+                myMonthText = "October";
+                break;
+            case 11:
+                myMonthText = "November";
+                break;
+            case 12:
+                myMonthText = "December";
+        }
+        let myDay = date.substring(9);
+        let myFormattedDate = myMonthText + " " + myDay + ", " + myYear;
+        return myFormattedDate;
+    }
+    
 }

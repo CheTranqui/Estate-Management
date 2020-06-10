@@ -5,15 +5,42 @@ let myProperties = [];
 if (localStorage["properties"] != undefined  && localStorage["properties"][0] != undefined) {
     let startingPropertiesJSONString = localStorage.getItem("properties");
     myProperties = JSON.parse(startingPropertiesJSONString);
-    createPropertiesList(myProperties)
 }
 let currentProperty = {};
-    document.addEventListener('DOMContentLoaded', () => {
+
+let myContacts = [];
+if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != undefined) {
+    let startingContactsJSONString = localStorage.getItem("contacts");
+    myContacts = JSON.parse(startingContactsJSONString);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnAddProperty').addEventListener('click', addProperty);
     document.getElementById('btnSaveProperty').addEventListener('click', saveProperty);
     document.getElementById('btnDeleteProperty').addEventListener('click', deleteProperty);
     document.getElementById('btnAddPropertyCollapser').addEventListener('click', collapseForm);
+    getBuyerOptions();
+    createPropertiesList(myProperties)
 });
+
+function getBuyerOptions(){
+    for (i = 0; i < myContacts.length; i++){
+        let newOption = createNewOption(i);  
+        document.getElementById('propertyBuyerA').appendChild(newOption);
+        
+        let newOptionB = createNewOption(i);
+        document.getElementById('propertyBuyerB').appendChild(newOptionB);
+    }
+}
+
+function createNewOption(i){
+    let newOption = document.createElement('option');
+    newOption.id = "option" + i.toString();
+    newOption.value = myContacts[i].name;
+    let contactName = myContacts[i].name;
+    newOption.appendChild(document.createTextNode(contactName));
+    return newOption;
+}
 
     // allows for a button marked with class 'collapsible'
 // to collapse/uncollapse immediate siblings if content is initially hidden in CSS.
@@ -31,6 +58,7 @@ function addProperty() {
     event.preventDefault();
     currentProperty = {
         name: document.getElementById('propertyForm').elements.propertyName.value,
+        buyer: document.getElementById('propertyForm').elements.propertyBuyerB.value,
         value: document.getElementById('propertyForm').elements.propertyValue.value,
         offer: document.getElementById('propertyForm').elements.propertyOffer.value,
         status: document.getElementById('propertyForm').elements.propertyStatus.value,
@@ -77,6 +105,7 @@ function createPropertiesList(array) {
             let formClone = document.getElementById('propertyDisplayItem').cloneNode(true)
             let propertyFormId = 'propertyDisplay' + i.toString();
             formClone.id = propertyFormId;
+
         // update its fields according to its Id
             formClone.childNodes[1].propertyName.value = myProperties[i].name;
             formClone.childNodes[1].propertyValue.value = myProperties[i].value;
@@ -85,8 +114,8 @@ function createPropertiesList(array) {
             formClone.childNodes[1].propertyDate.value = myProperties[i].date;
             formClone.childNodes[1].propertyAddress.value = myProperties[i].address;
             formClone.childNodes[1].propertyNotes.value = myProperties[i].notes;
-            formClone.childNodes[1][7].addEventListener('click', saveProperty);
-            formClone.childNodes[1][8].addEventListener('click', deleteProperty);
+            formClone.childNodes[1][8].addEventListener('click', saveProperty);
+            formClone.childNodes[1][9].addEventListener('click', deleteProperty);
         // append it to the ul
             formClone.style.display = "block";
             document.getElementById('propertyDisplayList').appendChild(formClone);
@@ -104,6 +133,7 @@ function saveProperty(){
     let myPropertyId = getPropertyId(this);
     // search myProperties and overwrite entry with same name with entry's stuff.
         myProperties[myPropertyId].name = this.parentNode.propertyName.value;
+        myProperties[myPropertyId].buyer = this.parentNode.propertyBuyerA.value;
         myProperties[myPropertyId].value = this.parentNode.propertyValue.value;
         myProperties[myPropertyId].offer = this.parentNode.propertyOffer.value;
         myProperties[myPropertyId].status = this.parentNode.propertyStatus.value;

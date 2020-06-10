@@ -277,12 +277,24 @@ a{
     transform: translateX(1.55rem)
 }
 
+.propertyBuyerLabel{
+    margin-left: 1.3rem;
+}
+
+#propertyBuyerA, #propertyBuyerB{
+    transform: translateX(0rem);
+}
+
 .propertyValueInput{
     transform: translateX(-0.7rem);
 }
 
 .propertyValueInput{
     width: 8rem;
+}
+
+#propertyOfferLabel{
+    margin-left: 2rem;
 }
 
 .propertyStatusInput{
@@ -299,7 +311,7 @@ option, select {
 .propertyDateLabel{
     transform: translateX(2rem);
     text-align: right;
-    margin-left: 4rem;
+    margin-left: 4.9rem;
 }
 
 /* .propertyDateInput{
@@ -422,6 +434,9 @@ option, select {
 
 /* Sold */
 
+.soldBuyerLabel{
+    margin-left: 3rem;
+}
 #soldPropertyTo, .soldPropertyOfferLabel{
     margin-left: 2.5rem;
 }
@@ -430,9 +445,9 @@ option, select {
     display: none;
 }
 
-/* ol{
-
-} */
+.soldPropertyOfferValue{
+    margin-left: 0.5rem;
+}
 
 ol li p{
     margin-top: 0.1rem;
@@ -508,7 +523,9 @@ ol li p{
     color: skyblue;
 }
 
-
+.soldPropertyDate{
+    margin-left: 0.4rem;
+}
 
 #soldPropertyValueLabel{
     transform: translate(6.5rem, -2rem);

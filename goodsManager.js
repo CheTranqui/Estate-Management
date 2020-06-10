@@ -5,7 +5,6 @@ let myGoods = [];
 if (localStorage["goods"] != undefined  && localStorage["goods"][0] != undefined) {
     let startingGoodsJSONString = localStorage.getItem("goods");
     myGoods = JSON.parse(startingGoodsJSONString);
-    createGoodsList(myGoods)
 }
 let currentGoods = {};
 
@@ -13,7 +12,6 @@ let myProperties = [];
 if (localStorage["properties"] != undefined  && localStorage["properties"][0] != undefined) {
     let startingPropertiesJSONString = localStorage.getItem("properties");
     myProperties = JSON.parse(startingPropertiesJSONString);
-    createPropertyOptions()
 }
 
 // setting this event listener for when the Save goods button is clicked.
@@ -22,6 +20,8 @@ if (localStorage["properties"] != undefined  && localStorage["properties"][0] !=
     document.getElementById('btnSaveGoods').addEventListener('click', saveGoods);
     document.getElementById('btnDeleteGoods').addEventListener('click', deleteGoods);
     document.getElementById('btnAddGoodsCollapser').addEventListener('click', collapseForm);
+    createPropertyOptions();
+    createGoodsList(myGoods);
 });
 
 
@@ -179,18 +179,20 @@ function deleteDisplayList(adjustment){
 }
 
 function createPropertyOptions(){
-    let selectNode = document.getElementById('formNewGoods').children[3];
-    let selectNode2 = document.getElementById('goodsDisplayForm').children[3];
     for (i = 0; i < myProperties.length; i++){
-        goodsPropertyName = myProperties[i].name;
-        goodsPropertyName2 = myProperties[i].name;
-        let newOption = document.createElement('option');
-        let newOption2 = document.createElement('option');
-        newOption.appendChild(document.createTextNode(goodsPropertyName));
-        newOption2.appendChild(document.createTextNode(goodsPropertyName2));
-        newOption.value = goodsPropertyName;
-        newOption2.value = goodsPropertyName2;
-        selectNode.appendChild(newOption);
-        selectNode2.appendChild(newOption2);
-    };
+        let newOption = createNewOption(i);
+        document.getElementById('formNewGoods').children[3].appendChild(newOption);
+
+        let newOption2 = createNewOption(i);
+        document.getElementById('goodsDisplayForm').children[3].appendChild(newOption2);
+    }
 }
+
+function createNewOption(id){
+    let newOption = document.createElement('option');
+    newOption.id = "option" + i.toString();
+    newOption.value = myProperties[id].name;
+    newOption.appendChild(document.createTextNode(myProperties[id].name));
+    return newOption;
+}
+
