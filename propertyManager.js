@@ -108,6 +108,7 @@ function createPropertiesList(array) {
 
         // update its fields according to its Id
             formClone.childNodes[1].propertyName.value = myProperties[i].name;
+            formClone.childNodes[1].propertyBuyerA.value = myProperties[i].buyer;
             formClone.childNodes[1].propertyValue.value = myProperties[i].value;
             formClone.childNodes[1].propertyOffer.value = myProperties[i].offer;
             formClone.childNodes[1].propertyStatus.value = myProperties[i].status;

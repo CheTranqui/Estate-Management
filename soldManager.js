@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function createSoldList(Type){
     if (Type == "Props"){
-        for (i = 0; i < myProperties.length; i++){
+        for (let i = 0; i < myProperties.length; i++){
             if (myProperties[i].status == "Sold"){
                 let formClone = document.getElementById('soldPropertiesListItem').cloneNode(true);
                 let currentId = "soldPropertiesId" + i.toString();
@@ -50,7 +50,7 @@ function createSoldList(Type){
         }
     }
     if (Type == "Goods"){
-        for (i = 0; i < myGoods.length; i++){
+        for (let i = 0; i < myGoods.length; i++){
             if (myGoods[i].sold){
                 let formClone = document.getElementById('soldPropertiesListItem').cloneNode(true);
                 let currentId = "soldGoodsId" + i.toString();
@@ -77,9 +77,9 @@ function createSoldList(Type){
 
 function getContactId(object){
     if (object.buyer != undefined && object.buyer != "selectContact"){
-        for (i = 0; i < myContacts.length; i++){
-            if (myContacts[i].name == object.buyer){
-                return i;
+        for (let j = 0; j < myContacts.length; j++){
+            if (myContacts[j].name == object.buyer){
+                return j;
             }
         }
     }
@@ -90,18 +90,18 @@ function getContactId(object){
 
 function getPropertyValue(){
     let myTotal = 0;
-    for (i = 0; i < myProperties.length; i++){
-        if (myProperties[i].status == "Sold"){
+    for (let i = 0; i < myProperties.length; i++){
+        if (myProperties[i].status == "Sold" && myProperties[i].offer != ""){
         myTotal += parseInt(myProperties[i].offer);
+            }
         }
-    }
     updateValue("properties", myTotal);
 }
 
 function getGoodsValue(){
     let myTotal = 0;
-    for (i = 0; i < myGoods.length; i++){
-        if (myGoods[i].offer > 0){
+    for (let i = 0; i < myGoods.length; i++){
+        if (myGoods[i].sold == true && myGoods[i].offer > 0){
         myTotal += parseInt(myGoods[i].offer);
         }
     }

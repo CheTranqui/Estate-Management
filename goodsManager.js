@@ -87,7 +87,7 @@ function createGoodsList(array) {
         formClone.firstChild.nextElementSibling.goodsName.value = myGoods[i].name;
         formClone.firstChild.nextElementSibling.goodsProperty.value = myGoods[i].property;
         formClone.firstChild.nextElementSibling.goodsValue.value = myGoods[i].value;
-        formClone.firstChild.nextElementSibling.goodsOffer.value = myGoods[i].Offer;
+        formClone.firstChild.nextElementSibling.goodsOffer.value = myGoods[i].offer;
         formClone.firstChild.nextElementSibling.goodsAddress.value = myGoods[i].address;
         formClone.firstChild.nextElementSibling.goodsNotes.value = myGoods[i].notes;
         formClone.firstChild.nextElementSibling.goodsSold.checked = myGoods[i].sold;
@@ -138,9 +138,9 @@ function saveGoods(){
     let myGoodsId = getGoodsId(this);
     // search myGoods and overwrite entry with same name with entry's stuff.
     myGoods[myGoodsId].name = this.parentNode.goodsName.value;
-    myGoods[myGoodsId].role = this.parentNode.goodsProperty.value;
-    myGoods[myGoodsId].phone = this.parentNode.goodsValue.value;
-    myGoods[myGoodsId].email = this.parentNode.goodsOffer.value;
+    myGoods[myGoodsId].property = this.parentNode.goodsProperty.value;
+    myGoods[myGoodsId].value = this.parentNode.goodsValue.value;
+    myGoods[myGoodsId].offer = this.parentNode.goodsOffer.value;
     myGoods[myGoodsId].address = this.parentNode.goodsAddress.value;
     myGoods[myGoodsId].notes = this.parentNode.goodsNotes.value;
     myGoods[myGoodsId].sold = this.parentNode.goodsSold.checked;
