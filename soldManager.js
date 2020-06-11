@@ -164,7 +164,7 @@ function getDate(date){
             case 12:
                 myMonthText = "December";
         }
-        let myDay = date.substring(9);
+        let myDay = date.substring(8,10);
         let myFormattedDate = myMonthText + " " + myDay + ", " + myYear;
         return myFormattedDate;
     }

@@ -282,7 +282,7 @@ a{
 }
 
 #propertyBuyerA, #propertyBuyerB{
-    transform: translateX(0rem);
+    transform: translateX(0.4rem);
 }
 
 .propertyValueInput{
