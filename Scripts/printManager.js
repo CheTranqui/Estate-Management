@@ -109,7 +109,7 @@ function formatTasks(){
                 formClone.children[1].children[3].innerHTML = formattedDate;
             }
         // append it to the ul
-            formClone.style.display = "";
+            formClone.style.display = "block";
             formClone.classList.remove('hiddenLi');
             document.getElementById('formattedTaskList').appendChild(formClone);
         };
