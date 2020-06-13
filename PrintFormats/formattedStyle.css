@@ -1,0 +1,110 @@
+.ulNav{
+    display: flex;
+    list-style: none;
+    margin-bottom: 0.3rem;
+}
+
+.navForm button {
+    font-family: Verdana;
+    font-size: 1.25rem;
+    background-color: rgb(55, 59, 65);
+    color: rgb(55, 175, 245);
+    outline: grey solid 1px;
+    border: 0.1rem solid silver;
+    padding: 0.2rem;
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+    margin: 0.2rem;
+}
+
+.navBtn:active{
+    color: rgb(32, 34, 37);
+    background-color: rgb(53, 151, 207);
+    font-weight: bold;
+}
+
+.navBtn:hover{
+    transform: translate(0, 0.3rem);
+}
+
+.navForm button.activeBtn{
+    font-family: Verdana;
+    font-size: 1.25rem;
+    color: rgb(32, 34, 37);
+    background-color: rgb(53, 151, 207);
+    font-weight: bold;
+}
+
+.printInstructions{
+    margin: 0.5rem 0 0.5rem 3rem;
+}
+
+body {
+    background-color: rgb(203, 204, 207);
+    font-size: 1.2rem;
+}
+
+h2{
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+ol{
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+#formattedTaskList{
+    padding-left: 2.2rem;
+}
+
+.formattedTaskItem{
+    margin: 0.5rem;
+}
+
+.hiddenLi{
+    display: none;
+}
+
+.formattedItemP{
+    margin: 0 0 0 0;
+}
+
+.formattedTaskList{
+    list-style-type: decimal;
+    margin-top: 0.5rem;
+}
+
+section{
+    margin: 2rem 1rem 2rem 1rem;
+    display: none;
+}
+
+.formattedContactsList,
+.formattedPropertiesList,
+.formattedGoodsList,
+.formattedExpensesList{
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.formattedContactItem,
+.formattedPropertiesItem,
+.formattedGoodsItem,
+.formattedExpensesItem{
+    width: 47%;
+    align-self: flex-start;
+    margin: 0.5rem;
+}
+
+.boldLabel{
+    font-weight: bold;
+}
+
+.secondaryLabel{
+    margin-left: 1.2rem;
+}

@@ -2,7 +2,6 @@ let myGoods = [];
 if (localStorage["goods"] != undefined && localStorage["goods"][0] != undefined){
     let startingGoodsJSONString = localStorage.getItem("goods");
     myGoods = JSON.parse(startingGoodsJSONString);
-    
 }
 
 let myProperties = [];

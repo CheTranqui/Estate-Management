@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<link rel="stylesheet" type="text/css" media="all" href="formattedStyle.css" />
+<head>
+    <title>Estate Management Home Edition (v0.4)</title>
+</head>
+<nav>
+    <ul class="ulNav"> 
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="tasksTab" type="Submit" >
+                    Tasks
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="contactsTab" type="Submit" >
+                    Contacts
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="propertiesTab" type="Submit" >
+                    Properties
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="goodsTab" type="Submit" >
+                    Goods
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn" id="expensesTab" type="Submit" >
+                    Expenses
+                </button>
+            </form>
+        </li>
+        <li>
+            <form class="navForm">
+                <button class="navBtn activeBtn" id="printTab" type="Submit">
+                    <a href="PrintFormats/Print.html" target="_blank" style="color: rgb(32, 34, 37); background-color: rgb(53, 151, 207); text-decoration:none;">Print</a>
+                </button>
+            </form>
+        </li>
+    </ul>
+</nav>
+<span class="printInstructions">
+    <i>Click the button above to toggle which section(s) you would like to print.</i>
+</span>
+<main>
+<body>
+<!-- Tasks Display -->
+    <section class="formatTasksContainer hideSection" id="formatTasksContainer">
+        <h2>
+            Tasks:
+        </h2>
+        <li class="hiddenLi formattedTaskItem" id="formattedTaskItem">
+            <p class="formattedItemP" id="taskItemTask">
+                <span class="formattedItemSpan" id="formattedItemTaskText">
+                    Task
+                </span>
+            </p>
+            <p class="formattedItemP" id="taskItemStatusDate">
+                <label class="boldLabel formattedTaskStatusLabel">Status:</label>
+                <span class="formattedItemSpan" id="formattedItemTaskStatus">
+                    Status
+                </span>
+                <label class="boldLabel formattedStatusDateLabel secondaryLabel">Date:</label>
+                <span class="formattedItemSpan" id="formattedItemTaskDate">
+                    Date
+                </span>
+            </p>
+        </li>
+        <article class="formatTasksListContainer" id="formatTasksListContainer">
+            <ol class="formattedTaskList" id="formattedTaskList">
+                <!-- created via JS by cloning the above li -->
+            </ol>
+        </article>
+    </section>
+<!-- Contacts Display -->
+    <section class="formatContactsContainer hideSection" id="formatContactsContainer">
+        <h2>
+            Contacts:
+        </h2>
+        <li class="hiddenLi formattedContactItem" id="formattedContactItem">
+            <p class="formattedItemP" id="contactNameRole">
+                <label class="boldLabel formattedContactNameLabel">Name:</label>
+                <span class="formattedContactSpan" id="formattedContactName">
+                    Name
+                </span>
+                <label class="boldLabel formattedContactRoleLabel secondaryLabel">Role:</label>
+                <span class="formattedContactSpan" id="formattedContactRole">
+                    Role
+                </span>
+            </p>
+            <p class="formattedItemP" id="contactPhoneEmail">
+                <label class="boldLabel formattedContactPhoneLabel">Phone:</label>
+                <span class="formattedContactSpan" id="formattedContactPhone">
+                    Phone
+                </span>
+                <label class=" boldLabel formattedContactEmailLabel secondaryLabel">Email:</label>
+                <span class="formattedContactSpan" id="formattedContactEmail">
+                    Email
+                </span>
+            </p>
+            <p class="formattedItemP" id="taskItemAddress">
+                <label class="boldLabel formattedContactAddressLabel">Address:</label>
+                <span class="formattedContactSpan" id="formattedAddress">
+                    Address
+                </span>
+            </p>
+            <p class="formattedItemP" id="taskItemNotes">
+                <label class="boldLabel formattedContactNotesLabel">Notes:</label>
+                <span class="formattedContactSpan" id="formattedContactNotes">
+                    Notes
+                </span>
+            </p>
+            
+        </li>
+        <article class="formattedContactsListContainer" id="formattedContactsListContainer">
+            <ol class="formattedContactsList" id="formattedContactList">
+                <!-- created via JS by cloning the above li -->
+            </ol>
+        </article>
+    </section>
+<!-- Properties Display -->
+    <section class="formatPropertiesContainer hideSection" id="formatPropertiesContainer">
+        <h2>
+            Properties:
+        </h2>
+        <li class="hiddenLi formattedPropertiesItem" id="formattedPropertiesItem">
+            <p class="formattedItemP" id="propertyNameBuyer">
+                <label class="boldLabel formattedPropertyNameLabel">Property:</label>
+                <span class="formattedPropertySpan" id="formattedPropertyName">
+                    Name
+                </span>
+                <label class="boldLabel formattedPropertyBuyerLabel secondaryLabel">Buyer:</label>
+                <span class="formattedPropertySpan" id="formattedPropertyBuyer">
+                    Buyer
+                </span>
+            </p>
+            <p class="formattedItemP" id="propertyValueOffer">
+                <label class="boldLabel formattedPropertyValueLabel">Value:</label>
+                <span class="formattedPropertySpan" id="formattedPropertyValue">
+                    Value
+                </span>
+                <label class=" boldLabel formattedPropertyOfferLabel secondaryLabel">Offer:</label>
+                <span class="formattedPropertySpan" id="formattedPropertyOffer">
+                    Offer
+                </span>
+            </p>
+            <p class="formattedItemP" id="propertyStatusDate">
+                <label class="boldLabel formattedPropertyStatusLabel">Status:</label>
+                <span class="formattedPropertySpan" id="formattedPropertyStatus">
+                    Status
+                </span>
+                <label class="boldLabel formattedPropertyDateLabel secondaryLabel">Date:</label>
+                <span class="formattedPropertySpan" id="formattedPropertyDate">
+                    Date
+                </span>
+            </p>
+            <p class="formattedItemP" id="propertyItemAddress">
+                <label class="boldLabel formattedPropertyAddressLabel">Address:</label>
+                <span class="formattedPropertySpan" id="formattedPropertyAddress">
+                    Address
+                </span>
+            </p>
+            <p class="formattedItemP" id="propertyItemNotes">
+                <label class="boldLabel formattedPropertyNotesLabel">Notes:</label>
+                <span class="formattedPropertySpan" id="formattedPropertyNotes">
+                    Notes
+                </span>
+            </p>
+            
+        </li>
+        <article class="formattedPropertiesListContainer" id="formattedPropertiesListContainer">
+            <ol class="formattedPropertiesList" id="formattedPropertiesList">
+                <!-- created via JS by cloning the above li -->
+            </ol>
+        </article>
+    </section>
+    
+<!-- Goods Display -->
+<section class="formatGoodsContainer hideSection" id="formatGoodsContainer">
+    <h2>
+        Goods:
+    </h2>
+    <li class="hiddenLi formattedGoodsItem" id="formattedGoodsItem">
+        <p class="formattedItemP" id="goodsNameBuyer">
+            <label class="boldLabel formattedGoodsNameLabel">Good:</label>
+            <span class="formattedGoodsSpan" id="formattedGoodsName">
+                Name
+            </span>
+            <label class="boldLabel formattedGoodsPropertyLabel secondaryLabel">Property:</label>
+            <span class="formattedGoodsSpan" id="formattedGoodsProperty">
+                Buyer
+            </span>
+        </p>
+        <p class="formattedItemP" id="goodsValueOffer">
+            <label class="boldLabel formattedGoodsValueLabel">Value:</label>
+            <span class="formattedGoodsSpan" id="formattedGoodsValue">
+                Value
+            </span>
+            <label class=" boldLabel formattedGoodsOfferLabel secondaryLabel">Offer:</label>
+            <span class="formattedGoodsSpan" id="formattedGoodsOffer">
+                Offer
+            </span>
+            <label class=" boldLabel formattedGoodsSoldLabel secondaryLabel">Sold:</label>
+            <span class="formattedGoodsSpan" id="formattedGoodsSold">
+                Sold
+            </span>
+        </p>
+        <p class="formattedItemP" id="goodsItemAddress">
+            <label class="boldLabel formattedGoodsAddressLabel">Location:</label>
+            <span class="formattedGoodsSpan" id="formattedGoodsAddress">
+                Location
+            </span>
+        </p>
+        <p class="formattedItemP" id="goodsItemNotes">
+            <label class="boldLabel formattedGoodsNotesLabel">Notes:</label>
+            <span class="formattedGoodsSpan" id="formattedGoodsNotes">
+                Notes
+            </span>
+        </p>
+        
+    </li>
+    <article class="formattedGoodsListContainer" id="formattedGoodsListContainer">
+        <ol class="formattedGoodsList" id="formattedGoodsList">
+            <!-- created via JS by cloning the above li -->
+        </ol>
+    </article>
+</section>
+
+<!-- Expenses Display -->
+<section class="formatExpensesContainer hideSection" id="formatExpensesContainer">
+    <h2>
+        Expenses:
+    </h2>
+    <li class="hiddenLi formattedExpensesItem" id="formattedExpensesItem">
+        <p class="formattedItemP" id="ExpensesNamePayable">
+            <label class="boldLabel formattedExpensesNameLabel">Expense:</label>
+            <span class="formattedExpensesSpan" id="formattedExpensesName">
+                Name
+            </span>
+            <label class="boldLabel formattedExpensesPayableLabel secondaryLabel">Payable To:</label>
+            <span class="formattedExpensesSpan" id="formattedExpensesPayable">
+                Payee
+            </span>
+        </p>
+        <p class="formattedItemP" id="formattedExpensesAmountPaidOn">
+            <label class="boldLabel formattedExpensesAmountLabel">Amount:</label>
+            <span class="formattedExpensesSpan" id="formattedExpensesAmount">
+                Amount
+            </span>
+            <label class=" boldLabel formattedExpensesPaidOnLabel secondaryLabel">Paid On:</label>
+            <span class="formattedExpensesSpan" id="formattedExpensesPaidOn">
+                Paid On
+            </span>
+        </p>
+        <p class="formattedItemP" id="formattedExpensesNotes">
+            <label class="boldLabel formattedExpensessNotesLabel">Notes:</label>
+            <span class="formattedExpensesSpan" id="formattedExpensesNotes">
+                Notes
+            </span>
+        </p>
+        
+    </li>
+    <article class="formattedExpensesListContainer" id="formattedExpensesListContainer">
+        <ol class="formattedExpensesList" id="formattedExpensesList">
+            <!-- created via JS by cloning the above li -->
+        </ol>
+    </article>
+</section>
+
+    </body>
+</main>
+    <script type="text/javascript" src="../Scripts/printManager.js"></script>
+</html>
