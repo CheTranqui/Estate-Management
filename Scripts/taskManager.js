@@ -1,28 +1,22 @@
-// myTasks is an array of objects.
-// currentTask is an object that contains a property's information.
-// initially, we're creating these objects and prepopulating myTasks.
-let myTasks = [];
-if (localStorage["tasks"] != undefined  && localStorage["tasks"][0] != undefined) {
-    let startingTasksJSONString = localStorage.getItem("tasks");
-    myTasks = JSON.parse(startingTasksJSONString);
-    createTaskList(myTasks)
-}
+// loadData.js automatically runs as the page is loaded.
+
 let currentTask = {};
-    document.addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnAddTask').addEventListener('click', addTask);
     document.getElementById('btnSaveTask').addEventListener('click', saveTask);
     document.getElementById('btnDeleteTask').addEventListener('click', deleteTask);
     document.getElementById('btnAddTaskCollapser').addEventListener('click', collapseForm);
+// loadData from LocalStorage
+    myTasks = loadData('tasks');
+    myContacts = loadData('contacts');
+// create list
+    createTaskList(myTasks);
+    createContactsSummary(myContacts);
 });
 
-let myContacts = [];
-if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != undefined) {
-    startingContactsJSONString = localStorage.getItem("contacts");
-    myContacts = JSON.parse(startingContactsJSONString);
-    createContactsSummary();
-}
 
-    // allows for a button marked with class 'collapsible'
+// allows for a button marked with class 'collapsible'
 // to collapse/uncollapse immediate siblings if content is initially hidden in CSS.
 function collapseForm() {
     if (this.nextElementSibling.style.display === "block"

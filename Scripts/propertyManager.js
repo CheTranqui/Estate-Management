@@ -1,24 +1,16 @@
-// myProperties is an array of objects.
-// currentProperty is an object that contains a property's information.
-// initially, we're creating these objects and prepopulating myProperties.
-let myProperties = [];
-if (localStorage["properties"] != undefined  && localStorage["properties"][0] != undefined) {
-    let startingPropertiesJSONString = localStorage.getItem("properties");
-    myProperties = JSON.parse(startingPropertiesJSONString);
-}
-let currentProperty = {};
+// loadData.js automatically runs as the page is loaded.
 
-let myContacts = [];
-if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != undefined) {
-    let startingContactsJSONString = localStorage.getItem("contacts");
-    myContacts = JSON.parse(startingContactsJSONString);
-}
+let currentProperty = {};
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnAddProperty').addEventListener('click', addProperty);
     document.getElementById('btnSaveProperty').addEventListener('click', saveProperty);
     document.getElementById('btnDeleteProperty').addEventListener('click', deleteProperty);
     document.getElementById('btnAddPropertyCollapser').addEventListener('click', collapseForm);
+// Load data from localStorage
+    myContacts = loadData('contacts');
+    myProperties = loadData('properties');
+// generate options and list
     getBuyerOptions();
     createPropertiesList(myProperties)
 });

@@ -1,33 +1,3 @@
-let myGoods = []; 
-if (localStorage["goods"] != undefined  && localStorage["goods"][0] != undefined) {
-    let startingGoodsJSONString = localStorage.getItem("goods");
-    myGoods = JSON.parse(startingGoodsJSONString);
-}
-
-let myProperties = [];
-if (localStorage["properties"] != undefined  && localStorage["properties"][0] != undefined) {
-    let startingPropertiesJSONString = localStorage.getItem("properties");
-    myProperties = JSON.parse(startingPropertiesJSONString);
-}
-
-let myTasks = [];
-if (localStorage["tasks"] != undefined  && localStorage["tasks"][0] != undefined) {
-    let startingTasksJSONString = localStorage.getItem("tasks");
-    myTasks = JSON.parse(startingTasksJSONString);
-}
-
-let myContacts = [];
-if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != undefined) {
-    let startingContactsJSONString = localStorage.getItem("contacts");
-    myContacts = JSON.parse(startingContactsJSONString);
-}
-
-let myExpenses = [];
-if (localStorage["expenses"] != undefined  && localStorage["expenses"][0] != undefined) {
-    let startingExpensesJSONString = localStorage.getItem("expenses");
-    myExpenses = JSON.parse(startingExpensesJSONString);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('tasksTab').addEventListener('click', toggleTasks);
     document.getElementById('contactsTab').addEventListener('click', toggleContacts);
@@ -35,11 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('goodsTab').addEventListener('click', toggleGoods);
     document.getElementById('expensesTab').addEventListener('click', toggleExpenses);
     document.getElementById('printTab').addEventListener('click', stopPrintTab);
-formatTasks();
-formatContacts();
-formatProperties();
-formattedGoods();
-formatExpenses();
+// loaddata from LocalStorage
+    myTasks = loadData('tasks');
+    myContacts = loadData('contacts');
+    myProperties = loadData('properties');
+    myGoods = loadData('goods');
+    myExpenses = loadData('expenses');
+// create lists
+    formatTasks();
+    formatContacts();
+    formatProperties();
+    formattedGoods();
+    formatExpenses();
 });
 let element;
 let myButton;
@@ -217,64 +194,18 @@ function formatExpenses(){
         formClone.children[0].children[1].innerHTML = myExpenses[i].name;
         formClone.children[0].children[3].innerHTML = myExpenses[i].payableTo;
         formClone.children[1].children[1].innerHTML = myExpenses[i].amount;
-        formClone.children[1].children[3].innerHTML = myExpenses[i].date;
+        if (myProperties[i].date == ""){
+            formClone.children[1].children[3].innerHTML = "N/A";
+        }
+        else{
+            let formattedDate = getDate(myProperties[i].date)
+            formClone.children[1].children[3].innerHTML = formattedDate;
+        }
         formClone.children[2].children[1].innerHTML = myExpenses[i].notes;
         formClone.style.display = "block";
         formClone.classList.remove('hiddenLi');
         // append it to the ul
         document.getElementById('formattedExpensesList').appendChild(formClone);
-    }   
-}
-
-
-function getDate(date){
-    if (date == undefined){
-        return date;
-    }
-    else{
-        let myMonthText = "";
-        let myYear = date.substring(0,4);
-        let myMonth = parseInt(date.substring(5,7));
-        switch(myMonth){
-            case 1:
-                myMonthText = "January";
-                break;
-            case 2:
-                myMonthText = "February";
-                break;
-            case 3:
-                myMonthText = "March";
-                break;
-            case 4:
-                myMonthText = "April";
-                break;
-            case 5:
-                myMonthText = "May";
-                break;
-            case 6:
-                myMonthText = "June";
-                break;
-            case 7:
-                myMonthText = "July";
-                break;
-            case 8:
-                myMonthText = "August";
-                break;
-            case 9:
-                myMonthText = "September";
-                break;
-            case 10:
-                myMonthText = "October";
-                break;
-            case 11:
-                myMonthText = "November";
-                break;
-            case 12:
-                myMonthText = "December";
-        }
-        let myDay = date.substring(8,10);
-        let myFormattedDate = myMonthText + " " + myDay + ", " + myYear;
-        return myFormattedDate;
     }   
 }
 

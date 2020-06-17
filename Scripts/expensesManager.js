@@ -1,22 +1,21 @@
-let myContacts = [];
-if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != undefined) {
-    let startingContactsJSONString = localStorage.getItem("contacts");
-    myContacts = JSON.parse(startingContactsJSONString);
-    createOptionsContacts();
-}
+// loadData.js automatically runs as the page is loaded.
 
-let myExpenses = [];
-if (localStorage["expenses"] != undefined  && localStorage["expenses"][0] != undefined) {
-    let startingExpensesJSONString = localStorage.getItem("expenses");
-    myExpenses = JSON.parse(startingExpensesJSONString);
-    createExpensesList(myExpenses);
-}
+let currentExpense = {};
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnAddExpense').addEventListener('click', addExpense);
     document.getElementById('btnSaveExpense').addEventListener('click', saveExpense);
     document.getElementById('btnDeleteExpense').addEventListener('click', deleteExpense);
+// loading data from localstorage
+    myContacts = loadData('contacts');
+    myProperties = loadData('properties');
+    myGoods = loadData('goods');
+    myExpenses = loadData('expenses');
+// adding up overall totals
     getTotalExpenses();
+// creating options and lists
+    createOptionsContacts();
+    createExpensesList();
 });
 
 function getTotalExpenses(){
@@ -24,7 +23,8 @@ function getTotalExpenses(){
     for (i = 0; i < myExpenses.length; i++){
         myTotal += parseInt(myExpenses[i].amount);
     }
-    document.getElementById('totalExpenses').innerHTML = "$" + myTotal;
+    myTotal = formatCurrency(myTotal);
+    document.getElementById('totalExpenses').innerHTML = myTotal;
 }
 
 function createOptionsContacts(){
@@ -70,7 +70,7 @@ function createExpensesList(){
 
 function addExpense(){
     event.preventDefault();
-    let currentExpense = {
+    currentExpense = {
         name: this.parentNode.expenseName.value,
         payableTo: this.parentNode.expensePayableTo2.value,
         amount: this.parentNode.expenseAmount.value,
@@ -109,6 +109,7 @@ function saveExpense(){
 
     // update localStorage version
     updateExpenses();
+    getTotalExpenses();
     
     sortDisplay();
 }

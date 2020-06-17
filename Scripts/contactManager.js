@@ -1,19 +1,15 @@
-// myContacts is an array of objects.
-// currentContact is an object that contains a contact's information.
-// initially, we're creating these objects and prepopulating myContacts.
-let myContacts = [];
-if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != undefined) {
-    let startingContactsJSONString = localStorage.getItem("contacts");
-    myContacts = JSON.parse(startingContactsJSONString);
-    createContactsList(myContacts)
-}
+// loadData.js automatically runs as the page is loaded.
+
 let currentContact = {};
 
-// setting this event listener for when the Save Contact button is clicked.
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnAddContact').addEventListener('click', addContact);
     document.getElementById('btnSaveContact').addEventListener('click', saveContact);
     document.getElementById('btnDeleteContact').addEventListener('click', deleteContact);
+// loading data from Local Storage
+    myContacts = loadData('contacts');
+// creating list
+    createContactsList(myContacts);
 });
 
 

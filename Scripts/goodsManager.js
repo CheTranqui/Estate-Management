@@ -1,18 +1,6 @@
-// myGoods is an array of objects.
-// currentGoods is an object that contains a goods's information.
-// initially, we're creating these objects and prepopulating myGoods.
-let myGoods = [];
-if (localStorage["goods"] != undefined  && localStorage["goods"][0] != undefined) {
-    let startingGoodsJSONString = localStorage.getItem("goods");
-    myGoods = JSON.parse(startingGoodsJSONString);
-}
-let currentGoods = {};
+// loadData.js automatically runs as the page is loaded.
 
-let myProperties = [];
-if (localStorage["properties"] != undefined  && localStorage["properties"][0] != undefined) {
-    let startingPropertiesJSONString = localStorage.getItem("properties");
-    myProperties = JSON.parse(startingPropertiesJSONString);
-}
+let currentGoods = {};
 
 // setting this event listener for when the Save goods button is clicked.
     document.addEventListener('DOMContentLoaded', () => {
@@ -20,6 +8,10 @@ if (localStorage["properties"] != undefined  && localStorage["properties"][0] !=
     document.getElementById('btnSaveGoods').addEventListener('click', saveGoods);
     document.getElementById('btnDeleteGoods').addEventListener('click', deleteGoods);
     document.getElementById('btnAddGoodsCollapser').addEventListener('click', collapseForm);
+// Loading the relevant data from LocalStorage
+    myGoods = loadData('goods');
+    myProperties = loadData('properties');
+// Generating options & list of goods
     createPropertyOptions();
     createGoodsList(myGoods);
 });

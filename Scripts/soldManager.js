@@ -1,30 +1,21 @@
-let myGoods = [];
-if (localStorage["goods"] != undefined && localStorage["goods"][0] != undefined){
-    let startingGoodsJSONString = localStorage.getItem("goods");
-    myGoods = JSON.parse(startingGoodsJSONString);
-}
-
-let myProperties = [];
-if (localStorage["properties"] != undefined && localStorage["goods"][0] != undefined){
-    let startingPropertiesJSONString = localStorage.getItem("properties");
-    myProperties = JSON.parse(startingPropertiesJSONString);
-}
-
-let myContacts = [];
-if (localStorage["contacts"] != undefined  && localStorage["contacts"][0] != undefined) {
-    let startingContactsJSONString = localStorage.getItem("contacts");
-    myContacts = JSON.parse(startingContactsJSONString);
-}
+// loadData.js automatically runs as the page is loaded.
 
 document.addEventListener('DOMContentLoaded', () => {
+// Load data from localStorage
+    myContacts = loadData('contacts');
+    myGoods = loadData('goods');
+    myProperties = loadData('properties');
+
+// Get values
     getPropertyValue();
     getGoodsValue();
-    createSoldList("Props");
-    createSoldList("Goods");
+// create lists
+    createSoldList("properties");
+    createSoldList("goods");
 });
 
 function createSoldList(Type){
-    if (Type == "Props"){
+    if (Type == "properties"){
         for (let i = 0; i < myProperties.length; i++){
             if (myProperties[i].status == "Sold"){
                 let formClone = document.getElementById('soldPropertiesListItem').cloneNode(true);
@@ -38,7 +29,7 @@ function createSoldList(Type){
                     formClone.children[3].innerHTML = myContactId;
                 }
                 else{
-                    formClone.children[3].href = "contacts.html#displayContact" + myContactId.toString();
+                    formClone.children[3].href = "contacts.html#contactDisplay" + myContactId.toString();
                     formClone.children[3].innerHTML = myContacts[myContactId].name;    
                 }
                 formClone.children[4].children[0].innerHTML = getDate(myProperties[i].date);
@@ -48,7 +39,7 @@ function createSoldList(Type){
             }
         }
     }
-    if (Type == "Goods"){
+    if (Type == "goods"){
         for (let i = 0; i < myGoods.length; i++){
             if (myGoods[i].sold){
                 let formClone = document.getElementById('soldPropertiesListItem').cloneNode(true);
@@ -62,7 +53,7 @@ function createSoldList(Type){
                     formClone.children[3].innerHTML = myContactId;    
                 }
                 else{
-                    formClone.children[3].href = "contacts.html#displayContact" + myContactId.toString();
+                    formClone.children[3].href = "contacts.html#contactDisplay" + myContactId.toString();
                     formClone.children[3].innerHTML = myContacts[myContactId].name;    
                 }
                 formClone.children[4].children[0].innerHTML = getDate(myGoods[i].date);
@@ -94,6 +85,7 @@ function getPropertyValue(){
         myTotal += parseInt(myProperties[i].offer);
             }
         }
+    myTotal = formatCurrency(myTotal);
     updateValue("properties", myTotal);
 }
 
@@ -104,6 +96,7 @@ function getGoodsValue(){
         myTotal += parseInt(myGoods[i].offer);
         }
     }
+    myTotal = formatCurrency(myTotal);
     updateValue("goods", myTotal);
 }
 
@@ -115,57 +108,5 @@ function updateValue(type, mytotal){
     else if (type == "properties"){
         myElement = document.getElementById('soldPropertyValue');
     }
-    myElement.innerHTML = "$" + mytotal.toString();
-}
-
-function getDate(date){
-    if (date == undefined){
-        return date;
-    }
-    else{
-        let myMonthText = "";
-        let myYear = date.substring(0,4);
-        let myMonth = parseInt(date.substring(5,7));
-        switch(myMonth){
-            case 1:
-                myMonthText = "January";
-                break;
-            case 2:
-                myMonthText = "February";
-                break;
-            case 3:
-                myMonthText = "March";
-                break;
-            case 4:
-                myMonthText = "April";
-                break;
-            case 5:
-                myMonthText = "May";
-                break;
-            case 6:
-                myMonthText = "June";
-                break;
-            case 7:
-                myMonthText = "July";
-                break;
-            case 8:
-                myMonthText = "August";
-                break;
-            case 9:
-                myMonthText = "September";
-                break;
-            case 10:
-                myMonthText = "October";
-                break;
-            case 11:
-                myMonthText = "November";
-                break;
-            case 12:
-                myMonthText = "December";
-        }
-        let myDay = date.substring(8,10);
-        let myFormattedDate = myMonthText + " " + myDay + ", " + myYear;
-        return myFormattedDate;
-    }
-    
+    myElement.innerHTML = mytotal;
 }
