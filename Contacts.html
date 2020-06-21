@@ -2,10 +2,10 @@
 <link rel="stylesheet" type="text/css" media="all" href="Style.css" />
 
 <head>
-    <title>Estate Management Home Edition (v0.4)</title>
+    <title>Estate Mgmt (v0.5)</title>
 </head>
 
-<body>
+<body id="top">
 
 <nav>
     <ul class="ulNav"> 
@@ -113,6 +113,9 @@
     <!-- it duplicates this first form and loads the information -->
     <h1>
         Current Contacts:
+        <span class="rightCount" id="contactCount">
+            Number of Contacts
+        </span>
     </h1>
     <ul class="contactDisplayList" id="contactDisplayList">
         <li class="contactDisplayItem" id="contactDisplayItem">
@@ -160,10 +163,15 @@
     </ul>
 
 </section>
-<br>
+</body>
+<footer>
+    <a href=#top>
+        Back to top
+    </a>
+</footer>
 
 <script type="text/javascript" src="Scripts/Utilities/loadData.js"></script>
 <script type="text/javascript" src="Scripts/Utilities/format.js"></script>
 <script type="text/javascript" src="Scripts/contactManager.js"></script>
 
-</body>
+</html>

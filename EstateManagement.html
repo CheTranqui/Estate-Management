@@ -2,10 +2,10 @@
 <link rel="stylesheet" type="text/css" media="all" href="Style.css" />
 
 <head>
-    <title>Estate Management Home Edition (v0.4)</title>
+    <title>Estate Mgmt (v0.5)</title>
 </head>
 
-<body>
+<body id="top">
 
 <nav>
     <ul class="ulNav"> 
@@ -61,7 +61,7 @@
     </ul>
 </nav>
 
-<h1>
+<h1 class="toDoListTitle">
     To Do List:
 </h1>
 
@@ -107,28 +107,72 @@
     </ol>
     
 </section>
-<section class="contactSummary">
-    <h1>
-        Contacts:
-    </h1>
-    <li class="contactSummary" id="contactSummaryItem">
-        <form class="contactSummaryForm" id="contactSummaryForm">
-            <a href=contactLink id="link" name="link">
-                text
-            </a>
-            <label id="phone" name="phone">
-            Phone: number
-            </label>
-        </form>
-    </li>
-    <ul class="contactSummaryList" id="contactSummaryList">
-        <!-- update list via Javascript -->
-    </ul>
+<section class="summarySection">
+    <div class="contactSummaryWrapper">
+        <h1>
+            Contacts:
+        </h1>
+        <li class="contactSummary" id="contactSummaryItem">
+            <form class="contactSummaryForm" id="contactSummaryForm">
+                <a href=contactLink id="link" name="link">
+                    text
+                </a>
+                <label id="phone" name="phone">
+                Phone: number
+                </label>
+            </form>
+        </li>
+        <ul class="contactSummaryList" id="contactSummaryList">
+            <!-- update list via Javascript -->
+        </ul>
+    </div>
+    <div class="overallSummary">
+        <h1>
+            Financials:
+        </h1>
+        <p class="overallSummarySold">
+            Sold Properties:
+            <span class="overallSummaryItem" id="overallSummarySoldProperties">
+
+            </span>
+        </p>
+        <p class="overallSummarySold">
+            Sold Goods:
+            <span class="overallSummaryItem" id="overallSummarySoldGoods">
+                
+            </span>
+        </p>
+        <p id="overallSummaryTotalTop">
+            Total Sold:
+            <span class="overallSummaryItem" id="overallSummarySoldTotal">
+                
+            </span>
+        </p>
+        <p id="overallSummaryTotalBottom">
+            Total Expenses:
+            <span class="overallSummaryItem" id="overallSummaryExpensesTotal">
+                
+            </span>
+        </p>
+        <hr>
+        <p id="currentBalance">
+            Current Balance:
+            <span class="overallSummaryItem" id="overallSummaryBalance">
+                
+            </span>
+        </p>
+    </div>
 </section>
-<br>
+</body>
+
+<footer>
+    <a href=#top>
+        Back to top
+    </a>
+</footer>
 
 <script type="text/javascript" src="Scripts/Utilities/loadData.js"></script>
 <script type="text/javascript" src="Scripts/Utilities/format.js"></script>
 <script type="text/javascript" src="Scripts/taskManager.js"></script>
 
-</body>
+</html>

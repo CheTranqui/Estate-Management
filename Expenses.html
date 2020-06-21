@@ -2,10 +2,10 @@
 <link rel="stylesheet" type="text/css" media="all" href="Style.css" />
 <html lang="en">
 <head>
-    <title>Estate Management Home Edition (v0.4)</title>
+    <title>Estate Mgmt (v0.5)</title>
 </head>
 
-<body>
+<body id="top">
 
 <nav>
     <ul class="ulNav"> 
@@ -61,7 +61,7 @@
     </ul>
 </nav>
 
-<main class="contentContainer">
+<main class="contentContainer expensesContainer">
 <body>
     <aside class="expenseSummary">
         <h1 class="expenseSummaryP" id="expenseSummaryP">
@@ -92,9 +92,13 @@
                     Amount: $
                 </label>
                 <input type="number" class="inputBox expenseAmount" id="expenseAmount">
-                <label class="expenseDateLabel" id="expenseDateLabel" for="expenseDate">
-                    Paid On:
+                <!-- <label class="expenseDateLabel" id="expenseDateLabel" for="expenseDate"> -->
+                <label class="switch" id="expensePaidLabel">
+                    <input type="checkbox" class="expensePaid" id="expensePaidToggle">
+                    <span class="slider round"></span>
+                    <span id="paidOnText">Pay On:</span>
                 </label>
+                <!-- </label> -->
                 <input type="date" class="inputBox expenseDate" id="expenseDate">
                 <br>
                 <label class="expenseNotesLabel" for="expenseNotes">
@@ -104,11 +108,11 @@
                 <br>
                 <button class="btn" type="Submit" id="btnAddExpense">
                     Save New Expense
-                </button>
+                </button>            
             </form>
         </li>
     </section>
-    <h1 class="expensesH1">
+    <h1 class="listH1 expensesH1">
         Expenses:
     </h1>
     <li class="expensesDisplayItem" id="expensesDisplayItem">
@@ -121,15 +125,17 @@
                 Payable To:
             </label>
             <select class="inputBox expensePayableTo" id="expensePayableTo">
-                <option id="selectContact">(Select Contact)</option>
+                <option id="selectContact">Select Contact</option>
             </select>
             <br>
             <label class="expenseAmountLabel" id="expenseAmountLabel" for="expenseAmount">
                 Amount: $
             </label>
             <input type="number" class="inputBox expenseAmount" id="expenseAmount">
-            <label class="expenseDateLabel" id="expenseDateLabel" for="expenseDate">
-                Paid On:
+            <label class="switch" id="expensePaidLabel">
+                <input type="checkbox" class="expensePaid" id="expensePaidToggle">
+                <span class="slider round"></span>
+                <span id="paidOnText">Pay On:</span>
             </label>
             <input type="date" class="inputBox expenseDate" id="expenseDate">
             <br>
@@ -151,7 +157,12 @@
     </ul>
 </body>
 </main>
-</body>
+
+<footer>
+    <a href=#top>
+        Back to top
+    </a>
+</footer>
 
 <script type="text/javascript" src="Scripts/Utilities/loadData.js"></script>
 <script type="text/javascript" src="Scripts/Utilities/format.js"></script>

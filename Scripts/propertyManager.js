@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     myContacts = loadData('contacts');
     myProperties = loadData('properties');
 // generate options and list
+    countArrayLength(myProperties, 'propertyCount');
     getBuyerOptions();
     createPropertiesList(myProperties)
 });
@@ -35,13 +36,13 @@ function createNewOption(i){
 }
 
     // allows for a button marked with class 'collapsible'
-// to collapse/uncollapse immediate siblings if content is initially hidden in CSS.
+    // to collapse/uncollapse immediate siblings if content is initially hidden in CSS.
 function collapseForm() {
-    if (this.nextElementSibling.nextElementSibling.style.display === "block" && this.nextElementSibling.nextElementSibling.id == "propertyForm") {
-        this.nextElementSibling.nextElementSibling.style.display = "none";
+    if (this.nextElementSibling.style.display === "block" && this.nextElementSibling.id == "propertyForm") {
+        this.nextElementSibling.style.display = "none";
     }
-    else if (this.nextElementSibling.nextElementSibling.id == "propertyForm"){
-        this.nextElementSibling.nextElementSibling.style.display = "block";
+    else if (this.nextElementSibling.id == "propertyForm"){
+        this.nextElementSibling.style.display = "block";
     }
 };
 
@@ -73,6 +74,7 @@ function addProperty() {
     
     // updating/replacing the localStorage version.
     updateProperties();
+    countArrayLength(myProperties, 'propertyCount');
    
     deleteDisplayList(-1);
     createPropertiesList(myProperties);
@@ -149,6 +151,7 @@ function deleteProperty(){
     
     // update localStorage
     updateProperties();
+    countArrayLength(myProperties, 'propertyCount');
 
     // recreate property list
     deleteDisplayList(1);

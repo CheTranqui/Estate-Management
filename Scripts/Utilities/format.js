@@ -68,3 +68,35 @@ function formatCurrency(number){
     }
     return "$"+myFormattedCurrency;
 }
+
+function countArrayLength(array, element){
+    document.getElementById(element).innerHTML = "Total: " + array.length;
+}
+
+function getPropertyValue(){
+    let myTotal = 0;
+    for (let i = 0; i < myProperties.length; i++){
+        if (myProperties[i].status == "Sold" && myProperties[i].offer != ""){
+        myTotal += parseInt(myProperties[i].offer);
+            }
+        }
+    return myTotal;
+}
+
+function getGoodsValue(){
+    let myTotal = 0;
+    for (let i = 0; i < myGoods.length; i++){
+        if (myGoods[i].sold == true && myGoods[i].offer > 0){
+        myTotal += parseInt(myGoods[i].offer);
+        }
+    }
+    return myTotal;
+}
+
+function getTotalExpenses(){
+    let myTotal = 0;
+    for (i = 0; i < myExpenses.length; i++){
+        myTotal += parseInt(myExpenses[i].amount);
+    }
+    return myTotal;
+}

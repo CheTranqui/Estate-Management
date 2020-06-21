@@ -7,8 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     myProperties = loadData('properties');
 
 // Get values
-    getPropertyValue();
-    getGoodsValue();
+    myTotal = getPropertyValue();
+    updateValue("properties", myTotal);
+    
+    myTotal = getGoodsValue();
+    updateValue("goods", myTotal);
+
 // create lists
     createSoldList("properties");
     createSoldList("goods");
@@ -23,7 +27,7 @@ function createSoldList(Type){
                 formClone.id = currentId;
                 formClone.children[1].href = "properties.html#propertyId" + i.toString();
                 formClone.children[1].innerHTML = myProperties[i].name;
-                let myContactId = getContactId(myProperties[i])
+                let myContactId = getContactId(myProperties[i], "properties")
                 if (myContactId == "none declared"){
                     formClone.children[3].href="properties.html";
                     formClone.children[3].innerHTML = myContactId;
@@ -47,7 +51,7 @@ function createSoldList(Type){
                 formClone.id = currentId;
                 formClone.children[1].href = "goods.html#goodsId" + i.toString();
                 formClone.children[1].innerHTML = myGoods[i].name;
-                let myContactId = getContactId(myGoods[i]);
+                let myContactId = getContactId(myGoods[i], "goods");
                 if (myContactId == "none declared"){
                     formClone.children[3].href="goods.html";
                     formClone.children[3].innerHTML = myContactId;    
@@ -56,8 +60,8 @@ function createSoldList(Type){
                     formClone.children[3].href = "contacts.html#contactDisplay" + myContactId.toString();
                     formClone.children[3].innerHTML = myContacts[myContactId].name;    
                 }
-                formClone.children[4].children[0].innerHTML = getDate(myGoods[i].date);
-                formClone.children[4].children[2].innerHTML = myGoods[i].offer;
+                formClone.children[4].innerHTML = "Sold for: " + formatCurrency(myGoods[i].offer);
+                // formClone.children[4].children[2].innerHTML = myGoods[i].offer;
                 formClone.style.display = "list-item";
                 document.getElementById('soldGoodsList').appendChild(formClone);
             }
@@ -65,10 +69,22 @@ function createSoldList(Type){
     }
 }
 
-function getContactId(object){
-    if (object.buyer != undefined && object.buyer != "selectContact"){
+function getContactId(object, string){
+    if (string == "properties"){
+        myBuyer = object.buyer;
+    }
+    else{
+        myBuyer = object.soldTo;
+    }
+    if (myBuyer != undefined
+        && myBuyer != null
+        && myBuyer != "selectContact"
+        && myBuyer != "Select Contact"
+        && myBuyer != "(Select Contact)"
+        && myBuyer != "none"
+        && myBuyer != ""){
         for (let j = 0; j < myContacts.length; j++){
-            if (myContacts[j].name == object.buyer){
+            if (myContacts[j].name == myBuyer){
                 return j;
             }
         }
@@ -76,28 +92,6 @@ function getContactId(object){
     else{
         return "none declared";
     }
-}
-
-function getPropertyValue(){
-    let myTotal = 0;
-    for (let i = 0; i < myProperties.length; i++){
-        if (myProperties[i].status == "Sold" && myProperties[i].offer != ""){
-        myTotal += parseInt(myProperties[i].offer);
-            }
-        }
-    myTotal = formatCurrency(myTotal);
-    updateValue("properties", myTotal);
-}
-
-function getGoodsValue(){
-    let myTotal = 0;
-    for (let i = 0; i < myGoods.length; i++){
-        if (myGoods[i].sold == true && myGoods[i].offer > 0){
-        myTotal += parseInt(myGoods[i].offer);
-        }
-    }
-    myTotal = formatCurrency(myTotal);
-    updateValue("goods", myTotal);
 }
 
 function updateValue(type, mytotal){
@@ -108,5 +102,5 @@ function updateValue(type, mytotal){
     else if (type == "properties"){
         myElement = document.getElementById('soldPropertyValue');
     }
-    myElement.innerHTML = mytotal;
+    myElement.innerHTML = formatCurrency(myTotal);
 }

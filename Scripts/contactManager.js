@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // loading data from Local Storage
     myContacts = loadData('contacts');
 // creating list
+    countArrayLength(myContacts, "contactCount");
     createContactsList(myContacts);
 });
 
@@ -34,6 +35,7 @@ function addContact() {
     
     // updating/replacing the localStorage version.
     updateContacts();
+    countArrayLength(myContacts, "contactCount");
 
     // delete displayed list, sort it and recreate it:
     deleteDisplayList(-1);
@@ -120,7 +122,8 @@ function deleteContact(){
     myContacts.splice(myContactId, 1);
     
     // update localStorage
-    updateContacts();    
+    updateContacts();
+    countArrayLength(myContacts, "contactCount");
 
     //recreate contacts list
     deleteDisplayList(1);

@@ -10,9 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // loadData from LocalStorage
     myTasks = loadData('tasks');
     myContacts = loadData('contacts');
+    myProperties = loadData('properties');
+    myGoods = loadData('goods');
+    myExpenses = loadData('expenses');
 // create list
     createTaskList(myTasks);
     createContactsSummary(myContacts);
+    getFinancials();
 });
 
 
@@ -192,4 +196,28 @@ function createContactsSummary(){
 
         document.getElementById('contactSummaryList').appendChild(formClone);
     }
+}
+
+// acquires totals from format.js
+// sets html Id to that value for each item
+function getFinancials(){
+    let propertyValue = getPropertyValue();
+    setTotal('overallSummarySoldProperties', formatCurrency(propertyValue));
+
+    let goodsValue = getGoodsValue();
+    setTotal('overallSummarySoldGoods', formatCurrency(goodsValue));
+
+    let soldTotal = propertyValue + goodsValue;
+    let formattedSoldTotal = formatCurrency(soldTotal);
+    setTotal('overallSummarySoldTotal', formattedSoldTotal);
+
+    let expensesValue = getTotalExpenses();
+    setTotal('overallSummaryExpensesTotal', formatCurrency(expensesValue));
+
+    let balance = (soldTotal - expensesValue);
+    setTotal('overallSummaryBalance', formatCurrency(balance));
+}
+
+function setTotal(element, qty){
+    document.getElementById(element).innerHTML = qty;
 }

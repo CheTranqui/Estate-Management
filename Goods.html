@@ -2,10 +2,10 @@
 <link rel="stylesheet" type="text/css" media="all" href="Style.css" />
 
 <head>
-    <title>Estate Management Home Edition (v0.4)</title>
+    <title>Estate Mgmt (v0.5)</title>
 </head>
 
-<body>
+<body id="top">
 
 <nav>
     <ul class="ulNav"> 
@@ -96,13 +96,15 @@
     <!-- When Submit is hit, I want it to send the data to the JS script, clear the form, and minimize the form.-->
 </form>
 </section>
-<br>
 
 <section class="goodsDisplay" id="goodsDisplay">
     <!-- using Javascript to build these forms of contacts -->
     <!-- it duplicates this first form and loads the information -->
-    <h1>
+    <h1 class="listH1">
         Current Goods:
+        <span class="rightCount" id="goodsCount">
+            Number of Goods
+        </span>
     </h1>
     <li class="goodsDisplayItem" id="goodsDisplayItem">
         <form class="goodsDisplayForm" id="goodsDisplayForm" action="goodsManager.js" method="POST">
@@ -137,17 +139,28 @@
             </button>
             <label class="goodsSoldLabel" for="goodsSold">Sold?</label>
             <input type="checkbox" class="goodsSoldCheckbox" name="goodsSold" id="goodsSold">
+            <label class="goodsSoldToLabel" id="goodsSoldToLabel" for="goodsSoldTo">To:</label>
+            <select class="goodsSoldTo" name="goodsSoldTo" id="goodsSoldTo">
+                <option>Select Contact</option>
+                <!-- options set in JavaScript createSoldToOptions() -->
+            </select>
             <br>
         </form>
     </li>
     <ul class="goodsDisplayList" id="goodsDisplayList">
         <!-- populated via Javascript form clones -->
     </ul>
-
 </section>
+</body>
+
+<footer>
+    <a href=#top>
+        Back to top
+    </a>
+</footer>
 
 <script type="text/javascript" src="Scripts/Utilities/loadData.js"></script>
 <script type="text/javascript" src="Scripts/Utilities/format.js"></script>
 <script type="text/javascript" src="Scripts/goodsManager.js"></script>
 
-</body>
+</html>

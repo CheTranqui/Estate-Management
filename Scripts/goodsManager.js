@@ -3,7 +3,7 @@
 let currentGoods = {};
 
 // setting this event listener for when the Save goods button is clicked.
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnAddGoods').addEventListener('click', addGoods);
     document.getElementById('btnSaveGoods').addEventListener('click', saveGoods);
     document.getElementById('btnDeleteGoods').addEventListener('click', deleteGoods);
@@ -11,8 +11,11 @@ let currentGoods = {};
 // Loading the relevant data from LocalStorage
     myGoods = loadData('goods');
     myProperties = loadData('properties');
+    myContacts = loadData('contacts');
 // Generating options & list of goods
+    countArrayLength(myGoods, 'goodsCount');
     createPropertyOptions();
+    createSoldToOptions();
     createGoodsList(myGoods);
 });
 
@@ -39,6 +42,7 @@ function addGoods() {
     
     // updating/replacing the localStorage version.
     updateGoods();
+    countArrayLength(myGoods, 'goodsCount');
    
     deleteDisplayList(-1);
     createGoodsList(myGoods);
@@ -76,15 +80,30 @@ function createGoodsList(array) {
         let goodsFormId = 'goodsDisplay' + i.toString();
         formClone.id = goodsFormId;
     // update its fields according to its Id
-        formClone.firstChild.nextElementSibling.goodsName.value = myGoods[i].name;
-        formClone.firstChild.nextElementSibling.goodsProperty.value = myGoods[i].property;
-        formClone.firstChild.nextElementSibling.goodsValue.value = myGoods[i].value;
-        formClone.firstChild.nextElementSibling.goodsOffer.value = myGoods[i].offer;
-        formClone.firstChild.nextElementSibling.goodsAddress.value = myGoods[i].address;
-        formClone.firstChild.nextElementSibling.goodsNotes.value = myGoods[i].notes;
-        formClone.firstChild.nextElementSibling.goodsSold.checked = myGoods[i].sold;
-        formClone.firstElementChild[6].addEventListener('click', saveGoods);
-        formClone.firstElementChild[7].addEventListener('click', deleteGoods);
+        formClone.children[0].goodsName.value = myGoods[i].name;
+        formClone.children[0].goodsProperty.value = myGoods[i].property;
+        formClone.children[0].goodsValue.value = myGoods[i].value;
+        formClone.children[0].goodsOffer.value = myGoods[i].offer;
+        formClone.children[0].goodsAddress.value = myGoods[i].address;
+        formClone.children[0].goodsNotes.value = myGoods[i].notes;
+        formClone.children[0].goodsSold.checked = myGoods[i].sold;
+        if (!myGoods[i].soldTo){
+            myGoods[i].soldTo = "Select Contact";
+        }
+        formClone.children[0].goodsSoldTo.value = myGoods[i].soldTo;
+        formClone.children[0].children[16].addEventListener('click', saveGoods);
+        formClone.children[0].children[17].addEventListener('click', deleteGoods);
+        formClone.children[0].goodsSold.addEventListener('change', toggleBuyer);
+        if (formClone.children[0].goodsSold.checked){
+            // show Sold To label and dropdown
+            formClone.children[0].children[20].style.display = "inline-block";
+            formClone.children[0].goodsSoldTo.style.display = "inline-block";
+        }
+        else{
+            formClone.children[0].children[20].style.display = "none";
+            formClone.children[0].goodsSoldTo.style.display = "none";
+        }
+        formClone.children[0].children
         formClone.style.display = "block";
     // append it to the ul
         document.getElementById('goodsDisplayList').appendChild(formClone);
@@ -136,6 +155,7 @@ function saveGoods(){
     myGoods[myGoodsId].address = this.parentNode.goodsAddress.value;
     myGoods[myGoodsId].notes = this.parentNode.goodsNotes.value;
     myGoods[myGoodsId].sold = this.parentNode.goodsSold.checked;
+    myGoods[myGoodsId].soldTo = this.parentNode.goodsSoldTo.value;
 
     // update localStorage version
     updateGoods();
@@ -156,6 +176,7 @@ function deleteGoods(){
 
     // update localStorage
     updateGoods();
+    countArrayLength(myGoods, 'goodsCount');
 
     // recreate goods list
     deleteDisplayList(1);
@@ -172,19 +193,38 @@ function deleteDisplayList(adjustment){
 
 function createPropertyOptions(){
     for (i = 0; i < myProperties.length; i++){
-        let newOption = createNewOption(i);
+        let newOption = createNewOption(i, myProperties, "property");
         document.getElementById('formNewGoods').children[3].appendChild(newOption);
 
-        let newOption2 = createNewOption(i);
+        let newOption2 = createNewOption(i, myProperties, "property");
         document.getElementById('goodsDisplayForm').children[3].appendChild(newOption2);
     }
 }
 
-function createNewOption(id){
+function createSoldToOptions(){
+    for (i = 0; i < myContacts.length; i++){
+        let newOption = createNewOption(i, myContacts, "contacts");
+        document.getElementById('goodsDisplayForm').children[21].appendChild(newOption);
+    }
+}
+
+function createNewOption(id, array, string){
     let newOption = document.createElement('option');
-    newOption.id = "option" + i.toString();
-    newOption.value = myProperties[id].name;
-    newOption.appendChild(document.createTextNode(myProperties[id].name));
+    let upperCaseLetter = string.charAt(0).toUpperCase();
+    let newString = upperCaseLetter + string.slice(1);
+    newOption.id = "option" + newString + i.toString();
+    newOption.value = array[id].name;
+    newOption.appendChild(document.createTextNode(array[id].name));
     return newOption;
 }
 
+function toggleBuyer(){
+    if (this.checked){
+        this.parentNode.children[20].style.display = "inline-block";
+        this.parentNode.goodsSoldTo.style.display = "inline-block";
+    }
+    else{
+        this.parentNode.children[20].style.display = "none";
+        this.parentNode.goodsSoldTo.style.display = "none";
+    }
+}

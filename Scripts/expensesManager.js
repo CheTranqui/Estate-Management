@@ -6,26 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnAddExpense').addEventListener('click', addExpense);
     document.getElementById('btnSaveExpense').addEventListener('click', saveExpense);
     document.getElementById('btnDeleteExpense').addEventListener('click', deleteExpense);
+    document.getElementById('expensePaidToggle').addEventListener('click', togglePaid);
 // loading data from localstorage
     myContacts = loadData('contacts');
     myProperties = loadData('properties');
     myGoods = loadData('goods');
     myExpenses = loadData('expenses');
 // adding up overall totals
-    getTotalExpenses();
+    document.getElementById('totalExpenses').innerHTML = formatCurrency(getTotalExpenses());
 // creating options and lists
     createOptionsContacts();
     createExpensesList();
 });
-
-function getTotalExpenses(){
-    let myTotal = 0;
-    for (i = 0; i < myExpenses.length; i++){
-        myTotal += parseInt(myExpenses[i].amount);
-    }
-    myTotal = formatCurrency(myTotal);
-    document.getElementById('totalExpenses').innerHTML = myTotal;
-}
 
 function createOptionsContacts(){
     for (i = 0; i < myContacts.length; i++){
@@ -58,12 +50,20 @@ function createExpensesList(){
         formClone.children[0].expenseName.value = myExpenses[i].name;
         formClone.children[0].expensePayableTo.value = myExpenses[i].payableTo;
         formClone.children[0].expenseAmount.value = myExpenses[i].amount;
+        if (!myExpenses[i].paid){
+            myExpenses[i].paid = "Pay On:";
+        }
+        formClone.children[0].children[7].children[2].innerHTML = myExpenses[i].paid;
         formClone.children[0].expenseDate.value = myExpenses[i].date;
         formClone.children[0].expenseNotes.value = myExpenses[i].notes;
         formClone.children[0].children[13].addEventListener('click', saveExpense);
         formClone.children[0].children[14].addEventListener('click', deleteExpense);
+        formClone.children[0].children[7].children[2].addEventListener('click', togglePaid);
         formClone.style.display = "block";
         // append it to the ul
+        if (formClone.children[0].children[7].children[2].innerHTML == "Paid On:"){
+            formClone.children[0].children[7].children[1].style.background = "rgb(55, 59, 65)";
+        }
         document.getElementById('expensesDisplayList').appendChild(formClone);
     }   
 }
@@ -74,6 +74,7 @@ function addExpense(){
         name: this.parentNode.expenseName.value,
         payableTo: this.parentNode.expensePayableTo2.value,
         amount: this.parentNode.expenseAmount.value,
+        paid: this.parentNode.children[7].children[2].innerHTML,
         date: this.parentNode.expenseDate.value,
         notes: this.parentNode.expenseNotes.value,
     }
@@ -103,6 +104,7 @@ function saveExpense(){
     // search myGoods and overwrite entry with same name with entry's stuff.
     myExpenses[myExpenseId].name = this.parentNode.expenseName.value;
     myExpenses[myExpenseId].payableTo = this.parentNode.expensePayableTo.value;
+    myExpenses[myExpenseId].paid = this.parentNode.children[7].children[2].innerHTML;
     myExpenses[myExpenseId].amount = this.parentNode.expenseAmount.value;
     myExpenses[myExpenseId].date = this.parentNode.expenseDate.value;
     myExpenses[myExpenseId].notes = this.parentNode.expenseNotes.value;
@@ -179,4 +181,15 @@ function sortArray(array){
             return -1;
         }
     })
+}
+
+function togglePaid(){
+    if (this.parentNode.children[2].innerHTML == "Pay On:"){
+        this.parentNode.children[2].innerHTML = "Paid On:";
+        this.parentNode.children[1].style.background = "rgb(55, 59, 65)";
+    }
+    else{
+        this.parentNode.children[2].innerHTML = "Pay On:";
+        this.parentNode.children[1].style.background = "rgb(158, 18, 65)";
+    }
 }
