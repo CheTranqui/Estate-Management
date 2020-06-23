@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" media="all" href="Style.css" />
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" media="all" href="Style.css" />
     <title>Estate Mgmt (v0.5)</title>
 </head>
 
-<body>
+<body id="top">
 <nav>
     <ul class="ulNav"> 
         <li>
@@ -52,8 +52,8 @@
         </li>
         <li>
             <form class="navForm">
-                <button class="navBtn" id="tempTab" type="Submit">
-                    <a href="Print.html" target="_blank" style="color:rgb(55, 175, 245); text-decoration:none;">Print</a>
+                <button class="navBtn" id="tempTab" type="Submit" onclick="window.open('Print.html', '_blank')">
+                    Print
                 </button>
             </form>
         </li>
@@ -121,10 +121,15 @@
      
 
 </main>
-</body>
+
+<footer>
+    <a href=#top>
+        Back to top
+    </a>
+</footer>
 
 <script type="text/javascript" src="Scripts/Utilities/loadData.js"></script>
 <script type="text/javascript" src="Scripts/Utilities/format.js"></script>
 <script type="text/javascript" src="Scripts/soldManager.js"></script>
-
+</body>
 </html>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" media="all" href="Style.css" />
+<html lang="en">
 
 <head>
+<link rel="stylesheet" type="text/css" media="all" href="Style.css" />
+
     <title>Estate Mgmt (v0.5)</title>
 </head>
 
@@ -53,8 +55,8 @@
         </li>
         <li>
             <form class="navForm">
-                <button class="navBtn" id="tempTab" type="Submit">
-                    <a href="Print.html" target="_blank" style="color:rgb(55, 175, 245); text-decoration:none;">Print</a>
+                <button class="navBtn" id="tempTab" type="Submit" onclick="window.open('Print.html', '_blank')">
+                    Print
                 </button>
             </form>
         </li>
@@ -71,12 +73,12 @@
     </button>
     <form class="newTaskForm collapsible" id="newTaskForm">
         <textarea class="taskBox taskName" id="taskName" placeholder="New task"></textarea>
-        <select class="taskStatus" name="taskStatus" id="taskStatus">
+        <select class="taskStatus" id="taskStatus">
             <option>Pending</option>
             <option>Due</option>
             <option>Completed</option>
         </select>
-        <input class="taskBox taskDate" id="taskDate" type="date" margin="0.1em">
+        <input class="taskBox taskDate" id="taskDate" type="date">
         <button class="btn newTaskButton" id="btnAddTask" type="Submit">
             Add Task
         </button>
@@ -84,44 +86,47 @@
     </form>
 </section>
 <section class="taskListSection">
-    <li id="taskListHidden">
-        <form class="taskFormHidden">
-            <textarea class="taskBox taskName" id="taskName" placeholder="New task"></textarea>
-            <select class="taskStatus" name="taskStatus" id="taskStatus">
-                <option>Pending</option>
-                <option>Due</option>
-                <option>Completed</option>
-            </select>
-            <input class="taskBox taskDate" id="taskDate" type="date" margin="0.1em">
-            <button class="btn newTaskButton" id="btnSaveTask" type="Submit">
-                Save
-            </button>
-            <button class="btn newTaskButton" id="btnDeleteTask" type="button">
-                Delete
-            </button>
-        </form> 
-    </li>
+    <ul>
+        <li id="taskListHidden">
+            <form class="taskFormHidden">
+                <textarea class="taskBox taskName" id="taskName" placeholder="New task"></textarea>
+                <select class="taskStatus" id="taskStatus">
+                    <option>Pending</option>
+                    <option>Due</option>
+                    <option>Completed</option>
+                </select>
+                <input class="taskBox taskDate" id="taskDate" type="date">
+                <button class="btn newTaskButton" id="btnSaveTask" type="Submit">
+                    Save
+                </button>
+                <button class="btn newTaskButton" id="btnDeleteTask" type="button">
+                    Delete
+                </button>
+            </form> 
+        </li>
+    </ul>    
     <ol id="taskListDisplay">
         <!-- Need to create a new LI for each item on the Task List. Also make it iterate with both the newTask and the newTaskDate -->
         
     </ol>
-    
 </section>
 <section class="summarySection">
     <div class="contactSummaryWrapper">
         <h1>
             Contacts:
         </h1>
-        <li class="contactSummary" id="contactSummaryItem">
-            <form class="contactSummaryForm" id="contactSummaryForm">
-                <a href=contactLink id="link" name="link">
-                    text
-                </a>
-                <label id="phone" name="phone">
-                Phone: number
-                </label>
-            </form>
-        </li>
+        <ul>
+            <li class="contactSummary" id="contactSummaryItem">
+                <form class="contactSummaryForm" id="contactSummaryForm">
+                    <a href=contactLink id="link">
+                        text
+                    </a>
+                    <label id="phone">
+                    Phone: number
+                    </label>
+                </form>
+            </li>
+        </ul>
         <ul class="contactSummaryList" id="contactSummaryList">
             <!-- update list via Javascript -->
         </ul>
@@ -163,16 +168,13 @@
         </p>
     </div>
 </section>
-</body>
-
 <footer>
     <a href=#top>
         Back to top
     </a>
 </footer>
-
 <script type="text/javascript" src="Scripts/Utilities/loadData.js"></script>
 <script type="text/javascript" src="Scripts/Utilities/format.js"></script>
 <script type="text/javascript" src="Scripts/taskManager.js"></script>
-
+</body>
 </html>
