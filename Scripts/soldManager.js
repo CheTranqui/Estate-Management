@@ -37,7 +37,7 @@ function createSoldList(Type){
                     formClone.children[3].innerHTML = myContacts[myContactId].name;    
                 }
                 formClone.children[4].children[0].innerHTML = getDate(myProperties[i].date);
-                formClone.children[4].children[2].innerHTML = "$" + myProperties[i].offer;
+                formClone.children[4].children[2].innerHTML = formatCurrency(myProperties[i].offer);
                 formClone.style.display = "list-item";
                 document.getElementById('soldPropertiesList').appendChild(formClone);
             }
@@ -53,8 +53,7 @@ function createSoldList(Type){
                 formClone.children[1].innerHTML = myGoods[i].name;
                 let myContactId = getContactId(myGoods[i], "goods");
                 if (myContactId == "none declared"){
-                    formClone.children[3].href="goods.html";
-                    formClone.children[3].innerHTML = myContactId;    
+                    formClone.children[3].innerHTML = "no buyer declared"
                 }
                 else{
                     formClone.children[3].href = "contacts.html#contactDisplay" + myContactId.toString();

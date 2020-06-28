@@ -108,3 +108,8 @@ section{
 .secondaryLabel{
     margin-left: 1.2rem;
 }
+
+#formattedGoodsBuyer,
+.formattedGoodsBuyerLabel{
+    display: none;
+}

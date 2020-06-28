@@ -61,12 +61,17 @@ function formatCurrency(number){
         myCounter ++;
 
         if (myCounter > 0 && myCounter % 3 == 0){
-            if (myShrinkingCurrency.length > 0){
+            if (myShrinkingCurrency.length > 0 && myShrinkingCurrency !== "-"){
                 myFormattedCurrency = "," + myFormattedCurrency;
            }
         }
     }
-    return "$"+myFormattedCurrency;
+    if (myFormattedCurrency.substring(0,1) == "-"){
+        return "-$" +myFormattedCurrency.substring(1)
+    }
+    else{
+        return "$"+myFormattedCurrency;
+    }
 }
 
 function countArrayLength(array, element){

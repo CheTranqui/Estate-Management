@@ -78,11 +78,11 @@ function formatTasks(){
         // update its fields according to its Id
             formClone.children[0].children[0].innerHTML = myTasks[i].name;
             formClone.children[1].children[1].innerHTML = myTasks[i].status;
-            if (myProperties[i].date == ""){
+            if (myTasks[i].date == ""){
                 formClone.children[1].children[3].innerHTML = "N/A";
             }
             else{
-                let formattedDate = getDate(myProperties[i].date)
+                let formattedDate = getDate(myTasks[i].date)
                 formClone.children[1].children[3].innerHTML = formattedDate;
             }
         // append it to the ul
@@ -101,11 +101,11 @@ function formatContacts() {
         formClone.id = contactFormId;
     // update its fields according to its Id
         formClone.children[0].children[1].innerHTML = myContacts[i].name;
-        formClone.children[0].children[3].innerHTML = myContacts[i].role;
-        formClone.children[1].children[1].innerHTML = myContacts[i].phone;
-        formClone.children[1].children[3].innerHTML = myContacts[i].email;
-        formClone.children[2].children[1].innerHTML = myContacts[i].address;
-        formClone.children[3].children[1].innerHTML = myContacts[i].notes;
+        formClone.children[1].children[1].innerHTML = myContacts[i].role;
+        formClone.children[2].children[1].innerHTML = myContacts[i].phone;
+        formClone.children[3].children[1].innerHTML = myContacts[i].email;
+        formClone.children[4].children[1].innerHTML = myContacts[i].address;
+        formClone.children[5].children[1].innerHTML = myContacts[i].notes;
         formClone.style.display = "block";
         formClone.classList.remove('hiddenLi');
     // append it to the ul
@@ -123,33 +123,33 @@ function formatProperties() {
         // update its fields according to its Id
             formClone.children[0].children[1].innerHTML = myProperties[i].name;
             if (myProperties[i].buyer == undefined || myProperties[i].buyer == "selectContact"){
-                formClone.children[0].children[3].innerHTML = "N/A";
-            }
-            else{
-                formClone.children[0].children[3].innerHTML = myProperties[i].buyer;
-            }
-            if (myProperties[i].value == ""){
                 formClone.children[1].children[1].innerHTML = "N/A";
             }
             else{
-                formClone.children[1].children[1].innerHTML = "$" + myProperties[i].value;
+                formClone.children[1].children[1].innerHTML = myProperties[i].buyer;
             }
-            if (myProperties[i].offer == ""){
-                formClone.children[1].children[3].innerHTML = "N/A";
+            if (myProperties[i].value == ""){
+                formClone.children[2].children[1].innerHTML = "N/A";
             }
             else{
-                formClone.children[1].children[3].innerHTML = "$" + myProperties[i].offer;
+                formClone.children[2].children[1].innerHTML = formatCurrency(myProperties[i].value);
             }
-            formClone.children[2].children[1].innerHTML = myProperties[i].status;
-            if (myProperties[i].date == ""){
+            if (myProperties[i].offer == ""){
                 formClone.children[2].children[3].innerHTML = "N/A";
             }
             else{
-                let formattedDate = getDate(myProperties[i].date)
-                formClone.children[2].children[3].innerHTML = formattedDate;
+                formClone.children[2].children[3].innerHTML = formatCurrency(myProperties[i].offer);
             }
-            formClone.children[3].children[1].innerHTML = myProperties[i].address;
-            formClone.children[4].children[1].innerHTML = myProperties[i].notes;
+            formClone.children[3].children[1].innerHTML = myProperties[i].status;
+            if (myProperties[i].date == ""){
+                formClone.children[3].children[3].innerHTML = "N/A";
+            }
+            else{
+                let formattedDate = getDate(myProperties[i].date)
+                formClone.children[3].children[3].innerHTML = formattedDate;
+            }
+            formClone.children[4].children[1].innerHTML = myProperties[i].address;
+            formClone.children[5].children[1].innerHTML = myProperties[i].notes;
         // append it to the ul
             formClone.style.display = "block";
             formClone.classList.remove('hiddenLi');
@@ -165,17 +165,37 @@ function formattedGoods() {
         formClone.id = goodsFormId;
     // update its fields according to its Id
         formClone.children[0].children[1].innerHTML = myGoods[i].name;
-        formClone.children[0].children[3].innerHTML = myGoods[i].property;
-        formClone.children[1].children[1].innerHTML = myGoods[i].value;
-        formClone.children[1].children[3].innerHTML = myGoods[i].offer;
+        if (myGoods[i].property == "None"){
+            formClone.children[1].children[1].innerHTML = "N/A";
+        }else{
+            formClone.children[1].children[1].innerHTML = myGoods[i].property;
+        }
+        if (myGoods[i].value == 0){
+
+            formClone.children[2].children[1].innerHTML = "N/A";
+        }else{
+            formClone.children[2].children[1].innerHTML = formatCurrency(myGoods[i].value);
+        }
+        if (myGoods[i].offer == 0){
+            formClone.children[2].children[3].innerHTML = "N/A";
+        }else{
+            formClone.children[2].children[3].innerHTML = formatCurrency(myGoods[i].offer);
+        }
         if (myGoods[i].sold){
-            formClone.children[1].children[5].innerHTML = "Yes!";
+            formClone.children[3].children[1].innerHTML = "Yes!";
+            if (myGoods[i].soldTo == "Select Contact"){
+                formClone.children[3].children[3].innerHTML = "undeclared";
+            }else{
+                formClone.children[3].children[3].innerHTML = myGoods[i].soldTo;
+            }
+            formClone.children[3].children[2].style.display = "inline-block";
+            formClone.children[3].children[3].style.display = "inline-block";
         }
         else {
-            formClone.children[1].children[5].innerHTML = "Not yet..";
+            formClone.children[3].children[1].innerHTML = "Not yet..";
         }
-        formClone.children[2].children[1].innerHTML = myGoods[i].address;
-        formClone.children[3].children[1].innerHTML = myGoods[i].notes;
+        formClone.children[4].children[1].innerHTML = myGoods[i].address;
+        formClone.children[5].children[1].innerHTML = myGoods[i].notes;
         formClone.style.display = "block";
         formClone.classList.remove('hiddenLi');
     // append it to the ul
@@ -192,16 +212,16 @@ function formatExpenses(){
         formClone.id = expenseFormId;
         // update its fields according to its Id
         formClone.children[0].children[1].innerHTML = myExpenses[i].name;
-        formClone.children[0].children[3].innerHTML = myExpenses[i].payableTo;
-        formClone.children[1].children[1].innerHTML = myExpenses[i].amount;
+        formClone.children[1].children[1].innerHTML = myExpenses[i].payableTo;
+        formClone.children[2].children[1].innerHTML = formatCurrency(myExpenses[i].amount);
         if (myProperties[i].date == ""){
-            formClone.children[1].children[3].innerHTML = "N/A";
+            formClone.children[3].children[1].innerHTML = "N/A";
         }
         else{
             let formattedDate = getDate(myProperties[i].date)
-            formClone.children[1].children[3].innerHTML = formattedDate;
+            formClone.children[3].children[1].innerHTML = formattedDate;
         }
-        formClone.children[2].children[1].innerHTML = myExpenses[i].notes;
+        formClone.children[4].children[1].innerHTML = myExpenses[i].notes;
         formClone.style.display = "block";
         formClone.classList.remove('hiddenLi');
         // append it to the ul

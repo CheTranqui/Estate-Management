@@ -80,6 +80,7 @@ function addExpense(){
     }
     myExpenses.push(currentExpense);
     console.log(currentExpense);
+    this.parentNode.reset();
     alert("New Expense Added: " + currentExpense.name + ".");
     updateExpenses();
    

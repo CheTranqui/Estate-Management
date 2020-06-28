@@ -94,17 +94,21 @@
                 <span class="formattedContactSpan" id="formattedContactName">
                     Name
                 </span>
-                <label class="boldLabel formattedContactRoleLabel secondaryLabel">Role:</label>
+            </p>
+            <p class="formattedItemP" id="contactRole">
+                <label class="boldLabel formattedContactRoleLabel">Role:</label>
                 <span class="formattedContactSpan" id="formattedContactRole">
                     Role
                 </span>
             </p>
-            <p class="formattedItemP" id="contactPhoneEmail">
+            <p class="formattedItemP" id="contactEmail">
                 <label class="boldLabel formattedContactPhoneLabel">Phone:</label>
                 <span class="formattedContactSpan" id="formattedContactPhone">
                     Phone
                 </span>
-                <label class=" boldLabel formattedContactEmailLabel secondaryLabel">Email:</label>
+            </p>
+            <p class="formattedItemP" id="contactPhone">
+                <label class=" boldLabel formattedContactEmailLabel">Email:</label>
                 <span class="formattedContactSpan" id="formattedContactEmail">
                     Email
                 </span>
@@ -140,7 +144,9 @@
                 <span class="formattedPropertySpan" id="formattedPropertyName">
                     Name
                 </span>
-                <label class="boldLabel formattedPropertyBuyerLabel secondaryLabel">Buyer:</label>
+            </p>
+            <p class="formattedItemP" id="contactPropertyBuyer">
+                <label class="boldLabel formattedPropertyBuyerLabel">Buyer:</label>
                 <span class="formattedPropertySpan" id="formattedPropertyBuyer">
                     Buyer
                 </span>
@@ -192,14 +198,16 @@
         Goods:
     </h2>
     <li class="hiddenLi formattedGoodsItem" id="formattedGoodsItem">
-        <p class="formattedItemP" id="goodsNameBuyer">
+        <p class="formattedItemP" id="goodsName">
             <label class="boldLabel formattedGoodsNameLabel">Good:</label>
             <span class="formattedGoodsSpan" id="formattedGoodsName">
                 Name
             </span>
-            <label class="boldLabel formattedGoodsPropertyLabel secondaryLabel">Property:</label>
+        </p>
+        <p class="formattedItemP" id="goodsProperty">
+            <label class="boldLabel formattedGoodsPropertyLabel">At Property:</label>
             <span class="formattedGoodsSpan" id="formattedGoodsProperty">
-                Buyer
+                Property
             </span>
         </p>
         <p class="formattedItemP" id="goodsValueOffer">
@@ -207,13 +215,19 @@
             <span class="formattedGoodsSpan" id="formattedGoodsValue">
                 Value
             </span>
-            <label class=" boldLabel formattedGoodsOfferLabel secondaryLabel">Offer:</label>
+            <label class="boldLabel formattedGoodsOfferLabel secondaryLabel">Offer:</label>
             <span class="formattedGoodsSpan" id="formattedGoodsOffer">
                 Offer
             </span>
-            <label class=" boldLabel formattedGoodsSoldLabel secondaryLabel">Sold:</label>
+        </p>
+        <p class="formattedItemP" id="contactGoodsSoldBuyer">
+            <label class="boldLabel formattedGoodsSoldLabel">Sold:</label>
             <span class="formattedGoodsSpan" id="formattedGoodsSold">
                 Sold
+            </span>
+            <label class="boldLabel formattedGoodsBuyerLabel secondaryLabel">To:</label>
+            <span class="formattedGoodsSpan" id="formattedGoodsBuyer">
+                Person
             </span>
         </p>
         <p class="formattedItemP" id="goodsItemAddress">
@@ -243,27 +257,31 @@
         Expenses:
     </h2>
     <li class="hiddenLi formattedExpensesItem" id="formattedExpensesItem">
-        <p class="formattedItemP" id="ExpensesNamePayable">
+        <p class="formattedItemP" id="ExpensesName">
             <label class="boldLabel formattedExpensesNameLabel">Expense:</label>
             <span class="formattedExpensesSpan" id="formattedExpensesName">
                 Name
             </span>
-            <label class="boldLabel formattedExpensesPayableLabel secondaryLabel">Payable To:</label>
+        </p>
+        <p class="formattedItemP" id="expensesPayee">    
+            <label class="boldLabel formattedExpensesPayableLabel">Payable To:</label>
             <span class="formattedExpensesSpan" id="formattedExpensesPayable">
                 Payee
             </span>
         </p>
-        <p class="formattedItemP" id="formattedExpensesAmountPaidOn">
+        <p class="formattedItemP" id="expensesAmount">
             <label class="boldLabel formattedExpensesAmountLabel">Amount:</label>
             <span class="formattedExpensesSpan" id="formattedExpensesAmount">
                 Amount
             </span>
-            <label class=" boldLabel formattedExpensesPaidOnLabel secondaryLabel">Paid On:</label>
+        </p>
+        <p class="formattedItemP" id="expensesPaidOn">
+            <label class=" boldLabel formattedExpensesPaidOnLabel">Paid On:</label>
             <span class="formattedExpensesSpan" id="formattedExpensesPaidOn">
                 Paid On
             </span>
         </p>
-        <p class="formattedItemP" id="formattedExpensesNotes">
+        <p class="formattedItemP" id="expensesNotes">
             <label class="boldLabel formattedExpensessNotesLabel">Notes:</label>
             <span class="formattedExpensesSpan" id="formattedExpensesNotes">
                 Notes
